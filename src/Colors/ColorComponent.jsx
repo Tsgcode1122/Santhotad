@@ -1,9 +1,9 @@
 // ColorComponent.js
 export const Colors = {
   lightblue: "#0B2565",
-  blue: "0316CD",
-  darkBlue: "#000538",
-  forest: "#0E1514",
+  blue: "#0316CD",
+  lightBlack: "#2A2929",
+  white: "#FFFFFF",
   light: "#F1F1F1",
   coolBlack: "#333333",
   white: "#FFFFFF",
