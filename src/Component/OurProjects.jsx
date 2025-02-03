@@ -2,20 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 import { Colors } from "../Colors/ColorComponent";
-import f1 from "../Images/frame1.png";
-import f2 from "../Images/frame2.png";
-import f3 from "../Images/frame1.png";
-import f4 from "../Images/frame2.png";
-import f5 from "../Images/frame1.png";
 
-const Images = [
-  { img: f1 },
-  { img: f2 },
-  { img: f3 },
-  { img: f4 },
-  { img: f5 },
-];
-
+import { Images } from "../PagesImages";
+import { Link } from "react-router-dom";
 const OurProjects = () => {
   const sliderRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,7 +30,7 @@ const OurProjects = () => {
     const handleScroll = () => {
       if (sliderRef.current) {
         const scrollLeft = sliderRef.current.scrollLeft;
-        const imageWidth = 300;
+        const imageWidth = 400;
         const index = Math.round(scrollLeft / imageWidth);
         setCurrentIndex(index);
       }
@@ -80,7 +69,9 @@ const OurProjects = () => {
         <ImageSlider ref={sliderRef}>
           {Images.map((image, index) => (
             <ImageContain key={index}>
-              <img src={image.img} alt={`Project ${index + 1}`} />
+              <Link key={index} to={`/projects/${image.id}`}>
+                <img src={image.img} alt={`Project ${index + 1}`} />
+              </Link>
             </ImageContain>
           ))}
         </ImageSlider>
@@ -99,7 +90,8 @@ const Head = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 28px;
+  font-size: 34px;
+  font-weight: bold;
 `;
 
 const ControlButton = styled.div`
@@ -132,10 +124,9 @@ const Button = styled.button`
 /* Wrapper to constrain visible images */
 const SliderContainer = styled.div`
   overflow: hidden;
-  padding: 20px;
+  padding: 20px 0;
   position: relative;
-  width: 70%;
-  margin: auto;
+  /* width: 70%; */
 `;
 
 const ImageSlider = styled.div`
@@ -153,12 +144,17 @@ const ImageSlider = styled.div`
 `;
 
 const ImageContain = styled.div`
-  flex: 0 0 250px;
-  margin-right: 20px;
+  flex: 0 0 700px;
+  margin-right: 10px;
   scroll-snap-align: start;
-
+  overflow: hidden;
   img {
-    width: 100%;
-    border-radius: 10px;
+    max-width: 100%;
+    height: 450px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover img {
+    transform: scale(1.08);
   }
 `;

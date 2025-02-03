@@ -16,6 +16,7 @@ import Layout from "./FixedComponent/Layout";
 import { Colors } from "./Colors/ColorComponent";
 import HomePage from "./Pages/HomePage";
 import AboutPage from "./Pages/AboutPage";
+import SingleProjectDetails from "./Pages/SingleProjectDetails";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -92,6 +93,9 @@ const routes = [
     children: [
       { index: true, path: "/", element: <HomePage /> },
       { path: "/about", element: <AboutPage /> },
+
+      { path: "/projects/:imageId", element: <SingleProjectDetails /> },
+
       // { path: "/contact", element: <Contact /> },
       // { path: "/appointment", element: <Appointment /> },
 
