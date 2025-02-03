@@ -14,7 +14,8 @@ import {
 } from "@ant-design/icons";
 
 import { IoMdArrowDropright } from "react-icons/io";
-// import logo from "../Images/SH.png";
+import logo from "../Images/sanlogo.png";
+import arrowUp from "../Icons/arrow-up-right.png";
 import { Colors } from "../Colors/ColorComponent";
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -48,7 +49,9 @@ const Navbar = () => {
     <>
       <StyledNavbar style={{ top: visible ? 0 : "-5rem" }}>
         <HeadSpace>
-          <Link to="/">{/* <img src={logo} /> */}</Link>
+          <Link to="/">
+            <img src={logo} />{" "}
+          </Link>
           <MenuToggle onClick={toggleSidebar}>
             <Hamburger
               toggled={isSidebarOpen}
@@ -90,46 +93,70 @@ const Navbar = () => {
 
       <BigNav>
         <BigCon>
-          <a href="#home">{/* <img src={logo} /> */}</a>
-
+          <img src={logo} />{" "}
           <LinkBig>
             <Link>Projects</Link>
             <Link>Services</Link>
             <Link>About Us</Link>
           </LinkBig>
+          <Contact>
+            <Link>
+              Contact Us
+              <img src={arrowUp} />{" "}
+            </Link>
+          </Contact>
         </BigCon>
       </BigNav>
     </>
   );
 };
+const Contact = styled.div`
+  border: 1.8px solid #0316cd;
+  padding: 7px 12px;
+  a {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    justify-content: center;
+    gap: 4px;
+    color: ${Colors.blue} !important;
+  }
+  color: ${Colors.blue} !important;
+
+  border-radius: 5px;
+`;
+
 const BigNav = styled.div`
   position: fixed;
   width: 100%;
   top: 0;
   display: none;
+  a {
+    text-decoration: none;
+    font-size: 16px;
+  }
   @media screen and (min-width: 820px) {
     display: block;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   z-index: 999 !important;
-  background-color: #f2ebe2;
+  background: ${Colors.white};
   img {
     max-width: 100%;
-    height: 30px;
+    height: 20px;
   }
 `;
 const BigCon = styled.div`
+  height: 40px;
   padding: 10px 40px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   @media screen and (min-width: 800px) {
-    padding: 10px 50px;
   }
   @media screen and (min-width: 1000px) {
-    padding: 10px 70px;
   }
   @media screen and (min-width: 1200px) {
-    padding: 10px 140px;
   }
 `;
 const LinkBig = styled.div`
@@ -141,7 +168,8 @@ const LinkBig = styled.div`
   justify-content: space-between;
   a {
     text-decoration: none;
-    color: black;
+    color: ${Colors.ashBlack};
+    font-size: 18px;
   }
 `;
 
@@ -200,7 +228,7 @@ const StyledNavbar = styled.div`
   width: 100%;
   top: 0;
   z-index: 999 !important;
-  background-color: #f2ebe2;
+  background: ${Colors.white};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   img {

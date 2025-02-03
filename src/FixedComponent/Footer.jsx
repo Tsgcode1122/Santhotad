@@ -16,17 +16,17 @@ const Footer = () => {
         </GroupOne>
         <GroupTwo>
           <p>Email Address</p>
-          <div></div>
+          <MiniDash></MiniDash>
           <p>Topeadeusi@santhotad.com</p>
         </GroupTwo>
         <GroupThree>
           <p>Number</p>
-          <div></div>
+          <MiniDash></MiniDash>
           <p>(234) 8038586165</p>
         </GroupThree>
         <GroupFour>
           <p>Office Address</p>
-          <div></div>
+          <MiniDash></MiniDash>
           <p>
             Suite 227, Oyemekun Commercial Complex, Behind Ministry of Works,
             Oyemekun Road, Akure, Ondo State, Nigeria
@@ -41,7 +41,7 @@ const Footer = () => {
 export default Footer;
 const Container = styled.div`
   font-family: "Poppins", sans-serif;
-  /* background: #010700; */
+  background: #e5e4e4;
 
   @media screen and (max-width: 320px) {
   }
@@ -57,9 +57,55 @@ const Container = styled.div`
   }
 `;
 const Content = styled.div``;
-const TopOne = styled.div``;
+const TopOne = styled.div`
+  padding: 3rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+`;
 const TopTwo = styled.div``;
-const GroupOne = styled.div``;
-const GroupTwo = styled.div``;
-const GroupThree = styled.div``;
-const GroupFour = styled.div``;
+const GroupOne = styled.div`
+  flex: 1 1 calc(20% - 10px);
+  @media (max-width: 768px) {
+    flex: 1 1 calc(40% - 10px);
+  }
+
+  @media (max-width: 480px) {
+    flex: 1 1 100%;
+  }
+`;
+const GroupTwo = styled.div`
+  flex: 1 1 calc(20% - 10px);
+  @media (max-width: 768px) {
+    flex: 1 1 calc(40% - 10px);
+  }
+
+  @media (max-width: 480px) {
+    flex: 1 1 100%;
+  }
+`;
+const GroupThree = styled.div`
+  flex: 1 1 calc(20% - 10px);
+  @media (max-width: 768px) {
+    flex: 1 1 calc(40% - 10px);
+  }
+
+  @media (max-width: 480px) {
+    flex: 1 1 100%;
+  }
+`;
+const GroupFour = styled.div`
+  flex: 1 1 calc(20% - 10px);
+  @media (max-width: 768px) {
+    flex: 1 1 calc(40% - 10px);
+  }
+
+  @media (max-width: 480px) {
+    flex: 1 1 40%;
+  }
+`;
+const MiniDash = styled.div`
+  width: 15px;
+  height: 2px;
+  background: black;
+`;
