@@ -220,7 +220,7 @@ const LinkCont = styled(Link)`
   }
 `;
 const NavHeight = styled.div`
-  height: 3rem;
+  height: 4rem;
 `;
 
 const StyledNavbar = styled.div`
