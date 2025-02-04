@@ -89,7 +89,7 @@ const CtaButton = styled(Link)`
   }
 `;
 const Content = styled.div`
-  padding: 20px 60px;
+  padding: 20px 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;

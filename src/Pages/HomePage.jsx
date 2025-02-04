@@ -3,6 +3,8 @@ import Hero from "../Component/Hero";
 import HeroMoving from "../Component/HeroMoving";
 import OurProjects from "../Component/OurProjects";
 import AboutUs from "../Component/AboutUs";
+import Services from "../Component/Services";
+import Testimonial from "../Component/Testimonial";
 
 const HomePage = () => {
   return (
@@ -11,6 +13,8 @@ const HomePage = () => {
       <HeroMoving />
       <OurProjects />
       <AboutUs />
+      <Services />
+      <Testimonial />
     </>
   );
 };
