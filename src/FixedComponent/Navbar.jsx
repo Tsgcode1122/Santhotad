@@ -93,7 +93,9 @@ const Navbar = () => {
 
       <BigNav>
         <BigCon>
-          <img src={logo} />{" "}
+          <Link to="/">
+            <img src={logo} />{" "}
+          </Link>
           <LinkBig>
             <Link>Projects</Link>
             <Link>Services</Link>

@@ -30,7 +30,7 @@ const OurProjects = () => {
     const handleScroll = () => {
       if (sliderRef.current) {
         const scrollLeft = sliderRef.current.scrollLeft;
-        const imageWidth = 400;
+        const imageWidth = auto;
         const index = Math.round(scrollLeft / imageWidth);
         setCurrentIndex(index);
       }
@@ -144,8 +144,8 @@ const ImageSlider = styled.div`
 `;
 
 const ImageContain = styled.div`
-  flex: 0 0 700px;
-  margin-right: 10px;
+  flex: 0 0 auto;
+  margin-right: 2px;
   scroll-snap-align: start;
   overflow: hidden;
   img {
