@@ -6,17 +6,14 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-// import About from "./Pages/About";
-// import Services from "./Pages/Services";
-// import Gallery from "./Pages/Gallery";
-// import Appointment from "./Pages/Appointment";
-// import Contact from "./Pages/Contact";
 import { Result, Button } from "antd";
 import Layout from "./FixedComponent/Layout";
 import { Colors } from "./Colors/ColorComponent";
 import HomePage from "./Pages/HomePage";
 import AboutPage from "./Pages/AboutPage";
 import SingleProjectDetails from "./Pages/SingleProjectDetails";
+import ServicePage from "./Pages/ServicePage";
+import ContactForm from "./Pages/ContactForm";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -96,11 +93,8 @@ const routes = [
 
       { path: "/projects/:imageId", element: <SingleProjectDetails /> },
 
-      // { path: "/contact", element: <Contact /> },
-      // { path: "/appointment", element: <Appointment /> },
-
-      // { path: "/services", element: <Services /> },
-      // { path: "/gallery", element: <Gallery /> },
+      { path: "/service", element: <ServicePage /> },
+      { path: "/contact", element: <ContactForm /> },
 
       { path: "*", element: <InvalidPath /> },
     ],

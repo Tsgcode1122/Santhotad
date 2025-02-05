@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import f3 from "../Images/f31.jpg";
 import f2 from "../Images/f32.jpg";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Icons for navigation
+import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+import { Colors } from "../Colors/ColorComponent";
+import { StarFilled } from "@ant-design/icons";
 
 const testimonials = [
   {
@@ -57,6 +59,7 @@ const Testimonial = () => {
 
   return (
     <>
+      <Line />
       <Intro>
         Hear what our clients have to say about their experience working with
         us.
@@ -64,7 +67,7 @@ const Testimonial = () => {
 
       <Slider>
         <ArrowButton onClick={prevTestimonial}>
-          <FaChevronLeft />
+          <IoIosArrowRoundBack />
         </ArrowButton>
 
         <ImageContainer>
@@ -75,13 +78,18 @@ const Testimonial = () => {
           <Heading>{heading}</Heading>
           <Content>{content}</Content>
           <RecommenderName>
-            {name}, <Who>{who}</Who>
-            <Rating>⭐ {rating}</Rating>
+            <div>
+              {name}, <Who>{who}</Who>
+            </div>
+            <Rating>
+              {" "}
+              <StarFilled /> <Rate>{rating}</Rate>
+            </Rating>
           </RecommenderName>
         </Writeup>
 
         <ArrowButton onClick={nextTestimonial}>
-          <FaChevronRight />
+          <IoIosArrowRoundForward />
         </ArrowButton>
       </Slider>
     </>
@@ -89,74 +97,96 @@ const Testimonial = () => {
 };
 
 export default Testimonial;
-
+const Line = styled.div`
+  width: 1050px;
+  display: flex;
+  align-self: center;
+  height: 1px;
+  background: #aaaaaa;
+`;
 const Intro = styled.p`
   text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 30px;
 `;
 
 const Slider = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 90px;
+  /* padding: 20px; */
   position: relative;
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
 `;
 
 const ImageContainer = styled.div`
-  width: 150px;
-  height: 150px;
+  width: 400px;
+  height: 460px;
   overflow: hidden;
-  border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid #d0ad5b;
 
   img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: 400px;
     object-fit: cover;
   }
 `;
 
 const Writeup = styled.div`
   flex: 1;
+  margin-left: -140px;
   text-align: left;
+  background: white;
+
+  padding: 10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+  /* min-height: 190px; */
 `;
 
-const Heading = styled.h3`
-  font-size: 1.5rem;
-  font-weight: bold;
+const Heading = styled.p`
+  font-size: 16px;
+  font-weight: 600;
   color: #333;
+  max-width: 250px;
+  min-height: 30px;
 `;
 
 const Content = styled.p`
   font-size: 1rem;
   color: #555;
+  max-width: 250px;
   margin: 10px 0;
+  min-height: 80px;
 `;
 
 const RecommenderName = styled.p`
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #222;
+  display: flex;
+  gap: 80px;
 `;
 
 const Who = styled.span`
-  font-style: italic;
+  /* font-style: italic; */
   font-weight: normal;
   color: #777;
 `;
 
 const Rating = styled.span`
-  display: block;
-  color: #d0ad5b;
+  /* display: block; */
+  color: ${Colors.blue};
+  font-size: 1.2rem;
+`;
+const Rate = styled.span`
+  /* display: block; */
+  color: ${Colors.ashBlack} !important;
   font-size: 1.2rem;
 `;
 
@@ -165,7 +195,7 @@ const ArrowButton = styled.button`
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: #d0ad5b;
+  color: ${Colors.blue};
   transition: 0.3s;
 
   &:hover {
