@@ -41,7 +41,7 @@ const Footer = () => {
 export default Footer;
 const Container = styled.div`
   font-family: "Poppins", sans-serif;
-  background: #e5e4e4;
+  background: #f2f2f2;
 
   @media screen and (max-width: 320px) {
   }

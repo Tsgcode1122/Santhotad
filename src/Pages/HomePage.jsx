@@ -5,6 +5,7 @@ import OurProjects from "../Component/OurProjects";
 import AboutUs from "../Component/AboutUs";
 import Services from "../Component/Services";
 import Testimonial from "../Component/Testimonial";
+import MeetTeam from "../Component/MeetTeam";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <HeroMoving />
       <OurProjects />
       <AboutUs />
+      <MeetTeam />
       <Services />
       <Testimonial />
     </>

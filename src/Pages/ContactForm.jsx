@@ -1,12 +1,8 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
-import {
-  FacebookOutlined,
-  InstagramOutlined,
-  TwitterOutlined,
-} from "@ant-design/icons";
+import { InstagramOutlined, TwitterOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-
+import { TiSocialFacebook } from "react-icons/ti";
 const ContactForm = () => {
   const onFinish = (values) => {
     console.log("Received values: ", values);
@@ -23,7 +19,7 @@ const ContactForm = () => {
           </Title>
         </div>
         <SocialIcons>
-          <FacebookOutlined />
+          <TiSocialFacebook />
           <InstagramOutlined />
           <TwitterOutlined />
         </SocialIcons>
@@ -37,7 +33,7 @@ const ContactForm = () => {
             <Input.TextArea
               bordered={false}
               style={{ borderBottom: "1px solid black" }}
-              autoSize={{ minRows: 1.5 }}
+              autoSize={{ minRows: 1.2 }}
               placeholder="Your Name"
             />
           </Form.Item>
@@ -55,7 +51,7 @@ const ContactForm = () => {
               placeholder="Message"
               bordered={false}
               style={{ borderBottom: "1px solid black" }}
-              autoSize={{ minRows: 1.5 }}
+              autoSize={{ minRows: 1.2 }}
             />
           </Form.Item>
           <Form.Item name="phone">
@@ -63,7 +59,7 @@ const ContactForm = () => {
               placeholder="Message"
               bordered={false}
               style={{ borderBottom: "1px solid black" }}
-              autoSize={{ minRows: 1.5 }}
+              autoSize={{ minRows: 1.2 }}
             />
           </Form.Item>
         </ThreeGroup>

@@ -14,6 +14,7 @@ import AboutPage from "./Pages/AboutPage";
 import SingleProjectDetails from "./Pages/SingleProjectDetails";
 import ServicePage from "./Pages/ServicePage";
 import ContactForm from "./Pages/ContactForm";
+import ServiceFromHome from "./Pages/ServiceFromHome";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -92,6 +93,7 @@ const routes = [
       { path: "/about", element: <AboutPage /> },
 
       { path: "/projects/:imageId", element: <SingleProjectDetails /> },
+      { path: "/services/:serviceId", element: <ServiceFromHome /> },
 
       { path: "/service", element: <ServicePage /> },
       { path: "/contact", element: <ContactForm /> },

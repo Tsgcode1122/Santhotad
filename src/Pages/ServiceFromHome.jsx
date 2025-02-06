@@ -3,57 +3,49 @@ import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import f3 from "../Images/f31.jpg";
-import f31 from "../Images/f32.jpg";
-import f32 from "../Images/f33.jpg";
-import f33 from "../Images/f34.jpg";
-import f34 from "../Images/f31.jpg";
-import { Service } from "../Service";
 
-const Services = () => {
-  const [activeService, setActiveService] = useState(Service[0]);
+import { Service } from "../Service";
+import { useParams } from "react-router-dom";
+const ServiceFromHome = () => {
+  const { serviceId } = useParams();
+  const services = Service.find((service) => service.id === serviceId);
+  const [activeService, setActiveService] = useState(services);
 
   return (
     <>
-      <Heading>
+      {/* <Heading>
         <h4>Services</h4>
         <Line />
-        <CtaButton>
-          See All
-          <ArrowDownOutlined />
-        </CtaButton>
-      </Heading>
-      <Content>
-        <h1>Build to Inspire, Design to Last</h1>
-        <p>
-          At Santhotad Concepts, we deliver tailored services that blend
-          innovation, and client satisfaction to meet your unique needs.
-        </p>
-      </Content>
+      </Heading> */}
+
       <ServiceChanging>
+        <LeftSide>
+          <h3>{activeService.head}</h3>
+          <ImageContainer>
+            <img src={activeService.img} alt={activeService.head} />
+          </ImageContainer>
+          <Description>
+            <p>{activeService.description1}</p>
+            <p>{activeService.description2}</p>
+          </Description>
+        </LeftSide>
         <ServiceListContainer>
           {Service.map((service, index) => (
             <ServiceItem
               key={index}
               onMouseEnter={() => setActiveService(service)}
             >
-              {" "}
-              <Link key={index} to={`/services/${service.id}`}>
-                {service.head}
-              </Link>
+              {service.head}
               <Underline active={activeService.id === service.id} />
             </ServiceItem>
           ))}
         </ServiceListContainer>
-        <ImageContainer>
-          <img src={activeService.img} alt={activeService.head} />
-        </ImageContainer>
       </ServiceChanging>
     </>
   );
 };
 
-export default Services;
+export default ServiceFromHome;
 
 const Heading = styled.div`
   display: flex;
@@ -73,16 +65,10 @@ const Line = styled.div`
   background: #aaaaaa;
 `;
 
-const CtaButton = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: ${Colors.blue};
-  gap: 3px;
-  svg {
-    transform: rotate(-45deg);
-    color: ${Colors.blue};
+const Description = styled.div`
+  max-width: 730px;
+  p {
+    text-align: justify;
   }
 `;
 
@@ -109,9 +95,10 @@ const Content = styled.div`
   }
 `;
 
+const LeftSide = styled.div``;
 const ServiceChanging = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   /* gap: 0px; */
   padding: 10px 80px 40px 80px;
@@ -136,10 +123,6 @@ const ServiceItem = styled.div`
   &:hover {
     color: ${Colors.blue};
   }
-  a {
-    text-decoration: none;
-    color: black !important;
-  }
 `;
 
 const Underline = styled.div`
@@ -163,8 +146,8 @@ const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 320px;
-  width: 600px;
+  height: 380px;
+  width: 720px;
   border-radius: 20px;
   img {
     max-width: 100%;
