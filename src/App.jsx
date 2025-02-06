@@ -15,6 +15,8 @@ import SingleProjectDetails from "./Pages/SingleProjectDetails";
 import ServicePage from "./Pages/ServicePage";
 import ContactForm from "./Pages/ContactForm";
 import ServiceFromHome from "./Pages/ServiceFromHome";
+import ProtectedAdminDashboardPage from "./Admin/ProtectedAdminDashboardPage";
+import RegisterLogin from "./Admin/RegisterLogin";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -97,8 +99,10 @@ const routes = [
 
       { path: "/service", element: <ServicePage /> },
       { path: "/contact", element: <ContactForm /> },
+      { path: "/registerLogin", element: <RegisterLogin /> },
 
       { path: "*", element: <InvalidPath /> },
+      { path: "/admin/*", element: <ProtectedAdminDashboardPage /> },
     ],
   },
 ];
