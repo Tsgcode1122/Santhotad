@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
-import ceoC from "../TeamImages/ceoC.png";
+import blogM from "../TeamImages/blogmain.png";
+import blog1 from "../TeamImages/blog2.png";
+import blog2 from "../TeamImages/blog1.png";
+import blog3 from "../TeamImages/blog3.png";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 const Blogpost = () => {
@@ -18,7 +21,7 @@ const Blogpost = () => {
       <Container>
         <MainFeature>
           <ImageContainer>
-            <img src={ceoC} />
+            <img src={blogM} />
           </ImageContainer>
           <Content>
             <span>
@@ -36,7 +39,7 @@ const Blogpost = () => {
           <Intro>More News Updates</Intro>
           <Divider />
           <One>
-            <img src={ceoC} />
+            <img src={blog1} />
 
             <OneSide>
               <AuthorDate>
@@ -49,7 +52,7 @@ const Blogpost = () => {
           </One>
           <Divider />
           <One>
-            <img src={ceoC} />
+            <img src={blog2} />
             <OneSide>
               <AuthorDate>
                 Craig Bater - <span> 17 May 2024 </span>
@@ -61,7 +64,7 @@ const Blogpost = () => {
           </One>
           <Divider />
           <One>
-            <img src={ceoC} />
+            <img src={blog3} />
             <OneSide>
               <AuthorDate>
                 Craig Bater - <span> 27 Dec 2020 </span>
@@ -127,11 +130,11 @@ const Container = styled.div`
 `;
 const ImageContainer = styled.div`
   max-width: 360px;
-  max-height: 280px;
+  /* max-height: 280px; */
   img {
     max-width: 100%;
-    width: 480px;
-    height: 280px;
+
+    height: 260px;
     object-fit: cover;
     border-radius: 10px;
   }

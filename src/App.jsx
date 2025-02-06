@@ -17,6 +17,7 @@ import ContactForm from "./Pages/ContactForm";
 import ServiceFromHome from "./Pages/ServiceFromHome";
 import ProtectedAdminDashboardPage from "./Admin/ProtectedAdminDashboardPage";
 import RegisterLogin from "./Admin/RegisterLogin";
+import BlogPage from "./Pages/BlogPage";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -41,14 +42,6 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
- 
-
-
-
-
-
-
-
 `;
 
 const StyledResult = styled(Result)`
@@ -100,6 +93,7 @@ const routes = [
       { path: "/service", element: <ServicePage /> },
       { path: "/contact", element: <ContactForm /> },
       { path: "/registerLogin", element: <RegisterLogin /> },
+      { path: "/blog", element: <BlogPage /> },
 
       { path: "*", element: <InvalidPath /> },
       { path: "/admin/*", element: <ProtectedAdminDashboardPage /> },
