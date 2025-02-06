@@ -42,11 +42,12 @@ const RegisterNowText = styled.span`
   text-align: center;
   margin-top: 10px;
   font-weight: 300;
-  a {
+  span {
+    cursor: pointer;
     color: black !important;
     font-weight: 600;
     &:hover {
-      color: ${Colors.blue};
+      color: ${Colors.blue} !important;
     }
   }
 `;
@@ -57,7 +58,7 @@ const LoginFormTitle = styled.p`
 const RegisterPage = () => {
   const navigate = useNavigate();
 
-  // Handling the manipulation where if you need explaination call me cause lol after many trial so i dont want to temper with the code
+  // Handling the manipulation where if you need explanation email me cause lol after many trial, i dont want to temper with the code {tsgcode201@gmail.com}
   const handleLoginClick = () => {
     navigate("/registerLogin", { state: { activeTab: "login" } });
   };
@@ -222,7 +223,7 @@ const RegisterPage = () => {
         </Form.Item>
         {/* Already Register  */}
         <RegisterNowText>
-          Already registered? <Link to="/login"> Login</Link>
+          Already registered? <span onClick={handleLoginClick}> Login</span>
         </RegisterNowText>
       </Form>
 

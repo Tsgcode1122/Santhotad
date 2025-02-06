@@ -12,7 +12,7 @@ const StyledTabs = styled(Tabs)`
     display: flex !important;
     background: none;
     border-radius: 0;
-
+    padding: 10px 0;
     border: none !important;
   }
 
@@ -72,6 +72,9 @@ const RegisterLogin = () => {
   useEffect(() => {
     if (location.state?.activeTab === "register") {
       setActiveTab("register");
+    }
+    if (location.state?.activeTab === "login") {
+      setActiveTab("login");
     }
   }, [location.state]);
   return (

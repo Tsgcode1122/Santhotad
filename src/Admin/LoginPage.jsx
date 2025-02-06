@@ -107,9 +107,6 @@ const LoginPageContainer = styled.div`
 const LoginForm = styled(Form)`
   width: 268px;
 
-  padding: 20px 0;
-  border-radius: 20px;
-  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
   @media screen and (max-width: 320px) {
     width: 300px;
   }
