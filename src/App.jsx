@@ -19,6 +19,7 @@ import ProtectedAdminDashboardPage from "./Admin/ProtectedAdminDashboardPage";
 import RegisterLogin from "./Admin/RegisterLogin";
 import BlogPage from "./Pages/BlogPage";
 import AdminDashboard from "./Admin/AdminDashboard";
+import AllPost from "./Admin/AllPost";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -98,6 +99,7 @@ const routes = [
 
       { path: "*", element: <InvalidPath /> },
       { path: "/admin", element: <AdminDashboard /> },
+      { path: "/allpost", element: <AllPost /> },
       // { path: "/admin/*", element: <ProtectedAdminDashboardPage /> },
     ],
   },

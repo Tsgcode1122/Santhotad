@@ -10,12 +10,13 @@ const Layout = () => {
   const location = useLocation();
 
   const isAdminPage = location.pathname.startsWith("/admin");
+  const isAll = location.pathname.startsWith("/allpost");
 
   return (
     <>
       {<Navbar />}
       <Outlet />
-      {!isAdminPage & <Footer />}
+      {!isAdminPage && !isAll && <Footer />}
     </>
   );
 };
