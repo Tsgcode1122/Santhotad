@@ -9,14 +9,13 @@ import Footer from "./Footer";
 const Layout = () => {
   const location = useLocation();
 
-  // Check if the current path is the appointment page
-  const isAppointmentPage = location.pathname === "/appointment";
+  const isAdminPage = location.pathname.startsWith("/admin");
 
   return (
     <>
-      <Navbar />
+      {<Navbar />}
       <Outlet />
-      <Footer />
+      {!isAdminPage & <Footer />}
     </>
   );
 };
