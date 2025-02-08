@@ -87,7 +87,7 @@ const RegisterPage = () => {
     try {
       const email = values.email.toLowerCase();
       const emailExistsResponse = await axios.post(
-        "https://cashflowcapital.onrender.com/api/auth/check-exists",
+        "http://localhost:5009/api/auth/check-exists",
         {
           email: email,
         },
@@ -129,7 +129,8 @@ const RegisterPage = () => {
         message.success("Registration Successful");
         form.resetFields();
         setModalVisible(false);
-        navigate("/login");
+        // Navigate to /registerLogin with activeTab set to 'login'
+        navigate("/registerLogin", { state: { activeTab: "login" } });
       } else {
         message.error("Invalid verification code");
       }
@@ -145,7 +146,7 @@ const RegisterPage = () => {
   const verifyCode = async (verificationCode) => {
     try {
       const response = await axios.post(
-        "https://cashflowcapital.onrender.com/api/email/verify-code",
+        "http://localhost:5009/api/email/verify-code",
         {
           verificationCode,
           token: JSON.parse(localStorage.getItem("verificationToken")),
@@ -171,7 +172,7 @@ const RegisterPage = () => {
           name="fullName"
           rules={[{ required: true, message: "Please enter your full name" }]}
         >
-          <StyledInput placeholder="Username" />
+          <StyledInput placeholder="full name" />
         </Form.Item>
 
         <Form.Item

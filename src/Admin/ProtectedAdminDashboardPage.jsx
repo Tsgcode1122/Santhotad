@@ -26,7 +26,7 @@ const ProtectedAdminDashboardPage = () => {
     const checkAdminStatus = async () => {
       try {
         const response = await axios.get(
-          `https://cashflowcapital.onrender.com/api/auth/${userId}`,
+          `http://localhost:5009/api/auth/${userId}`,
         );
         setIsAdmin(response.data.isAdmin);
       } catch (error) {
