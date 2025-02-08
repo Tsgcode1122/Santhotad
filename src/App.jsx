@@ -20,7 +20,7 @@ import RegisterLogin from "./Admin/RegisterLogin";
 import BlogPage from "./Pages/BlogPage";
 import AdminDashboard from "./Admin/AdminDashboard";
 import AllPost from "./Admin/AllPost";
-
+import AnimatedCursor from "react-animated-cursor";
 const GlobalStyle = createGlobalStyle`
 
   html, body {
@@ -110,6 +110,7 @@ const router = createBrowserRouter(routes);
 const App = () => (
   <>
     <GlobalStyle />
+    {/* <AnimatedCursor /> */}
     <RouterProvider router={router} />
   </>
 );

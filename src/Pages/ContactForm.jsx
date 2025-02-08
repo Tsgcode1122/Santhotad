@@ -1,13 +1,48 @@
-import React from "react";
-import { Form, Input, Button } from "antd";
+import React, { useState, useEffect } from "react";
+import { Form, Input, Button, notification, message } from "antd";
 import { InstagramOutlined, TwitterOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { TiSocialFacebook } from "react-icons/ti";
-const ContactForm = () => {
-  const onFinish = (values) => {
-    console.log("Received values: ", values);
-  };
+import axios from "axios";
 
+const ContactForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [form] = Form.useForm();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  const onFinish = async (values) => {
+    console.log("hy");
+    setLoading(true);
+    try {
+      // Send form data to backend
+      await axios.post(
+        "http://localhost:5009/api/email/formSubmission",
+        values,
+      );
+
+      // Show success notification
+      message.success({
+        content: "Your message has been sent successfully.",
+        style: {
+          textAlign: "center",
+          marginTop: "20px",
+        },
+      });
+
+      // Reset form fields
+      form.resetFields();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      notification.error({
+        message: "Error",
+        description: "Failed to send your message. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+  const phoneRegex = /^\+?[0-9\s\-()]{7,15}$/;
   return (
     <ContactWrapper>
       <Head>
@@ -24,7 +59,7 @@ const ContactForm = () => {
           <TwitterOutlined />
         </SocialIcons>
       </Head>
-      <StyledForm onFinish={onFinish} layout="vertical">
+      <StyledForm form={form} onFinish={onFinish} layout="vertical">
         <ThreeGroup>
           <Form.Item
             name="name"
@@ -48,15 +83,28 @@ const ContactForm = () => {
             ]}
           >
             <Input.TextArea
-              placeholder="Message"
+              placeholder="Email "
               bordered={false}
               style={{ borderBottom: "1px solid black" }}
               autoSize={{ minRows: 1.2 }}
             />
           </Form.Item>
-          <Form.Item name="phone">
+          <Form.Item
+            name="number"
+            rules={[
+              {
+                // required: true,
+
+                message: "Please enter a valid number",
+              },
+              {
+                pattern: phoneRegex,
+                message: "Please enter a valid phone number",
+              },
+            ]}
+          >
             <Input.TextArea
-              placeholder="Message"
+              placeholder="Phone Number (optional)"
               bordered={false}
               style={{ borderBottom: "1px solid black" }}
               autoSize={{ minRows: 1.2 }}
@@ -74,7 +122,9 @@ const ContactForm = () => {
             style={{ borderBottom: "1px solid black" }}
           />
         </Form.Item>
-        <SubmitButton htmlType="submit">Leave us a Message →</SubmitButton>
+        <SubmitButton htmlType="submit" loading={loading}>
+          Leave us a Message →
+        </SubmitButton>
       </StyledForm>
     </ContactWrapper>
   );
