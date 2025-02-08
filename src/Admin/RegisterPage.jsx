@@ -66,9 +66,7 @@ const RegisterPage = () => {
   const { ResetSendEmail } = useSendEmail();
   const [form] = Form.useForm();
   const { referralId } = useParams();
-  useEffect(() => {
-    console.log("Referral ID from URL:", referralId);
-  }, [referralId]);
+
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [existingProfile, setExistingProfile] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");

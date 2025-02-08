@@ -1,33 +1,29 @@
 import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
-import { Input, Button, Checkbox, message } from "antd";
+import styled from "styled-components";
+import { Input, Button, Form, message } from "antd";
 import axios from "axios";
 import { Colors } from "../Colors/ColorComponent";
 
 const NewsletterForm = () => {
-  const [email, setEmail] = useState("");
-  const [notify, setNotify] = useState(false);
+  const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
-    if (!email) {
-      message.error("Please enter your email address.");
-      return;
-    }
-    setLoading(true);
     try {
-      await axios.post(
-        "https://cashflowcapital.onrender.com/api/email/subscribe",
-        {
-          email,
-          notify,
-        },
-      );
+      const values = await form.validateFields();
+      setLoading(true);
+
+      await axios.post("http://localhost:5009/api/email/subscribe", {
+        email: values.email,
+      });
       message.success("Subscribed successfully!");
-      setEmail("");
-      setNotify(false);
+      form.resetFields();
     } catch (error) {
-      message.error("Subscription failed. Please try again.");
+      if (error.errorFields) {
+        message.error("Please enter a valid email.");
+      } else {
+        message.error("Subscription failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -45,28 +41,27 @@ const NewsletterForm = () => {
           </p>
         </GroupOne>
         <GroupTwo>
-          <InputWrapper noStyle>
-            <StyledInput
-              placeholder="Enter your email"
-              value={email}
-              rules={[
-                { required: true, message: "Please enter your email!" },
-                {
-                  type: "email",
-                  message: "Please enter a valid email address!",
-                },
-              ]}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <StyledButton
-              type="primary"
-              loading={loading}
-              onClick={handleSubmit}
-            >
-              Subscribe
-            </StyledButton>
-          </InputWrapper>
+          <Form form={form}>
+            <InputWrapper noStyle>
+              <Form.Item
+                name="email"
+                rules={[
+                  { required: true, message: "Please enter your email" },
+                  { type: "email", message: "Please enter a valid email" },
+                ]}
+                style={{ flex: 1, marginBottom: 0 }} // Keeps original styling
+              >
+                <StyledInput placeholder="Enter your email" />
+              </Form.Item>
+              <StyledButton
+                type="primary"
+                loading={loading}
+                onClick={handleSubmit}
+              >
+                Subscribe
+              </StyledButton>
+            </InputWrapper>
+          </Form>
         </GroupTwo>
       </Content>
     </Container>
@@ -74,9 +69,11 @@ const NewsletterForm = () => {
 };
 
 export default NewsletterForm;
+
 const Container = styled.div`
   background: ${Colors.blue};
 `;
+
 const Content = styled.div`
   padding: 5rem 6rem;
   display: grid;
@@ -84,6 +81,7 @@ const Content = styled.div`
   grid-template-columns: 1fr 1fr;
   align-items: center;
 `;
+
 const GroupOne = styled.div`
   p {
     color: #f9f9f9;
@@ -91,12 +89,12 @@ const GroupOne = styled.div`
     padding-top: 10px;
   }
 `;
+
 const GroupTwo = styled.div``;
 
 const Title = styled.h2`
   color: ${Colors.white};
   margin: 0;
-  /* line-height: 0.2; */
   padding: 0;
 `;
 
@@ -108,59 +106,44 @@ const InputWrapper = styled.div`
   border-radius: 15px;
   height: 50px;
   background: #3256d7;
-  /* padding: 0.3rem; */
+  .ant-form-item-explain {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    color: red;
+    font-size: 12px;
+  }
 `;
 
 const StyledInput = styled(Input)`
   flex: 1;
   margin-right: 1rem;
   border-radius: 10px;
-
-  background-color: transparent;
+  background-color: transparent !important;
   color: white !important;
-  border: none;
+  border: none !important;
 
-  /* Placeholder styling */
   ::placeholder {
     color: white;
     opacity: 0.8;
     font-weight: 300;
-    padding: 200px;
   }
 
-  /* Specific browser placeholder styling */
-  &::-webkit-input-placeholder {
-    color: white;
-    opacity: 0.8;
-    font-weight: 100;
-    padding-left: 20px;
-  }
-  &::-moz-placeholder {
-    color: white;
-    opacity: 0.8;
-    font-weight: 100;
-    padding-left: 20px;
-  }
-  &:-ms-input-placeholder {
-    color: white;
-    opacity: 0.8;
-    font-weight: 100;
-    padding-left: 20px;
-  }
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
   &::-ms-input-placeholder {
     color: white;
+    opacity: 0.8;
+    font-weight: 100;
+    padding-left: 20px;
   }
 
-  /* Remove the background color on hover */
-  &:hover {
-    background-color: transparent;
-  }
-
-  /* Remove the background color on focus */
+  &:hover,
   &:focus {
-    background-color: transparent;
-    outline: none; /* Optionally remove the focus outline */
-    box-shadow: none; /* Remove default focus shadow */
+    background: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
 `;
 
@@ -172,16 +155,8 @@ const StyledButton = styled(Button)`
   font-weight: 900;
   height: 50px;
   color: ${Colors.blue};
+
   &:hover {
     background-color: #4ea3f6;
-  }
-  @media screen and (max-width: 320px) {
-    padding: 0.75rem 0.6rem;
-  }
-  @media (min-width: 321px) and (max-width: 399px) {
-    padding: 0.75rem 0.6rem;
-  }
-  @media (min-width: 400px) and (max-width: 499px) {
-    padding: 0.75rem 0.6rem;
   }
 `;
