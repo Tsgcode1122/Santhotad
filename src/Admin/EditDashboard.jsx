@@ -20,22 +20,23 @@ import { IoIosLink } from "react-icons/io";
 import { CiUser, CiIndent } from "react-icons/ci";
 import { useBlogContext } from "../context/BlogContext";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import ImageUpload from "./ImageUpload";
 const { TextArea } = Input;
+
 const authors = [
   "Select author",
   "solomon Tosin",
   "falola Tosin",
   "Adeleye Tosin",
 ];
-import ImageUpload from "./ImageUpload";
-const Dashboard = () => {
+const EditDashboard = () => {
   const [loading, setLoading] = useState(false);
-  const [quillText, setQuillText] = useState(""); // Separate state for Quill
-  const [text, setText] = useState(""); // Separate state for TextArea
+  const [quillText, setQuillText] = useState("");
+  const [text, setText] = useState("");
   const [imagesUrl, setImagesUrl] = useState(null);
-  const { createBlog } = useBlogContext();
-
-  // Function to count words in Quill editor
+  const [form] = Form.useForm();
+  const { id } = useParams();
   const countWords = (content) => {
     return content
       .replace(/<[^>]+>/g, " ") // Remove HTML tags
@@ -43,43 +44,55 @@ const Dashboard = () => {
       .split(/\s+/)
       .filter(Boolean).length; // Filter empty spaces
   };
-
-  const [form] = Form.useForm();
+  // Fetch post data
   useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-  const onFinish = async (values) => {
-    console.log("Form Values before modification:", values);
+    const fetchPost = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5009/api/blogs/${id}`,
+        );
+        const data = response.data;
+        console.log(data);
 
+        // Populate form fields with data
+        form.setFieldsValue({
+          title: data.title,
+          author: data.author,
+          imagesAlt: data.imagesAlt,
+          metaDescription: data.metaDescription,
+        });
+
+        setQuillText(data.description);
+        setText(data.metaDescription);
+        setImagesUrl(data.imagesUrl);
+      } catch (error) {
+        console.error("Error fetching post:", error);
+      }
+    };
+
+    fetchPost();
+  }, [id, form]);
+  const onFinish = async (values) => {
     setLoading(true);
 
     try {
-      const blogData = { ...values, description: quillText, imagesUrl };
-      await axios.post("http://localhost:5009/api/blogs/postBlogs", blogData);
+      const updatedData = { ...values, description: quillText, imagesUrl };
+      await axios.put(`http://localhost:5009/api/blogs/${id}`, updatedData);
 
-      message.success({
-        content: "Your message has been sent successfully.",
-        style: {
-          textAlign: "center",
-          marginTop: "20px",
-        },
-      });
+      message.success("Post updated successfully!");
 
-      // Reset form fields
-      form.resetFields();
-      setQuillText("");
-      setImagesUrl(null);
-      setText("");
+      // Redirect or show success notification
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error updating post:", error);
       notification.error({
-        message: "Error",
-        description: "Failed to send your message. Please try again.",
+        message: "Update Failed",
+        description: "There was an issue updating the post.",
       });
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <DashboardContainer
       form={form}
@@ -101,7 +114,7 @@ const Dashboard = () => {
         <StyledFormItem noStyle>
           <CustomButtons style={{ textAlign: "right", marginTop: "10px" }}>
             <Butt type="primary" htmlType="submit" loading={loading}>
-              Publish
+              Update Blog
             </Butt>
           </CustomButtons>
         </StyledFormItem>
@@ -229,7 +242,7 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default EditDashboard;
 
 const StyledFormItem = styled(Form.Item)``;
 

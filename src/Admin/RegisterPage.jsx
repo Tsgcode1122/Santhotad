@@ -23,7 +23,22 @@ const RegisterPageContainer = styled.div`
     width: 380px;
   }
 `;
-
+const StyledModal = styled(Modal)`
+  backdrop-filter: blur(5px) !important;
+  width: 100%;
+  height: 600px;
+  background: rgba(0, 0, 0, 0.3) !important;
+  max-width: 400px !important;
+  .ant-modal-mask {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  .ant-modal {
+    max-width: 300px !important;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+`;
 const StyledInput = styled(Input)`
   width: 100%;
 `;
@@ -94,7 +109,9 @@ const RegisterPage = () => {
       );
       if (emailExistsResponse.data.exists) {
         setExistingProfile(true);
+        message.error("Profile already exists", 5);
         setLoading(false);
+        setExistingProfile(false);
         return;
       }
 
@@ -119,23 +136,20 @@ const RegisterPage = () => {
       }
       const response = await verifyCode(verificationCode);
       if (response && response.success) {
-        await registerUser({
-          ...form.getFieldsValue(),
-          email: form.getFieldValue("email").toLowerCase(),
-          referralId,
-        });
+        await registerUser(form.getFieldsValue());
         setExistingProfile(false);
         setRegistrationSuccess(true);
         message.success("Registration Successful");
         form.resetFields();
         setModalVisible(false);
-        // Navigate to /registerLogin with activeTab set to 'login'
-        navigate("/registerLogin", { state: { activeTab: "login" } });
+        navigate("/adminlogin", { state: { activeTab: "login" } });
+        setRegistrationSuccess(false);
       } else {
         message.error("Invalid verification code");
       }
     } catch (error) {
       console.error("Error verifying code:", error);
+      message.error("Failed to verify code");
     }
   };
 
@@ -152,6 +166,7 @@ const RegisterPage = () => {
           token: JSON.parse(localStorage.getItem("verificationToken")),
         },
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       throw error;
@@ -226,7 +241,7 @@ const RegisterPage = () => {
         </RegisterNowText>
       </Form>
 
-      <Modal
+      <StyledModal
         title="Enter Verification Code"
         visible={modalVisible}
         onOk={handleVerification}
@@ -237,7 +252,7 @@ const RegisterPage = () => {
           value={verificationCode}
           onChange={(e) => setVerificationCode(e.target.value)}
         />
-      </Modal>
+      </StyledModal>
 
       {registrationSuccess && (
         <p style={{ color: "green" }}>Registration successful</p>

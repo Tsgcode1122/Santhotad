@@ -1,23 +1,25 @@
-import React, { useState } from "react";
-import { Layout } from "antd";
+import React, { useState, useEffect } from "react";
+import { Layout, Upload, Button, message } from "antd";
 import { PiUsersThree } from "react-icons/pi";
 import { BiLogOut } from "react-icons/bi";
 import { BsJournalBookmark } from "react-icons/bs";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
+import axios from "axios";
 import styled from "styled-components";
 import sanlogo from "../Images/sanwh.png";
 import profile from "../Images/Photo.png";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useUserData } from "../context/UserDataContext";
 const { Sider } = Layout;
 
 const SidebarContainer = styled(Sider)`
   margin-top: -4rem;
   z-index: 999;
   position: fixed;
-  height: 100vh;
+
+  height: 100vh !important;
   background: #000d8a !important;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -25,6 +27,7 @@ const SidebarContainer = styled(Sider)`
 
 const Image = styled.div`
   display: flex;
+  flex: 20%;
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -40,29 +43,10 @@ const Head = styled.p`
   font-weight: 200;
 `;
 
-const AdminMini = styled.div`
-  margin-top: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 1px 10px;
-  border-radius: 10px;
-  gap: 10px;
-  color: white;
-  text-align: center;
-`;
-
-const MiniImage = styled.div`
-  img {
-    border-radius: 50%;
-    height: 30px;
-  }
-`;
-
 const LogoutButton = styled.div`
+  flex: 20%;
   display: flex;
-  align-items: center;
+
   gap: 10px;
   border: 10px;
   border-radius: 10px;
@@ -119,26 +103,100 @@ const Circle = styled.div`
 `;
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(null);
   const [activeCircle, setActiveCircle] = useState("create");
-
+  const [users, setUsers] = useState([]);
+  const { userData } = useUserData();
+  const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
   const handleLinkClick = (circleName) => {
     setActiveCircle(circleName);
     setOpenMenu(null); // Close menu only when clicking the Link
   };
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("http://localhost:5009/api/auth/");
+        setUsers(response.data);
+      } catch (error) {
+        console.error("Error fetching Users:", error);
+      }
+    };
 
+    fetchUsers();
+  }, []);
+  console.log(userData);
+
+  const handleUpload = async ({ file }) => {
+    setLoading(true);
+
+    const formData = new FormData();
+
+    formData.append("image", file);
+    formData.append("userId", userData?._id); // Include userId
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5009/api/signature/send",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        },
+      );
+
+      const uploadedImageUrl = response.data.imageUrl;
+
+      setImageUrl(uploadedImageUrl);
+
+      message.success("Profile image updated successfully!");
+    } catch (error) {
+      message.error("Upload failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // logout
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    message.success("Logout Successful");
+    navigate("/adminlogin");
+  };
   return (
     <>
-      <SidebarContainer width={300}>
+      <SidebarContainer width={260}>
         <Image>
           <img src={sanlogo} alt="Logo" />
         </Image>
-        <div>
+
+        <Divider>
           <AdminMini>
             <MiniImage>
-              <img src={profile} alt="Admin Profile" />
+              <Upload customRequest={handleUpload} showUploadList={false}>
+                <CustomButton loading={loading}>
+                  <img
+                    src={
+                      imageUrl ||
+                      userData?.image ||
+                      "https://www.gravatar.com/avatar/?s=200&d=mp"
+                    }
+                    style={{
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                      cursor: "pointer",
+                      opacity: loading ? 0.5 : 1,
+                    }}
+                  />
+                </CustomButton>
+              </Upload>
             </MiniImage>
-            <p>Welcome Admin</p>
+            <p>
+              Welcome{" "}
+              {userData && (
+                <>{userData.fullName && userData.fullName.split(" ")[0]}</>
+              )}
+            </p>
           </AdminMini>
           <Head>Dashboard </Head>
 
@@ -153,11 +211,12 @@ const Sidebar = () => {
               ) : (
                 <IoIosArrowForward />
               )}
-              <PiUsersThree /> Users
+              <PiUsersThree /> Admins
             </Menu>
             <SubMenu active={openMenu === "users"}>
-              <p>User 1</p>
-              <p>User 2</p>
+              {users.map((user, index) => (
+                <p key={index}>{user.fullName}</p>
+              ))}
             </SubMenu>
           </MenuDropdown>
 
@@ -179,14 +238,17 @@ const Sidebar = () => {
               </p>
               <p>
                 <Circle active={activeCircle === "all"} />
-                <Link to="/allpost" onClick={() => handleLinkClick("all")}>
+                <Link
+                  to="/admin/allpost"
+                  onClick={() => handleLinkClick("all")}
+                >
                   All Posts
                 </Link>
               </p>
             </SubMenu>
           </MenuDropdown>
-        </div>
-        <LogoutButton>
+        </Divider>
+        <LogoutButton onClick={handleLogout}>
           <BiLogOut />
           Log out
         </LogoutButton>
@@ -199,6 +261,43 @@ const Sidebar = () => {
 export default Sidebar;
 
 const SiderGap = styled.div`
-  min-width: 300px !important;
-  background-color: red;
+  width: 300px !important;
+`;
+const CustomButton = styled(Button)`
+  background: transparent !important;
+  border: none !important;
+  margin: 0;
+  img {
+    height: 30px;
+    width: 30px;
+  }
+`;
+const AdminMini = styled.div`
+  margin-top: 4rem;
+  display: flex;
+
+  align-items: center;
+  justify-content: left;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1px 10px;
+  border-radius: 10px;
+  gap: 10px;
+  color: white;
+  text-align: center;
+`;
+
+const MiniImage = styled.div`
+  margin: 0;
+  img {
+    border-radius: 50%;
+    height: 30px;
+  }
+`;
+
+const Divider = styled.div`
+  height: 60%; /* Second container spaced 20% from the first */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 `;

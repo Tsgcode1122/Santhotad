@@ -41,7 +41,7 @@ const LoginPage = () => {
       localStorage.setItem("user", encryptedUserData);
       console.log(encryptedUserData);
 
-      window.location.href = "/user-dashboard";
+      window.location.href = "/admin";
     } catch (error) {
       console.error("Error logging in:", error.message);
       message.error(error.message);

@@ -1,19 +1,20 @@
 import React from "react";
 import { Layout } from "antd";
 import Sidebar from "./Sidebar";
-import Dashboard from "./Dashboard";
 
-const AdminDashboard = () => {
+import EditDashboard from "./EditDashboard";
+
+const EditPost = () => {
   return (
     <>
-      <Layout>
+      <Layout style={{ minHeight: "" }}>
         <Sidebar />
         <>
-          <Dashboard />
+          <EditDashboard />
         </>
       </Layout>
     </>
   );
 };
 
-export default AdminDashboard;
+export default EditPost;

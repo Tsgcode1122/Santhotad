@@ -94,13 +94,12 @@ const routes = [
 
       { path: "/service", element: <ServicePage /> },
       { path: "/contact", element: <ContactForm /> },
-      { path: "/registerLogin", element: <RegisterLogin /> },
+      { path: "/adminlogin", element: <RegisterLogin /> },
       { path: "/blog", element: <BlogPage /> },
 
       { path: "*", element: <InvalidPath /> },
-      { path: "/admin", element: <AdminDashboard /> },
-      { path: "/allpost", element: <AllPost /> },
-      // { path: "/admin/*", element: <ProtectedAdminDashboardPage /> },
+
+      { path: "/admin/*", element: <ProtectedAdminDashboardPage /> },
     ],
   },
 ];

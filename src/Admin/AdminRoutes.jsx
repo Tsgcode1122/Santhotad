@@ -7,18 +7,21 @@ import { Result, Button } from "antd";
 import styled, { createGlobalStyle } from "styled-components";
 
 import Navbar from "./Navbar";
+import AdminDashboard from "./AdminDashboard";
+import AllPost from "./AllPost";
+import EditDashboard from "./EditDashboard";
+import EditPost from "./Editpost";
 
 const AdminRoutes = () => {
   return (
     <>
       <GlobalStyle />
-      <IrregularCircle />
-      <Navbar />
-      <Routes>
-        {/* <Route path="/" element={<Overview />} /> */}
 
-        {/* <Route path="/customers-Requests" element={<CustomerRequests />} /> */}
-        <Route path="/registered-users" element={<RegisterUsers />} />
+      <Routes>
+        <Route path="/" element={<AdminDashboard />} />
+        <Route path="/edit/:id" element={<EditPost />} />
+
+        <Route path="/allpost" element={<AllPost />} />
 
         <Route path="*" element={<InvalidPath />} />
       </Routes>
@@ -33,7 +36,7 @@ const InvalidPath = () => {
   };
 
   return (
-    <Result
+    <StyledResult
       status="404"
       title="404 Not Found"
       subTitle="Oops! The page you are looking for does not exist."
@@ -45,6 +48,15 @@ const InvalidPath = () => {
     />
   );
 };
+const StyledResult = styled(Result)`
+  .ant-result-title {
+    color: black;
+  }
+
+  .ant-result-subtitle {
+    color: black;
+  }
+`;
 const GlobalStyle = createGlobalStyle`
   body {
     background: #EDF1F6; /* Set linear gradient background with blue and red colors */
@@ -56,21 +68,5 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 // Create a styled component for the irregular circle shape
-const IrregularCircle = styled.div`
-  width: 100%;
-  height: 450px;
-  z-index: -1;
-  position: absolute;
-  clip-path: ellipse(100% 60% at 70% 0%);
-  background: rgb(37, 71, 106);
-  background: linear-gradient(
-    90deg,
-    rgba(37, 71, 106, 1) 0%,
-    rgba(46, 74, 102, 1) 20%,
-    rgba(67, 94, 122, 1) 53%,
-    rgba(74, 110, 147, 1) 80%,
-    rgba(68, 92, 117, 1) 100%
-  );
-`;
 
 export default AdminRoutes;

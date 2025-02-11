@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Spin, Result, Button } from "antd";
-import styled, { keyframes } from "styled-components";
+import { Skeleton, Result, Button } from "antd";
+import styled from "styled-components";
 import { useUserData } from "../context/UserDataContext";
 import AdminRoutes from "./AdminRoutes";
 
 const StyledResult = styled(Result)`
   .ant-result-title {
-    color: white !important;
+    color: black !important;
   }
   .ant-result-subtitle {
-    color: white !important;
+    color: black !important;
   }
 `;
 
@@ -20,7 +20,7 @@ const ProtectedAdminDashboardPage = () => {
   const { userData } = useUserData();
   const userId = userData ? userData._id : null;
 
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(null); // null means waiting for the admin status
 
   useEffect(() => {
     const checkAdminStatus = async () => {
@@ -31,16 +31,21 @@ const ProtectedAdminDashboardPage = () => {
         setIsAdmin(response.data.isAdmin);
       } catch (error) {
         console.error("Error checking admin status:", error);
-
-        navigate("/");
+        navigate("/"); // Redirect to home if there's an error
       }
     };
 
     if (userData && userId) {
       checkAdminStatus();
     }
-  }, [userData, navigate]);
+  }, [userData, navigate, userId]);
 
+  // If we are still waiting for the admin status check, show a full page skeleton
+  if (isAdmin === null) {
+    return <Skeleton active paragraph={{ rows: 10 }} />;
+  }
+
+  // If the user is not an admin, show the error message
   if (isAdmin === false) {
     return (
       <StyledResult
@@ -56,6 +61,7 @@ const ProtectedAdminDashboardPage = () => {
     );
   }
 
+  // If the user is an admin, show the admin dashboard
   return <AdminRoutes />;
 };
 

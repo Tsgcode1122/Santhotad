@@ -7,11 +7,12 @@ import { UserDataProvider } from "./context/UserDataContext.jsx";
 import { SendEmailProvider } from "./context/SendEmailContext.jsx";
 import { ForgetPasswordProvider } from "./context/forgetPasswordContext.jsx";
 import { ResetPasswordProvider } from "./context/ResetPasswordContext.jsx";
-import { UserDashboardProvider } from "./context/UserDashboardContext.jsx";
+import { BlogProvider } from "./context/BlogContext.jsx";
+
 createRoot(document.getElementById("root")).render(
-  <ResetPasswordProvider>
-    <ForgetPasswordProvider>
-      <UserDashboardProvider>
+  <BlogProvider>
+    <ResetPasswordProvider>
+      <ForgetPasswordProvider>
         <UserDataProvider>
           <UserProvider>
             <SendEmailProvider>
@@ -21,7 +22,7 @@ createRoot(document.getElementById("root")).render(
             </SendEmailProvider>
           </UserProvider>
         </UserDataProvider>
-      </UserDashboardProvider>
-    </ForgetPasswordProvider>
-  </ResetPasswordProvider>,
+      </ForgetPasswordProvider>
+    </ResetPasswordProvider>
+  </BlogProvider>,
 );
