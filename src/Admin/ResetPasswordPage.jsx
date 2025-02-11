@@ -11,7 +11,11 @@ const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
+  flex-direction: column;
+  min-height: 70vh;
+
+  justify-content: center;
+
   padding: 20px;
   /* background-color: #f0f2f5; */
 `;
@@ -29,7 +33,42 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
+const LoginFormTitle = styled.p`
+  text-align: left;
+  margin-bottom: 25px;
+`;
+const StyledModal = styled(Modal)`
+  backdrop-filter: blur(5px) !important;
+  width: 100%;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.1) !important;
+  max-width: 400px !important;
+  .ant-modal-mask {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  .ant-modal {
+    max-width: 300px !important;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+`;
+const NewModal = styled(Modal)`
+  backdrop-filter: blur(5px) !important;
+  width: 100%;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.1) !important;
+  max-width: 400px !important;
+  .ant-modal-mask {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  .ant-modal {
+    max-width: 300px !important;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+`;
 const ResetPasswordPage = () => {
   const { sendEmail } = useResetSendEmail();
   const navigate = useNavigate();
@@ -126,7 +165,7 @@ const ResetPasswordPage = () => {
       await newPasswords(email, newPassword);
       message.success("Password changed successfully");
       setNewPasswordModalVisible(false);
-      navigate("/");
+      navigate("/adminlogin", { state: { activeTab: "login" } });
     } catch (error) {
       console.error("Error updating password:", error);
       message.error(error.message || "Failed to update password");
@@ -136,6 +175,7 @@ const ResetPasswordPage = () => {
   return (
     <FormContainer>
       <StyledForm form={form} onFinish={onFinish}>
+        <LoginFormTitle>Kindly login with your details</LoginFormTitle>
         <Form.Item
           name="email"
           rules={[{ required: true, message: "Please enter your email" }]}
@@ -153,7 +193,7 @@ const ResetPasswordPage = () => {
           </ButtonContainer>
         </Form.Item>
       </StyledForm>
-      <Modal
+      <StyledModal
         title="Enter Verification Code"
         visible={codeModalVisible}
         onCancel={() => setCodeModalVisible(false)}
@@ -176,9 +216,9 @@ const ResetPasswordPage = () => {
             />
           </Form.Item>
         </Form>
-      </Modal>
+      </StyledModal>
 
-      <Modal
+      <NewModal
         title="Enter New Password"
         visible={newPasswordModalVisible}
         onOk={handleNewCode}
@@ -220,7 +260,7 @@ const ResetPasswordPage = () => {
             <Input.Password placeholder="Confirm New Password" />
           </Form.Item>
         </Form>
-      </Modal>
+      </NewModal>
 
       {verifySuccess && (
         <p style={{ color: "green" }}>Verification code verified</p>

@@ -1,80 +1,77 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
-import blogM from "../TeamImages/blogmain.png";
-import blog1 from "../TeamImages/blog2.png";
-import blog2 from "../TeamImages/blog1.png";
-import blog3 from "../TeamImages/blog3.png";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+
 const Blogpost = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5009/api/blogs/getBlogs",
+        );
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
     <Major>
       <Heading>
         <h4>Our Blog Posts</h4>
         <Line />
-        <CtaButton>
+        <CtaButton to="/blog">
           View All
           <ArrowDownOutlined />
         </CtaButton>
       </Heading>
       <Container>
-        <MainFeature>
-          <ImageContainer>
-            <img src={blogM} />
-          </ImageContainer>
-          <Content>
-            <span>
-              <Topic>
-                {" "}
-                Revolutionizing Construction: Santhotad Concept to Introduce
-                'KIAKIA' AI-Powered Humanoid to Transform the Industry{" "}
-              </Topic>
-              <Author>-Temitope Adeusi</Author>
-            </span>
-            <Date>January 28, 2025</Date>
-          </Content>
-        </MainFeature>
-        <SideContent>
-          <Intro>More News Updates</Intro>
-          <Divider />
-          <One>
-            <img src={blog1} />
-
-            <OneSide>
-              <AuthorDate>
-                Craig Bater - <span> 27 Dec 2020 </span>
-              </AuthorDate>
-              <TopicMini>
-                Futuristic Skyscraper Design Sets New Sustainability Benchmark
-              </TopicMini>
-            </OneSide>
-          </One>
-          <Divider />
-          <One>
-            <img src={blog2} />
-            <OneSide>
-              <AuthorDate>
-                Craig Bater - <span> 17 May 2024 </span>
-              </AuthorDate>
-              <TopicMini>
-                Architects Battle Climate Change with Energy-Positive Buildings
-              </TopicMini>
-            </OneSide>
-          </One>
-          <Divider />
-          <One>
-            <img src={blog3} />
-            <OneSide>
-              <AuthorDate>
-                Craig Bater - <span> 27 Dec 2020 </span>
-              </AuthorDate>
-              <TopicMini>
-                Success in Urban Planning Comes from Learning from Past Mistakes
-              </TopicMini>
-            </OneSide>
-          </One>
-        </SideContent>
+        {posts.length > 0 && (
+          <>
+            <MainFeature>
+              <ImageContainer>
+                <img src={posts[0]?.imagesUrl} alt={posts[0]?.imagesAlt} />
+              </ImageContainer>
+              <Content>
+                <span>
+                  <Topic>
+                    {posts[0]?.title}: {posts[0]?.metaDescription}
+                  </Topic>
+                  <Author>- {posts[0]?.author}</Author>
+                </span>
+                <Date>{posts[0]?.formattedDate}</Date>
+              </Content>
+            </MainFeature>
+            <SideContent>
+              <Intro>More News Updates</Intro>
+              <Divider />
+              {posts.slice(1, 4).map((post, index) => (
+                <React.Fragment key={index}>
+                  <One>
+                    <img src={post.imagesUrl} alt={post.imagesAlt} />
+                    <OneSide>
+                      <AuthorDate>
+                        {post.author} - <span>{post.formattedDate}</span>
+                      </AuthorDate>
+                      <TopicMini>
+                        {post.title}:{post.metaDescription}
+                      </TopicMini>
+                    </OneSide>
+                  </One>
+                  {index < 2 && <Divider />}
+                </React.Fragment>
+              ))}
+            </SideContent>
+          </>
+        )}
       </Container>
     </Major>
   );
@@ -87,7 +84,6 @@ const Heading = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
@@ -121,6 +117,7 @@ const Major = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
 const Container = styled.div`
   margin: 30px 60px 60px 60px;
   max-width: 800;
@@ -128,17 +125,17 @@ const Container = styled.div`
   gap: 40px;
   grid-template-columns: 70% 30%;
 `;
+
 const ImageContainer = styled.div`
   max-width: 360px;
-  /* max-height: 280px; */
   img {
     max-width: 100%;
-
     height: 260px;
     object-fit: cover;
     border-radius: 10px;
   }
 `;
+
 const MainFeature = styled.div`
   background: ${Colors.white};
   border-radius: 10px;
@@ -152,6 +149,7 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+
 const Topic = styled.h3`
   color: ${Colors.blue};
   font-size: 22px;
@@ -164,20 +162,24 @@ const Topic = styled.h3`
 const Author = styled.p`
   color: ${Colors.blue};
 `;
+
 const Date = styled.p`
   color: ${Colors.ashBlack};
 `;
 
 const SideContent = styled.div`
   display: flex;
+  overflow-y: auto;
   flex-direction: column;
   gap: 10px;
 `;
+
 const Intro = styled.p`
   font-size: 12px;
   margin: 0;
   padding: 0;
 `;
+
 const Divider = styled.div`
   height: 1px;
   width: 300px;
@@ -208,6 +210,7 @@ const TopicMini = styled.p`
   padding: 8px 0 2px 0;
   line-height: 1.2;
 `;
+
 const OneSide = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,30 +1,73 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import styled from "styled-components";
-import { Card, Tooltip, Pagination, Modal, message } from "antd";
-import { EditOutlined, DeleteOutlined, CopyOutlined } from "@ant-design/icons";
+import { Card, Tooltip, Modal, message } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const IntroTitle = styled.p`
+  padding-left: 20px;
+`;
+const Container = styled.div`
+  background: #ececec;
+  width: 100%;
+  margin: 0 !important;
 
+  padding: 40px 60px 40px 60px;
+`;
 const PostsContainer = styled.div`
   display: grid;
+  height: 70vh;
+  overflow-y: auto;
+  margin: 0 !important;
+  border-radius: 5px;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  align-items: center;
-  justify-content: center;
   gap: 16px;
-  width: 100%;
-  padding: 20px;
-  background: #f5f5f5;
-  border-radius: 10px;
-`;
 
+  width: 100%;
+
+  padding: 0 20px 40px 20px;
+  background: white;
+  &::-webkit-scrollbar {
+    margin-left: 10px !important;
+    width: 8px;
+
+    position: absolute !important;
+    border: 1px solid #f0f0f0;
+    padding: 1.1px;
+    border-radius: 5px;
+    background-color: white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #d5d5d5;
+
+    margin-left: 10px !important;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin-left: 10px !important;
+  }
+`;
+const Wrapper = styled.div`
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 !important;
+`;
 const ActionsContainer = styled.div`
   background: white;
   border-radius: 15px;
   padding: 6px 10px;
+  border: 1px solid #ccc;
   display: flex;
   align-self: flex-end;
   gap: 10px;
-  border: 1px solid #ccc;
 `;
 
 const ActionIcon = styled.span`
@@ -38,8 +81,6 @@ const ActionIcon = styled.span`
 
 const StyledCard = styled.div`
   border-radius: 10px;
-  overflow: hidden;
-  background: white;
   border: 1px solid #ccc;
   padding: 10px;
   display: flex;
@@ -50,13 +91,12 @@ const StyledCard = styled.div`
 const ImageContainer = styled.div`
   width: 100%;
   height: 180px;
-  background: #f0f0f0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  overflow: hidden;
   border-radius: 10px;
+  overflow: hidden;
   img {
     width: 100%;
     height: 100%;
@@ -73,19 +113,12 @@ const PostTitle = styled.div`
   word-wrap: break-word;
 `;
 
-const PaginationContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
 const AllPostContent = () => {
   const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(6);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectedBlogId, setSelectedBlogId] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -101,7 +134,6 @@ const AllPostContent = () => {
     }
   };
 
-  // Show delete confirmation modal
   const showDeleteConfirm = (blogId) => {
     setSelectedBlogId(blogId);
     setDeleteModalVisible(true);
@@ -111,9 +143,7 @@ const AllPostContent = () => {
     navigate(`/admin/edit/${id}`);
   };
 
-  // Handle delete
   const handleDelete = async () => {
-    console.log("Deleting Blog ID:", selectedBlogId);
     if (!selectedBlogId) {
       message.error("Invalid Blog ID");
       return;
@@ -131,63 +161,47 @@ const AllPostContent = () => {
     }
   };
 
-  // Calculate the current page's data
-  const startIndex = (currentPage - 1) * pageSize;
-  const paginatedBlogs = blogs.slice(startIndex, startIndex + pageSize);
-
   return (
-    <>
-      <PostsContainer>
-        {paginatedBlogs.map((blog) => (
-          <StyledCard key={blog._id}>
-            <ActionsContainer>
-              {/* <Tooltip title="Duplicate">
-                <ActionIcon>
-                  <CopyOutlined />
-                </ActionIcon>
-              </Tooltip> */}
-              <Tooltip title="Edit">
-                <ActionIcon onClick={() => handleEdit(blog._id)}>
-                  <EditOutlined />
-                </ActionIcon>
-              </Tooltip>
-              <Tooltip title="Delete">
-                <ActionIcon onClick={() => showDeleteConfirm(blog._id)}>
-                  <DeleteOutlined />
-                </ActionIcon>
-              </Tooltip>
-            </ActionsContainer>
-            <ImageContainer>
-              {blog.imagesAlt ? (
-                <img
-                  src={blog.imagesUrl}
-                  alt={blog.imagesAlt || "Post Cover"}
-                />
-              ) : (
-                <img src="https://via.placeholder.com/300" alt="Placeholder" />
-              )}
-            </ImageContainer>
-            <PostTitle>
-              <strong>{blog.title}:</strong> {blog.metaDescription}
-            </PostTitle>
-          </StyledCard>
-        ))}
-      </PostsContainer>
+    <Container>
+      <Wrapper>
+        <IntroTitle>All post</IntroTitle>
+        <PostsContainer>
+          {blogs.map((blog) => (
+            <StyledCard key={blog._id}>
+              <ActionsContainer>
+                <Tooltip title="Edit">
+                  <ActionIcon onClick={() => handleEdit(blog._id)}>
+                    <EditOutlined />
+                  </ActionIcon>
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <ActionIcon onClick={() => showDeleteConfirm(blog._id)}>
+                    <DeleteOutlined />
+                  </ActionIcon>
+                </Tooltip>
+              </ActionsContainer>
+              <ImageContainer>
+                {blog.imagesAlt ? (
+                  <img
+                    src={blog.imagesUrl}
+                    alt={blog.imagesAlt || "Post Cover"}
+                  />
+                ) : (
+                  <img
+                    src="https://via.placeholder.com/300"
+                    alt="Placeholder"
+                  />
+                )}
+              </ImageContainer>
+              <PostTitle>
+                <strong>{blog.title}:</strong> {blog.metaDescription}
+              </PostTitle>
+            </StyledCard>
+          ))}
+        </PostsContainer>
+      </Wrapper>
 
-      {/* Pagination Component */}
-      {blogs.length > pageSize && (
-        <PaginationContainer>
-          <Pagination
-            current={currentPage}
-            pageSize={pageSize}
-            total={blogs.length}
-            onChange={(page) => setCurrentPage(page)}
-          />
-        </PaginationContainer>
-      )}
-
-      {/* Delete Confirmation Modal */}
-      <Modal
+      <StyledModal
         title="Delete Blog Post"
         visible={deleteModalVisible}
         onOk={handleDelete}
@@ -196,9 +210,26 @@ const AllPostContent = () => {
         cancelText="Cancel"
       >
         <p>Are you sure you want to delete this blog post?</p>
-      </Modal>
-    </>
+      </StyledModal>
+    </Container>
   );
 };
 
 export default AllPostContent;
+const StyledModal = styled(Modal)`
+  /* height: 90vh; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  width: 72vw !important;
+  /* position: fixed; */
+  right: 0;
+
+  .ant-modal-mask {
+    backdrop-filter: none;
+  }
+
+  .ant-modal {
+  }
+`;

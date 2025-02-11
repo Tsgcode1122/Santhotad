@@ -18,7 +18,7 @@ import ServiceFromHome from "./Pages/ServiceFromHome";
 import ProtectedAdminDashboardPage from "./Admin/ProtectedAdminDashboardPage";
 import RegisterLogin from "./Admin/RegisterLogin";
 import BlogPage from "./Pages/BlogPage";
-import AdminDashboard from "./Admin/AdminDashboard";
+import ResetPasswordPage from "./Admin/ResetPasswordPage";
 import AllPost from "./Admin/AllPost";
 import AnimatedCursor from "react-animated-cursor";
 const GlobalStyle = createGlobalStyle`
@@ -96,6 +96,7 @@ const routes = [
       { path: "/contact", element: <ContactForm /> },
       { path: "/adminlogin", element: <RegisterLogin /> },
       { path: "/blog", element: <BlogPage /> },
+      { path: "/reset-password", element: <ResetPasswordPage /> },
 
       { path: "*", element: <InvalidPath /> },
 

@@ -29,7 +29,9 @@ const ImageUpload = ({ imagesUrl, setImagesUrl }) => {
       console.log(imagesUrl);
       message.success("Cover image updated successfully!");
     } catch (error) {
-      message.error("Upload failed. Please try again.");
+      message.error(
+        "Upload failed. Please upload file less than 2Mb and try again.",
+      );
     } finally {
       setLoading(false);
     }
