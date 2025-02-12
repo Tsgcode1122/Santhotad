@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0 !important;
    /* scroll-behavior: smooth; s */
 
-
+font-family: 'Inter', sans-serif; 
   font-optical-sizing: auto;
 
 

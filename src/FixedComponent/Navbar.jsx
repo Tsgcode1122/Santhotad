@@ -2,18 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Squash as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
-import {
-  MailOutlined,
-  WhatsAppOutlined,
-  SendOutlined,
-  HomeOutlined,
-  GiftOutlined,
-  CreditCardOutlined,
-  DashboardOutlined,
-  LoginOutlined,
-} from "@ant-design/icons";
 
-import { IoMdArrowDropright } from "react-icons/io";
 import logo from "../Images/sanlogo.png";
 import arrowUp from "../Icons/arrow-up-right.png";
 import { Colors } from "../Colors/ColorComponent";
@@ -65,26 +54,29 @@ const Navbar = () => {
       <Sidebar isOpen={isSidebarOpen} ref={sidebarRef}>
         <SidebarContent>
           <LinkContainer>
-            <a
-              href="#home"
+            <Link
+              to="/"
               onClick={closeSidebar}
               style={{ background: "black", color: "white" }}
             >
-              <span>Home</span>
-            </a>
-            <a href="#about" onClick={closeSidebar}>
-              <span>About Us</span>
-            </a>
+              <span>Projects</span>
+            </Link>
+            <Link to="/services" onClick={closeSidebar}>
+              <span>Services</span>
+            </Link>
 
-            <a href="#subscribe" onClick={closeSidebar}>
-              <span>Subscription</span>
-            </a>
-            <a href="#store" onClick={closeSidebar}>
-              <span>Store</span>
-            </a>
-            <a href="#faqs" onClick={closeSidebar}>
-              <span>Faqs</span>
-            </a>
+            <Link to="/about" onClick={closeSidebar}>
+              <span>About Us</span>
+            </Link>
+            <Link to="/blog" onClick={closeSidebar}>
+              <span>Blogs</span>
+            </Link>
+            <Contact1>
+              <Link to="/contact">
+                Contact Us
+                <img src={arrowUp} />{" "}
+              </Link>
+            </Contact1>
           </LinkContainer>
         </SidebarContent>
       </Sidebar>
@@ -97,12 +89,13 @@ const Navbar = () => {
             <img src={logo} />{" "}
           </Link>
           <LinkBig>
-            <Link>Projects</Link>
-            <Link>Services</Link>
-            <Link>About Us</Link>
+            <Link to="/">Projects</Link>
+            <Link to="/services/architect">Services</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/blog">Blogs</Link>
           </LinkBig>
           <Contact>
-            <Link>
+            <Link to="/contact">
               Contact Us
               <img src={arrowUp} />{" "}
             </Link>
@@ -112,6 +105,22 @@ const Navbar = () => {
     </>
   );
 };
+const Contact1 = styled.div`
+  border: 1.8px solid #0316cd;
+  display: inline-block;
+  padding: 7px 12px;
+  a {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    justify-content: center;
+    gap: 4px;
+    color: ${Colors.blue} !important;
+  }
+  color: ${Colors.blue} !important;
+
+  border-radius: 5px;
+`;
 const Contact = styled.div`
   border: 1.8px solid #0316cd;
   padding: 7px 12px;
@@ -132,6 +141,7 @@ const BigNav = styled.div`
   position: fixed;
   width: 100%;
   top: 0;
+
   display: none;
   a {
     text-decoration: none;
@@ -139,6 +149,8 @@ const BigNav = styled.div`
   }
   @media screen and (min-width: 820px) {
     display: block;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   z-index: 999 !important;
@@ -152,13 +164,12 @@ const BigCon = styled.div`
   height: 40px;
   padding: 10px 40px;
   display: flex;
+
+  margin: 0 auto;
+  max-width: 1200px;
   align-items: center;
   justify-content: space-between;
-  @media screen and (min-width: 800px) {
-  }
   @media screen and (min-width: 1000px) {
-  }
-  @media screen and (min-width: 1200px) {
   }
 `;
 const LinkBig = styled.div`
@@ -214,13 +225,7 @@ const LinkContainer = styled.div`
     z-index: 999;
   }
 `;
-const LinkCont = styled(Link)`
-  padding: 20px !important;
-  &:hover {
-    background-color: ${Colors.darkgreen};
-    color: white;
-  }
-`;
+
 const NavHeight = styled.div`
   height: 4rem;
 `;
@@ -245,10 +250,13 @@ const StyledNavbar = styled.div`
 const HeadSpace = styled.div`
   align-items: center;
   display: flex;
-  margin: 1px 20px;
+  margin: 0px 20px;
+
   justify-content: space-between;
   img {
     height: 25px;
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -262,8 +270,8 @@ const Sidebar = styled.div`
   top: 3rem;
   top: ${({ isOpen }) => (isOpen ? "3rem" : "-400px")};
   width: 100%;
-  height: 40vh;
-  background-color: #f2ebe2;
+
+  background-color: #f5f5f5;
 
   border-left: 0.5px solid #313538;
   transition: top 0.4s ease-in-out;

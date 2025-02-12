@@ -7,7 +7,7 @@ import b3 from "../Images/l1.png";
 import b4 from "../Images/l4.png";
 import b5 from "../Images/l5.png";
 import { Colors } from "../Colors/ColorComponent";
-
+import { breakpoints } from "../FixedComponent/BreakPoints";
 const HeroMoving = () => {
   const items = [
     { img: b2 },
@@ -45,8 +45,28 @@ const HeroMoving = () => {
 export default HeroMoving;
 
 const Container = styled.div`
-  padding: 10px 0 40px 60px;
-  /* background: #e8e8e8; */
+  padding: 10px 0 40px 2rem;
+  @media (min-width: ${breakpoints.xs}) {
+    padding: 10px 0 40px 60px;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+  }
+  @media (min-width: ${breakpoints.md}) {
+  }
+  @media (min-width: ${breakpoints.md}) {
+  }
+
+  /* Laptop (lg and above) */
+  @media (min-width: ${breakpoints.lg}) {
+  }
+
+  /* Desktop (xl and above) */
+  @media (min-width: ${breakpoints.xl}) {
+  }
+
+  /* 4K Screens (xxl and above) */
+  @media (min-width: ${breakpoints.xxl}) {
+  }
 `;
 const ImageWrapper = styled.div`
   overflow: hidden;
@@ -56,8 +76,11 @@ const ImageWrapper = styled.div`
 `;
 const MiniIntro = styled.p`
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   color: #bcbcbc;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 16px;
+  }
 `;
 
 const MovingImage = styled(motion.div)`
@@ -70,7 +93,10 @@ const MovingImage = styled(motion.div)`
 
 const ImageContainer = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 30px;
+  @media (min-width: ${breakpoints.xs}) {
+    gap: 50px;
+  }
 `;
 
 const Item = styled.div`
