@@ -4,7 +4,7 @@ import { InstagramOutlined, TwitterOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { TiSocialFacebook } from "react-icons/ti";
 import axios from "axios";
-
+import { breakpoints } from "../FixedComponent/BreakPoints";
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
@@ -72,44 +72,46 @@ const ContactForm = () => {
               placeholder="Your Name"
             />
           </Form.Item>
-          <Form.Item
-            name="email"
-            rules={[
-              {
-                required: true,
-                type: "email",
-                message: "Please enter a valid email",
-              },
-            ]}
-          >
-            <Input.TextArea
-              placeholder="Email "
-              bordered={false}
-              style={{ borderBottom: "1px solid black" }}
-              autoSize={{ minRows: 1.2 }}
-            />
-          </Form.Item>
-          <Form.Item
-            name="number"
-            rules={[
-              {
-                // required: true,
+          <TwoGroup>
+            <Form.Item
+              name="email"
+              rules={[
+                {
+                  required: true,
+                  type: "email",
+                  message: "Please enter a valid email",
+                },
+              ]}
+            >
+              <Input.TextArea
+                placeholder="Email "
+                bordered={false}
+                style={{ borderBottom: "1px solid black" }}
+                autoSize={{ minRows: 1.2 }}
+              />
+            </Form.Item>
+            <Form.Item
+              name="number"
+              rules={[
+                {
+                  // required: true,
 
-                message: "Please enter a valid number",
-              },
-              {
-                pattern: phoneRegex,
-                message: "Please enter a valid phone number",
-              },
-            ]}
-          >
-            <Input.TextArea
-              placeholder="Phone Number (optional)"
-              bordered={false}
-              style={{ borderBottom: "1px solid black" }}
-              autoSize={{ minRows: 1.2 }}
-            />
-          </Form.Item>
+                  message: "Please enter a valid number",
+                },
+                {
+                  pattern: phoneRegex,
+                  message: "Please enter a valid phone number",
+                },
+              ]}
+            >
+              <Input.TextArea
+                placeholder="Phone Number (optional)"
+                bordered={false}
+                style={{ borderBottom: "1px solid black" }}
+                autoSize={{ minRows: 1.2 }}
+              />
+            </Form.Item>
+          </TwoGroup>
         </ThreeGroup>
         <Form.Item
           name="message"
@@ -138,9 +140,10 @@ const ContactWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin: auto; */
-  /* text-align: center; */
-  padding: 40px 60px;
+  padding: 40px 1rem;
+  @media (min-width: ${breakpoints.xs}) {
+    padding: 10px 60px;
+  }
 `;
 const Head = styled.div`
   display: flex;
@@ -149,7 +152,10 @@ const Head = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 48px;
+  font-size: 28px;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 48px;
+  }
   font-weight: bold;
   margin: 0;
 `;
@@ -178,8 +184,24 @@ const StyledForm = styled(Form)`
 `;
 const ThreeGroup = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 50px;
+
+  gap: 20px;
+  @media (min-width: ${breakpoints.xs}) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+  }
+
+  margin-bottom: 20px;
+`;
+const TwoGroup = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  @media (min-width: ${breakpoints.xs}) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+  }
+
   margin-bottom: 20px;
 `;
 
@@ -193,11 +215,16 @@ const SocialIcons = styled.div`
   svg {
     /* font-size: 17px; */
     cursor: pointer;
-    padding: 10px;
+    padding: 7px;
     transition: color 0.3s;
     border-radius: 50%;
-    height: 15px;
-    width: 15px;
+    height: 10px;
+    width: 10px;
+    @media (min-width: ${breakpoints.xs}) {
+      height: 15px;
+      padding: 10px;
+      width: 15px;
+    }
     border: 1px solid black;
     &:hover {
       color: #1890ff;
