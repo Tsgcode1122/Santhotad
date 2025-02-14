@@ -52,16 +52,18 @@ const BlueContent = styled.div`
 `;
 const GridLine = styled.div`
   background: url(${linePattern});
-  display: flex;
-  justify-content: center;
+  display: grid;
   max-width: 1200px;
   gap: 80px;
   padding: 80px 60px;
+  gap: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 `;
 const Mission = styled.div`
   border-radius: 10px;
   background: ${Colors.white};
-  max-width: 260px;
+
   padding: 20px;
   display: flex;
   text-align: center;
@@ -74,12 +76,12 @@ const Mission = styled.div`
     height: 70px;
   }
   p {
-    font-weight: 100;
+    font-weight: 250;
     line-height: 1.3;
   }
   h5 {
     margin: 0;
-    font-weight: 200;
+    font-weight: 400;
   }
 `;
 const Vision = styled.div`
@@ -90,7 +92,7 @@ const Vision = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 260px;
+
   padding: 40px 20px 20px 20px;
   img {
     max-width: 100%;
@@ -98,11 +100,12 @@ const Vision = styled.div`
     height: 70px;
   }
   p {
-    font-weight: 100;
+    font-weight: 250;
+
     line-height: 1.3;
   }
   h5 {
     margin: 0;
-    font-weight: 200;
+    font-weight: 400;
   }
 `;

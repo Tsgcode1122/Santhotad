@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 import { Colors } from "../Colors/ColorComponent";
-
+import { breakpoints } from "../FixedComponent/BreakPoints";
 import { Images } from "../PagesImages";
 import { Link } from "react-router-dom";
 const OurProjects = () => {
@@ -85,13 +85,34 @@ export default OurProjects;
 const Head = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px 60px;
+  padding: 10px 1rem;
   justify-content: space-between;
+  @media (min-width: ${breakpoints.xs}) {
+    padding: 10px 60px;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+  }
+  @media (min-width: ${breakpoints.md}) {
+  }
+  @media (min-width: ${breakpoints.md}) {
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+  }
+
+  @media (min-width: ${breakpoints.xl}) {
+  }
+
+  @media (min-width: ${breakpoints.xxl}) {
+  }
 `;
 
 const Heading = styled.h2`
-  font-size: 34px;
+  font-size: 28px;
   font-weight: bold;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 34px;
+  }
 `;
 
 const ControlButton = styled.div`
@@ -99,7 +120,11 @@ const ControlButton = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15px;
-  height: 40px;
+  height: 30px;
+  @media (min-width: ${breakpoints.xs}) {
+    gap: 15px;
+    height: 40px;
+  }
 `;
 
 const Button = styled.button`
@@ -107,14 +132,18 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${(props) => (props.$isDisabled ? "30px" : "40px")};
-  width: ${(props) => (props.$isDisabled ? "30px" : "40px")};
+
+  height: ${(props) => (props.$isDisabled ? "25px" : "30px")};
+  width: ${(props) => (props.$isDisabled ? "25px" : "30px")};
   border: 1px solid
     ${(props) => (props.$isDisabled ? Colors.ashBlack : Colors.blue)};
   background: transparent;
   cursor: ${(props) => (props.$isDisabled ? "not-allowed" : "pointer")};
   transition: all 0.3s ease-in-out;
-
+  @media (min-width: ${breakpoints.xs}) {
+    height: ${(props) => (props.$isDisabled ? "30px" : "40px")};
+    width: ${(props) => (props.$isDisabled ? "30px" : "40px")};
+  }
   svg {
     color: ${(props) => (props.$isDisabled ? Colors.ashBlack : Colors.blue)};
     font-size: ${(props) => (props.$isDisabled ? "14px" : "18px")};
@@ -126,7 +155,6 @@ const SliderContainer = styled.div`
   overflow: hidden;
   padding: 20px 0;
   position: relative;
-  /* width: 70%; */
 `;
 
 const ImageSlider = styled.div`
@@ -146,12 +174,17 @@ const ImageSlider = styled.div`
 const ImageContain = styled.div`
   flex: 0 0 auto;
   margin-right: 2px;
+
   scroll-snap-align: start;
   overflow: hidden;
   img {
     max-width: 100%;
-    height: 450px;
+
+    height: 300px;
     transition: transform 0.3s ease-in-out;
+    @media (min-width: ${breakpoints.xs}) {
+      height: 450px;
+    }
   }
 
   &:hover img {

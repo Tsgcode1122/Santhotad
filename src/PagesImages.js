@@ -1,60 +1,44 @@
-import f1 from "./Images/frame1.png";
-import f11 from "./Images/frame00.png";
-import f12 from "./Images/frame12.png";
-import f13 from "./Images/frame13.png";
-import f14 from "./Images/frame14.png";
-import f2 from "./Images/frame20.jpg";
-import f21 from "./Images/frame21.jpg";
-import f22 from "./Images/frame22.jpg";
-import f23 from "./Images/frame20.jpg";
-import f24 from "./Images/frame21.jpg";
-import f30 from "./Images/f30.jpg";
-import f3 from "./Images/f31.jpg";
-import f31 from "./Images/f32.jpg";
-import f32 from "./Images/f33.jpg";
-import f33 from "./Images/f34.jpg";
-import f34 from "./Images/f31.jpg";
+import f1 from "./ProjectImg/v1.jpg";
+import f11 from "./ProjectImg/v2.jpg";
+import f12 from "./ProjectImg/v3.jpg";
+import f13 from "./ProjectImg/v4.jpg";
+import f14 from "./ProjectImg/v5.jpg";
 
-import f4 from "./Images/frame3.png";
-import f41 from "./Images/frame3.png";
-import f42 from "./Images/frame3.png";
-import f43 from "./Images/frame3.png";
-import f44 from "./Images/frame3.png";
-import f5 from "./Images/frame1.png";
-import f51 from "./Images/frame1.png";
-import f52 from "./Images/frame1.png";
-import f53 from "./Images/frame1.png";
-import f54 from "./Images/frame1.png";
+import f2 from "./ProjectImg/va1.jpg";
+import f21 from "./ProjectImg/va2.jpg";
+import f22 from "./ProjectImg/va3.jpg";
+import f23 from "./ProjectImg/va4.jpg";
+import f24 from "./ProjectImg/va5.jpg";
+
+import f3 from "./ProjectImg/vb1.jpg";
+import f31 from "./ProjectImg/vb2.jpg";
+import f32 from "./ProjectImg/vb3.jpg";
+import f33 from "./ProjectImg/vb4.jpg";
+import f34 from "./ProjectImg/vb5.jpg";
+
+import f4 from "./ProjectImg/vc1.jpg";
+import f41 from "./ProjectImg/vc2.jpg";
+import f42 from "./ProjectImg/vc3.jpg";
+import f43 from "./ProjectImg/vc4.jpg";
+import f44 from "./ProjectImg/vc5.jpg";
+
+import f5 from "./ProjectImg/vd1.jpg";
+import f51 from "./ProjectImg/vd2.jpg";
+import f52 from "./ProjectImg/vd3.jpg";
+import f53 from "./ProjectImg/vd4.jpg";
+import f54 from "./ProjectImg/vd5.jpg";
+
+import f6 from "./ProjectImg/ve1.jpg";
+import f61 from "./ProjectImg/ve2.jpg";
+import f62 from "./ProjectImg/ve3.jpg";
+import f63 from "./ProjectImg/ve4.jpg";
+import f64 from "./ProjectImg/ve5.jpg";
 
 export const Images = [
   {
-    id: "firstImage",
-    img: f11,
-    singleImg0: f11,
-    singleImg: f11,
-    singleImg2: f12,
-    singleImg3: f13,
-    singleImg4: f14,
-    name: "Sheraton",
-    location: "Nigeria",
-    year: "2020",
-  },
-  {
-    id: "secondImage",
-    img: f2,
-    singleImg0: f21,
-    singleImg: f21,
-    singleImg2: f22,
-    singleImg3: f23,
-    singleImg4: f24,
-    name: "IfeBuilding",
-    location: "Nigeria",
-    year: "2021",
-  },
-  {
     id: "thirdImage",
     img: f3,
-    singleImg0: f32,
+    singleImg0: f3,
     singleImg: f31,
     singleImg2: f32,
     singleImg3: f33,
@@ -64,9 +48,22 @@ export const Images = [
     year: "2024",
   },
   {
+    id: "secondImage",
+    img: f2,
+    singleImg0: f2,
+    singleImg: f21,
+    singleImg2: f22,
+    singleImg3: f23,
+    singleImg4: f24,
+    name: "IfeBuilding",
+    location: "Nigeria",
+    year: "2021",
+  },
+
+  {
     id: "fourthImage",
     img: f4,
-    singleImg0: f11,
+    singleImg0: f4,
     singleImg: f41,
     singleImg2: f42,
     singleImg3: f43,
@@ -78,7 +75,7 @@ export const Images = [
   {
     id: "firthImage",
     img: f5,
-    singleImg0: f11,
+    singleImg0: f5,
     singleImg: f51,
     singleImg2: f52,
     singleImg3: f53,
@@ -86,5 +83,29 @@ export const Images = [
     name: "Abeokua",
     location: "Nigeria",
     year: "2023",
+  },
+  {
+    id: "sixthImage",
+    img: f6,
+    singleImg0: f6,
+    singleImg: f61,
+    singleImg2: f62,
+    singleImg3: f63,
+    singleImg4: f64,
+    name: "Abeokua",
+    location: "Nigeria",
+    year: "2023",
+  },
+  {
+    id: "firstImage",
+    img: f1,
+    singleImg0: f1,
+    singleImg: f11,
+    singleImg2: f12,
+    singleImg3: f13,
+    singleImg4: f14,
+    name: "Sheraton",
+    location: "Nigeria",
+    year: "2020",
   },
 ];

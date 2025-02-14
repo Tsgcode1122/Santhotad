@@ -3,11 +3,7 @@ import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import f3 from "../Images/f31.jpg";
-import f31 from "../Images/f32.jpg";
-import f32 from "../Images/f33.jpg";
-import f33 from "../Images/f34.jpg";
-import f34 from "../Images/f31.jpg";
+import { breakpoints } from "../FixedComponent/BreakPoints";
 import { Service } from "../Service";
 
 const Services = () => {
@@ -18,7 +14,7 @@ const Services = () => {
       <Heading>
         <h4>Services</h4>
         <Line />
-        <CtaButton>
+        <CtaButton to="/services/architect">
           See All
           <ArrowDownOutlined />
         </CtaButton>
@@ -54,25 +50,45 @@ const Services = () => {
 };
 
 export default Services;
-
 const Heading = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
 
+  padding: 0 1rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1px;
+  @media (min-width: ${breakpoints.xs}) {
+    gap: 20px;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+  }
+  @media (min-width: ${breakpoints.md}) {
+  }
+  @media (min-width: ${breakpoints.md}) {
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+  }
+
+  @media (min-width: ${breakpoints.xl}) {
+  }
+
+  @media (min-width: ${breakpoints.xxl}) {
+  }
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
   }
 `;
-
 const Line = styled.div`
-  width: 900px;
+  width: calc(60%);
+  /* max-width: 200px; */
   height: 1px;
   background: #aaaaaa;
+  @media (min-width: ${breakpoints.xs}) {
+    width: 900px;
+  }
 `;
-
 const CtaButton = styled(Link)`
   display: flex;
   align-items: center;
@@ -87,25 +103,30 @@ const CtaButton = styled(Link)`
 `;
 
 const Content = styled.div`
-  padding: 20px 80px;
   display: grid;
-  grid-template-columns: 60% 40%;
+  padding: 20px 1rem;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   justify-content: space-between;
   align-items: center;
-
+  @media (min-width: ${breakpoints.xs}) {
+    padding: 20px 80px;
+  }
   h1 {
-    font-size: 50px;
-    max-width: 360px;
+    font-size: 30px;
+
     margin: 0;
     line-height: 0.9;
     padding: 0;
+    @media (min-width: ${breakpoints.xs}) {
+      font-size: 50px;
+      max-width: 270px;
+    }
   }
-
   p {
     margin: 0;
     line-height: 1.5;
     padding: 0;
-    font-size: 18px;
   }
 `;
 
@@ -113,19 +134,22 @@ const ServiceChanging = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 0px; */
-  padding: 10px 80px 40px 80px;
+  gap: 10px;
+  padding: 10px 1rem 60px 1rem;
+  @media (min-width: ${breakpoints.xs}) {
+    padding: 10px 80px 40px 80px;
+  }
 `;
 
 const ServiceListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
   height: 100%;
 `;
 
 const ServiceItem = styled.div`
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   color: ${Colors.ashBlack};
   cursor: pointer;
@@ -133,12 +157,20 @@ const ServiceItem = styled.div`
   padding-bottom: 5px;
   transition: color 0.3s ease-in-out;
   height: fit-content;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 18px;
+  }
   &:hover {
     color: ${Colors.blue};
   }
   a {
+    font-size: 14px;
     text-decoration: none;
+    margin: 0;
     color: black !important;
+    @media (min-width: ${breakpoints.xs}) {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -146,11 +178,7 @@ const Underline = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  /* text-decoration:block;
-  margin:20px;
-  border:10px solid red;
-  grid-template-columns: : 1fr 1fr ;
-  margin-top: 600px; */
+
   width: ${({ active }) => (active ? "60%" : "0%")};
   height: 3px;
   background-color: ${Colors.blue};
@@ -158,14 +186,17 @@ const Underline = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  /* flex: 1; */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 320px;
-  width: 600px;
+  height: 300px;
+  width: 500px;
   border-radius: 20px;
+  @media (min-width: ${breakpoints.xs}) {
+    height: 320px;
+    width: 600px;
+  }
   img {
     max-width: 100%;
     border-radius: 10px;

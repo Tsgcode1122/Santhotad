@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Input, Button, Form, message } from "antd";
 import axios from "axios";
 import { Colors } from "../Colors/ColorComponent";
-
+import { breakpoints } from "../FixedComponent/BreakPoints";
 const NewsletterForm = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -75,10 +75,14 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 5rem 6rem;
   display: grid;
-  gap: 5rem;
-  grid-template-columns: 1fr 1fr;
+  padding: 3rem 1rem;
+  gap: 1rem;
+  @media (min-width: ${breakpoints.xs}) {
+    padding: 5rem 6rem;
+    gap: 5rem;
+  }
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   align-items: center;
 `;
 

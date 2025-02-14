@@ -227,7 +227,7 @@ const LinkContainer = styled.div`
 `;
 
 const NavHeight = styled.div`
-  height: 4rem;
+  height: 3rem;
 `;
 
 const StyledNavbar = styled.div`

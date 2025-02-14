@@ -56,15 +56,12 @@ const Container = styled.div`
   @media (min-width: ${breakpoints.md}) {
   }
 
-  /* Laptop (lg and above) */
   @media (min-width: ${breakpoints.lg}) {
   }
 
-  /* Desktop (xl and above) */
   @media (min-width: ${breakpoints.xl}) {
   }
 
-  /* 4K Screens (xxl and above) */
   @media (min-width: ${breakpoints.xxl}) {
   }
 `;

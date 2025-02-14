@@ -72,7 +72,7 @@ const TeamMember = [
   },
 ];
 
-const MeetTeam = () => {
+const MeetTeamSmall = () => {
   const [activeTeam, setActiveTeam] = useState(TeamMember[0]);
 
   return (
@@ -115,7 +115,7 @@ const MeetTeam = () => {
   );
 };
 
-export default MeetTeam;
+export default MeetTeamSmall;
 
 const Head = styled.div`
   display: flex;
@@ -156,15 +156,19 @@ const Line = styled.div`
 `;
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+
+  flex-direction: column;
   gap: 20px;
-  padding: 20px 60px;
+  padding: 10px 1rem;
   align-items: center;
+  @media (min-width: ${breakpoints.xs}) {
+    padding: 10px 60px;
+  }
 `;
 
 const TeamContainer = styled.div`
   display: flex;
-
+  flex-direction: column;
   gap: 15px;
   cursor: pointer;
   padding: ${(props) => (props.isActive ? "10px" : "none")};
@@ -174,13 +178,14 @@ const TeamContainer = styled.div`
 `;
 
 const BlackImage = styled.div`
-  height: ${(props) => (props.isActive ? "410px" : "440px")};
+  height: ${(props) => (props.isActive ? "310px" : "240px")};
 
   transition: transform 50.1s ease-in-out;
 
   img {
     max-width: 100%;
-    height: 100%;
+    height: 300px;
+
     object-fit: cover;
     border-radius: 10px;
   }
@@ -203,7 +208,7 @@ const Content = styled.div`
 `;
 
 const Description = styled.div`
-  width: 350px;
+  /* width: 350px; */
 `;
 
 const Writeup = styled.div`

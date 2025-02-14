@@ -3,16 +3,12 @@ import styled from "styled-components";
 import f2 from "../Images/aboutHero.jpg";
 import f22 from "../Images/sub.png";
 import { Colors } from "../Colors/ColorComponent";
-import { ArrowDownOutlined } from "@ant-design/icons";
-import missionIcon from "../Images/missionn.png";
-import visionIcon from "../Images/vision.png";
-import linePattern from "../Images/linnebg.png";
-import { Link } from "react-router-dom";
+import { breakpoints } from "../FixedComponent/BreakPoints";
 import BlueAbout from "../Component/BlueAbout";
 import MeetTeam from "../Component/MeetTeam";
 const AboutPage = () => {
   return (
-    <div style={{ marginBottom: "50px" }}>
+    <Container>
       <IntroHero>
         <Content>
           <h3>
@@ -41,30 +37,43 @@ const AboutPage = () => {
       </About>
       <BlueAbout />
       <MeetTeam />
-    </div>
+    </Container>
   );
 };
 
 export default AboutPage;
 
+const Container = styled.div``;
 const IntroHero = styled.div`
   background: url(${f2}) center/contain;
 `;
 
 const Content = styled.div`
   display: flex;
-  height: 360px;
+  height: 260px;
+  @media (min-width: ${breakpoints.xs}) {
+    height: 360px;
+  }
   align-items: center;
   justify-content: space-between;
-  padding: 0 0 0 60px;
+  padding: 0 0 0 1rem;
   overflow: hidden;
   h3 {
-    font-size: 68px;
+    @media (min-width: ${breakpoints.xs}) {
+      padding: 0 0 0 60px;
+      font-size: 68px;
+    }
+    font-size: 35px;
+
     line-height: 0.9;
   }
   img {
     max-width: 100%;
-    height: 450px;
+    height: 260px;
+    @media (min-width: ${breakpoints.xs}) {
+      max-width: 100%;
+      height: 450px;
+    }
 
     image-resolution: initial;
   }
@@ -74,9 +83,15 @@ const About = styled.div`
   max-width: 1100px;
   padding: 20px;
   margin: auto;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  @media (min-width: ${breakpoints.xs}) {
+  }
   h1 {
-    font-size: 40px;
+    margin: 10px 0;
+    font-size: 30px;
+    @media (min-width: ${breakpoints.xs}) {
+      font-size: 40px;
+    }
   }
 `;
 const Writeup = styled.p`

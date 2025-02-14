@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import f3 from "../Images/f31.jpg";
-import f2 from "../Images/f32.jpg";
+import f1 from "../ProjectImg/shaped1.png";
+import f2 from "../ProjectImg/shape2.png";
+import f3 from "../ProjectImg/shape3.png";
+
+import { breakpoints } from "../FixedComponent/BreakPoints";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Colors } from "../Colors/ColorComponent";
 import { StarFilled } from "@ant-design/icons";
@@ -9,7 +12,7 @@ import { StarFilled } from "@ant-design/icons";
 const testimonials = [
   {
     id: "firstTestimony",
-    img: f3,
+    img: f2,
     heading: "Exceptional Service from start to finish!",
     content:
       "Santhotad Concepts turned our vision into reality with precision and creativity. Their attention to details and professionalism are unmatched.",
@@ -19,7 +22,7 @@ const testimonials = [
   },
   {
     id: "secondTestimony",
-    img: f2,
+    img: f3,
     heading: "A seamless experience!",
     content:
       "I was impressed by their dedication and expertise. The team at Santhotad Concepts exceeded my expectations.",
@@ -29,7 +32,7 @@ const testimonials = [
   },
   {
     id: "thirdTestimony",
-    img: f3,
+    img: f1,
     heading: "Top-notch craftsmanship!",
     content:
       "Every detail was carefully executed, making the entire project a success. Highly recommended!",
@@ -58,7 +61,7 @@ const Testimonial = () => {
     testimonials[currentIndex];
 
   return (
-    <>
+    <Container>
       <Line />
       <Intro>
         Hear what our clients have to say about their experience working with
@@ -92,13 +95,20 @@ const Testimonial = () => {
           <IoIosArrowRoundForward />
         </ArrowButton>
       </Slider>
-    </>
+    </Container>
   );
 };
 
 export default Testimonial;
+const Container = styled.div`
+  padding: 10px 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 const Line = styled.div`
-  width: 1050px;
+  width: 100%;
   display: flex;
   align-self: center;
   height: 1px;
@@ -106,47 +116,59 @@ const Line = styled.div`
 `;
 const Intro = styled.p`
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
+  max-width: 450px;
+  text-align: center;
+  display: flex;
+  align-self: center;
   margin-top: 30px;
+  @media (min-width: ${breakpoints.xs}) {
+    margin-top: 30px;
+  }
 `;
 
 const Slider = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 90px;
-  /* padding: 20px; */
+  gap: 10px;
+  padding: 10px 7px;
   position: relative;
   max-width: 1000px;
   margin: auto;
+  @media (min-width: ${breakpoints.xs}) {
+    gap: 90px;
+    padding: 10px 1rem;
+  }
 `;
 
 const ImageContainer = styled.div`
-  width: 400px;
-  height: 460px;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  @media (min-width: ${breakpoints.xs}) {
+    width: 400px;
+    height: 460px;
+  }
   img {
     max-width: 100%;
     height: 400px;
-    object-fit: cover;
+    object-fit: contain;
+    @media (min-width: ${breakpoints.xs}) {
+      height: 300px;
+    }
   }
 `;
 
 const Writeup = styled.div`
   flex: 1;
-  margin-left: -140px;
+  margin-left: -170px;
   text-align: left;
   background: white;
 
-  padding: 10px 20px;
+  padding: 5px 10px;
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
-  /* min-height: 190px; */
+  @media (min-width: ${breakpoints.xs}) {
+    margin-left: -140px;
+  }
 `;
 
 const Heading = styled.p`
@@ -155,39 +177,56 @@ const Heading = styled.p`
   color: #333;
   max-width: 250px;
   min-height: 30px;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 16px;
+  }
 `;
 
 const Content = styled.p`
-  font-size: 1rem;
+  font-size: 12px;
+  line-height: 1.3;
   color: #555;
-  max-width: 250px;
-  margin: 10px 0;
+
+  margin: 5px 0;
   min-height: 80px;
+  @media (min-width: ${breakpoints.xs}) {
+    max-width: 250px;
+    margin: 10px 0;
+    font-size: 1rem;
+  }
 `;
 
 const RecommenderName = styled.p`
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 14px;
   color: #222;
+  width: 100%;
   display: flex;
-  gap: 80px;
+  justify-content: space-between;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 18px;
+    gap: 80px;
+  }
 `;
 
 const Who = styled.span`
-  /* font-style: italic; */
   font-weight: normal;
   color: #777;
 `;
 
 const Rating = styled.span`
-  /* display: block; */
   color: ${Colors.blue};
-  font-size: 1.2rem;
+  font-size: 14px;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 12px;
+  }
 `;
 const Rate = styled.span`
-  /* display: block; */
+  font-size: 14px;
   color: ${Colors.ashBlack} !important;
-  font-size: 1.2rem;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 1.2rem;
+  }
 `;
 
 const ArrowButton = styled.button`
@@ -197,7 +236,6 @@ const ArrowButton = styled.button`
   cursor: pointer;
   color: ${Colors.blue};
   transition: 0.3s;
-
   &:hover {
     color: #9e7a2c;
   }

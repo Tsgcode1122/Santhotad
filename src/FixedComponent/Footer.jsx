@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { breakpoints } from "../FixedComponent/BreakPoints";
 import { FaFacebookF, FaInstagram, FaEnvelope, FaPhone } from "react-icons/fa";
 import NewsletterForm from "./NewsLetter";
 const Footer = () => {
@@ -49,23 +49,29 @@ const Container = styled.div`
   }
   @media (min-width: 400px) and (max-width: 499px) {
   }
-  @media screen and (min-width: 800px) {
-  }
-  @media screen and (min-width: 1000px) {
-  }
-  @media screen and (min-width: 1200px) {
-  }
 `;
 const Content = styled.div``;
 const TopOne = styled.div`
-  padding: 3rem 2rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  padding: 1rem 1rem;
+  p {
+    margin: 7px 0;
+  }
+  h4 {
+    margin: 7px 0;
+  }
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 10px;
+  @media (min-width: ${breakpoints.xs}) {
+    gap: 40px;
+    padding: 3rem 2rem;
+  }
 `;
 const TopTwo = styled.div``;
 const GroupOne = styled.div`
-  flex: 1 1 calc(20% - 10px);
+  flex: 1 1 calc(90% - 10px);
   @media (max-width: 768px) {
     flex: 1 1 calc(40% - 10px);
   }
