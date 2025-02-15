@@ -51,13 +51,17 @@ const Container = styled.div`
     padding: 10px 0 40px 2rem;
   }
   @media (min-width: ${breakpoints.sm}) {
+    padding: 10px 0 40px 2rem;
   }
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.m}) {
+    padding: 10px 0 40px 3rem;
   }
   @media (min-width: ${breakpoints.md}) {
   }
 
   @media (min-width: ${breakpoints.lg}) {
+    /* max-width: 1290px;
+    margin: 0 0 0 auto; */
   }
 
   @media (min-width: ${breakpoints.xl}) {

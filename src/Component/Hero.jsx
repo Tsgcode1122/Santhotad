@@ -30,14 +30,9 @@ const Hero = () => {
 
 export default Hero;
 const HeroSection = styled.div`
-  max-width: 1200;
-  margin: 0 0 0 auto;
-`;
-const Container = styled.div`
-  padding-top: 1rem;
-  padding-left: 2rem;
-  display: flex;
-  flex-direction: column;
+  padding-top: 4.5rem;
+  padding-left: 1.5rem;
+
   @media (min-width: ${breakpoints.xs}) {
     padding-top: 2rem;
   }
@@ -47,14 +42,34 @@ const Container = styled.div`
   }
   @media (min-width: ${breakpoints.m}) {
     padding-top: 5.5rem;
-    padding-left: 3rem;
+    padding-left: 2rem;
   }
   @media (min-width: ${breakpoints.md}) {
+    padding-top: 1rem;
   }
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.lg}) {
+    max-width: 1290px;
+
+    margin: 0 0 0 auto;
   }
 
+  @media (min-width: ${breakpoints.xl}) {
+  }
+
+  @media (min-width: ${breakpoints.xxl}) {
+    max-width: 1500px;
+  }
+`;
+const Container = styled.div`
+  padding-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
   /* Laptop (lg and above) */
+  @media (min-width: ${breakpoints.md}) {
+    flex-direction: row;
+  }
   @media (min-width: ${breakpoints.lg}) {
   }
 
@@ -62,11 +77,19 @@ const Container = styled.div`
   @media (min-width: ${breakpoints.xl}) {
   }
 
-  /* 4K Screens (xxl and above) */
   @media (min-width: ${breakpoints.xxl}) {
   }
 `;
-const TextPart = styled.div``;
+const TextPart = styled.div`
+  @media (min-width: ${breakpoints.xs}) {
+    max-width: 700px;
+  }
+
+  @media (min-width: ${breakpoints.md}) {
+    padding-top: 3rem;
+    max-width: 1000px;
+  }
+`;
 const Head = styled.h1`
   line-height: 1.2;
   font-weight: bold;
@@ -74,7 +97,6 @@ const Head = styled.h1`
   color: ${Colors.ashBlack};
 
   @media (min-width: ${breakpoints.xs}) {
-    max-width: 650px;
     font-size: 55px;
   }
   @media (min-width: ${breakpoints.sm}) {
@@ -121,18 +143,15 @@ const HeroImage = styled.div`
     margin-top: -150px;
   }
   @media (min-width: ${breakpoints.m}) {
-    margin-top: -200px;
+    margin-top: -250px;
   }
   @media (min-width: ${breakpoints.md}) {
     position: absolute;
-    padding-top: 60px !important;
-    padding-left: 60px;
-    height: 55vh;
+
     top: 30px;
     margin-top: 0;
     display: flex;
     position: relative;
-    grid-template-columns: 60% 40%;
   }
 
   /* Laptop (lg and above) */
@@ -148,8 +167,7 @@ const HeroImage = styled.div`
   }
   img {
     max-width: 100%;
-    /* width: 950px; */
-    /* max-height: 450px; */
+
     @media (min-width: ${breakpoints.xs}) {
       /* width: 150px; */
     }

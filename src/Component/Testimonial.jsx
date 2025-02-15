@@ -62,48 +62,50 @@ const Testimonial = () => {
     testimonials[currentIndex];
 
   return (
-    <Container>
-      <Line />
-      <Intro>
-        Hear what our clients have to say about their experience working with
-        us.
-      </Intro>
+    <SectionDiv>
+      <Container>
+        <Line />
+        <Intro>
+          Hear what our clients have to say about their experience working with
+          us.
+        </Intro>
 
-      <Slider>
-        <ArrowButton onClick={prevTestimonial}>
-          <IoIosArrowRoundBack />
-        </ArrowButton>
+        <Slider>
+          <ArrowButton onClick={prevTestimonial}>
+            <IoIosArrowRoundBack />
+          </ArrowButton>
 
-        <ImageContainer>
-          <img src={img} alt={name} />
-        </ImageContainer>
+          <ImageContainer>
+            <img src={img} alt={name} />
+          </ImageContainer>
 
-        <Writeup>
-          <Heading>{heading}</Heading>
-          <Content>{content}</Content>
-          <RecommenderName>
-            <div>
-              {name}, <Who>{who}</Who>
-            </div>
-            <Rating>
-              {" "}
-              <StarFilled /> <Rate>{rating}</Rate>
-            </Rating>
-          </RecommenderName>
-        </Writeup>
+          <Writeup>
+            <Heading>{heading}</Heading>
+            <Content>{content}</Content>
+            <RecommenderName>
+              <div>
+                {name}, <Who>{who}</Who>
+              </div>
+              <Rating>
+                {" "}
+                <StarFilled /> <Rate>{rating}</Rate>
+              </Rating>
+            </RecommenderName>
+          </Writeup>
 
-        <ArrowButton onClick={nextTestimonial}>
-          <IoIosArrowRoundForward />
-        </ArrowButton>
-      </Slider>
-    </Container>
+          <ArrowButton onClick={nextTestimonial}>
+            <IoIosArrowRoundForward />
+          </ArrowButton>
+        </Slider>
+      </Container>
+    </SectionDiv>
   );
 };
 
 export default Testimonial;
 const Container = styled.div`
   overflow: hidden;
-  padding: 10px 1rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,13 +122,16 @@ const Intro = styled.p`
   text-align: center;
   font-size: 16px;
   font-weight: 300;
-  max-width: 450px;
+
   text-align: center;
   display: flex;
   align-self: center;
   margin-top: 30px;
   @media (min-width: ${breakpoints.xs}) {
     margin-top: 30px;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: 20px;
   }
 `;
 
@@ -137,8 +142,8 @@ const Slider = styled.div`
   gap: 10px;
   padding: 10px 7px;
   position: relative;
-  max-width: 1000px;
-  margin: auto;
+
+  /* margin: auto; */
   @media (min-width: ${breakpoints.xs}) {
     gap: 10px;
     padding: 10px 1rem;
@@ -148,14 +153,21 @@ const Slider = styled.div`
 const ImageContainer = styled.div`
   @media (min-width: ${breakpoints.xs}) {
     width: 350px;
-    height: 500px;
   }
+  @media (min-width: ${breakpoints.m}) {
+    width: 450px;
+  }
+
   img {
     max-width: 100%;
     height: 400px;
     object-fit: contain;
     @media (min-width: ${breakpoints.xs}) {
       height: 480px;
+    }
+    @media (min-width: ${breakpoints.lg}) {
+      width: 450px;
+      height: 600px;
     }
   }
 `;
@@ -170,6 +182,14 @@ const Writeup = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   @media (min-width: ${breakpoints.xs}) {
     margin-left: -120px;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    margin-left: -100px;
+    padding: 10px 20px;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    padding: 10px 20px;
+    margin-left: -80px;
   }
 `;
 
@@ -239,5 +259,13 @@ const ArrowButton = styled.button`
   transition: 0.3s;
   &:hover {
     color: #232323;
+  }
+  @media (min-width: ${breakpoints.xs}) {
+    padding: 0 1rem;
+    font-size: 3rem;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    padding: 0 4rem;
+    font-size: 3rem;
   }
 `;
