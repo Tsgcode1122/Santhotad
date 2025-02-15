@@ -39,12 +39,12 @@ const Heading = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  gap: 15px; /* Adjust for spacing */
+  gap: 15px;
 
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
-    white-space: nowrap; /* Prevents text wrapping */
+    white-space: nowrap;
   }
 `;
 

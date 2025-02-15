@@ -20,7 +20,7 @@ const TeamMember = [
     contents: [
       {
         name: "Arch. Temitope Adeusi ",
-        p1: "is a distinguished architect with nearly two decades of experience in architecture and construction. As Managing Director of Santhotad Concept, a leading Nigerian architectural firm, he delivers innovative and sustainable design solutions nationwide.  Under his leadership, Santhotad Concept thrives as a hub for bespoke, functional, and sustainable designs. His visionary approach makes him a trusted authority in architecture and construction",
+        p1: "is a distinguished architect with nearly two decades of experience in architecture and construction. As Managing Director of Santhotad Concept, a leading Nigerian architectural firm, he delivers innovative and sustainable design solutions nationwide.  Under his leadership, Santhotad Concept thrives as a hub for bespoke, functional, and sustainable designs.",
         p2: "He holds a National Diploma in Architectural Technology from Rufus Giwa Polytechnic and both Bachelor’s and Master’s degrees in Architecture from Obafemi Awolowo University.",
         p3: " A Fellow of esteemed professional associations, he is known for excellence in private, commercial, and public projects.",
         p4: " Previously serving as City Architect in Akure, he managed large-scale public projects. Under his leadership, Santhotad Concept thrives as a hub for bespoke, functinal, and sustainable designs. His visinary approach makes him a  trusted authority in architecture and construction",
@@ -122,12 +122,12 @@ const Head = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  gap: 15px; /* Adjust for spacing */
+  gap: 15px;
 
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
-    white-space: nowrap; /* Prevents text wrapping */
+    white-space: nowrap;
   }
 `;
 

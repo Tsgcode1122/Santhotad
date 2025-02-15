@@ -17,12 +17,13 @@ const HomePage = () => {
       <HeroMoving />
       <OurProjects />
       <AboutUs />
-      <HideBig>
+      <MeetTeam />
+      {/* <HideBig>
         <MeetTeamSmall />
       </HideBig>
       <HideSmall>
         <MeetTeam />
-      </HideSmall>
+      </HideSmall> */}
       <Services />
       <Blogpost />
       <Testimonial />

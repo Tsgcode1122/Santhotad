@@ -92,7 +92,7 @@ const routes = [
       { path: "/projects/:imageId", element: <SingleProjectDetails /> },
       { path: "/services/:serviceId", element: <ServiceFromHome /> },
 
-      { path: "/service", element: <ServicePage /> },
+      { path: "/service/architect", element: <ServicePage /> },
       { path: "/contact", element: <ContactForm /> },
       { path: "/adminlogin", element: <RegisterLogin /> },
       { path: "/blog", element: <BlogPage /> },

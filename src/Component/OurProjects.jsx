@@ -47,7 +47,7 @@ const OurProjects = () => {
 
   return (
     <>
-      <SectionDiv>
+      <ProjectDiv>
         <Head>
           <Heading>Our Projects</Heading>
           <ControlButton>
@@ -67,7 +67,7 @@ const OurProjects = () => {
             </Button>
           </ControlButton>
         </Head>
-      </SectionDiv>
+      </ProjectDiv>
 
       <SliderContainer>
         <ImageSlider ref={sliderRef}>
@@ -86,16 +86,47 @@ const OurProjects = () => {
 
 export default OurProjects;
 
+const ProjectDiv = styled.div`
+  /* margin: 0 auto; */
+  padding: 0.5rem 1.5rem;
+  @media (min-width: ${breakpoints.xs}) {
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 0.5rem 2.5rem;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    padding: 10px 40px;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    padding: 0.5rem 3rem;
+    /* max-width: 1100px; */
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    max-width: 1150px;
+    padding: 0.5rem 0rem;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (min-width: ${breakpoints.xl}) {
+  }
+
+  @media (min-width: ${breakpoints.xxl}) {
+    max-width: 1500px;
+  }
+`;
+
 const Head = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  gap: 15px; /* Adjust for spacing */
+  gap: 15px;
 
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
-    white-space: nowrap; /* Prevents text wrapping */
+    white-space: nowrap;
   }
 `;
 

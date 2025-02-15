@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
-import blogM from "../TeamImages/blogmain.png";
-import blog1 from "../TeamImages/blog2.png";
-import blog2 from "../TeamImages/blog1.png";
-import blog3 from "../TeamImages/blog3.png";
+import SectionDiv from "../FixedComponent/SectionDiv";
+import { breakpoints } from "../FixedComponent/BreakPoints";
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
   const [isSticky, setIsSticky] = useState(false);
@@ -42,70 +40,76 @@ const BlogPage = () => {
 
   return (
     <>
-      <Line />
-      <Head>
-        <h1>What's New?</h1>
-        <p>
-          Check out our latest blog pposts and stay informed on the newest
-          trends, insights, and updates.
-        </p>
-      </Head>
-      <Major>
-        {posts.length > 0 ? (
-          <>
-            <Container>
-              <Main>
-                {posts.slice(0, 6).map((post, index) => (
-                  <React.Fragment key={index}>
-                    <MainFeature>
-                      <ImageContainer>
-                        <img src={post.imagesUrl} alt={post.imagesAlt} />
-                      </ImageContainer>
-                      <Content>
-                        <span>
-                          <Topic>
-                            {" "}
-                            {post.title}:{post.metaDescription}
-                          </Topic>
-                          <Author>-{post.author}</Author>
-                        </span>
-                        <Date>{post.formattedDate}</Date>
-                      </Content>
-                    </MainFeature>
-                  </React.Fragment>
-                ))}
-              </Main>
-              <SideContent>
-                <Intro>More News Updates</Intro>
-
-                <Divider />
-                {posts.slice(6, 10).map((post, index) => (
-                  <React.Fragment key={index}>
-                    <One>
-                      <img src={post.imagesUrl} alt={post.imagesAlt} />
-                      <OneSide>
-                        <AuthorDate>
-                          {post.author} - <span>{post.formattedDate}</span>
-                        </AuthorDate>
-                        <TopicMini>
-                          {post.title}: {post.metaDescription}
-                        </TopicMini>
-                      </OneSide>
-                    </One>
-                    {index < 2 && <Divider />}
-                  </React.Fragment>
-                ))}
-              </SideContent>
-            </Container>
-          </>
-        ) : (
-          <p
-            style={{ textAlign: "center", fontSize: "18px", marginTop: "20px" }}
-          >
-            No blog posts yet.
+      <SectionDiv>
+        <Line />
+        <Head>
+          <h1>What's New?</h1>
+          <p>
+            Check out our latest blog pposts and stay informed on the newest
+            trends, insights, and updates.
           </p>
-        )}
-      </Major>
+        </Head>
+        <Major>
+          {posts.length > 0 ? (
+            <>
+              <Container>
+                <Main>
+                  {posts.slice(0, 6).map((post, index) => (
+                    <React.Fragment key={index}>
+                      <MainFeature>
+                        <ImageContainer>
+                          <img src={post.imagesUrl} alt={post.imagesAlt} />
+                        </ImageContainer>
+                        <Content>
+                          <span>
+                            <Topic>
+                              {" "}
+                              {post.title}:{post.metaDescription}
+                            </Topic>
+                            <Author>-{post.author}</Author>
+                          </span>
+                          <Date>{post.formattedDate}</Date>
+                        </Content>
+                      </MainFeature>
+                    </React.Fragment>
+                  ))}
+                </Main>
+                <SideContent>
+                  <Intro>More News Updates</Intro>
+
+                  <Divider />
+                  {posts.slice(6, 10).map((post, index) => (
+                    <React.Fragment key={index}>
+                      <One>
+                        <img src={post.imagesUrl} alt={post.imagesAlt} />
+                        <OneSide>
+                          <AuthorDate>
+                            {post.author} - <span>{post.formattedDate}</span>
+                          </AuthorDate>
+                          <TopicMini>
+                            {post.title}: {post.metaDescription}
+                          </TopicMini>
+                        </OneSide>
+                      </One>
+                      {index < 2 && <Divider />}
+                    </React.Fragment>
+                  ))}
+                </SideContent>
+              </Container>
+            </>
+          ) : (
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "18px",
+                marginTop: "20px",
+              }}
+            >
+              No blog posts yet.
+            </p>
+          )}
+        </Major>
+      </SectionDiv>
     </>
   );
 };
@@ -118,7 +122,7 @@ const Line = styled.div`
 `;
 const Head = styled.div`
   display: flex;
-  margin: 20px 60px 0 60px;
+
   justify-content: space-between;
 
   align-items: center;
@@ -167,10 +171,9 @@ const Main = styled.div`
 const Container = styled.div`
   /* align-items: center; */
   justify-content: center;
-  margin: 10px 60px 10px 20px;
-  max-width: 1000px;
+
   display: grid;
-  gap: 40px;
+  gap: 20px;
   grid-template-columns: 70% 30%;
 `;
 const ImageContainer = styled.div`
@@ -191,7 +194,7 @@ const MainFeature = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin: 0 50px;
+  margin: 0 40px 0 0;
   padding: 20px;
 `;
 

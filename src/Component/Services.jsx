@@ -121,7 +121,7 @@ const Content = styled.div`
 
 const ServiceChanging = styled.div`
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 
   justify-content: space-between;
   gap: 10px;
@@ -190,6 +190,22 @@ const ImageContainer = styled.div`
   @media (min-width: ${breakpoints.xs}) {
     height: 330px;
     width: 500px;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    height: 380px;
+    width: 600px;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    height: 380px;
+    width: 600px;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    height: 380px;
+    width: 650px;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    height: 400px;
+    width: 700px;
   }
   img {
     max-width: 100%;

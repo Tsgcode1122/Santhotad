@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import logo from "../Images/sanlogo.png";
 import arrowUp from "../Icons/arrow-up-right.png";
 import { Colors } from "../Colors/ColorComponent";
+import SectionDiv from "./SectionDiv";
+import { breakpoints } from "./BreakPoints";
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
@@ -61,7 +63,7 @@ const Navbar = () => {
             >
               <span>Projects</span>
             </Link>
-            <Link to="/services" onClick={closeSidebar}>
+            <Link to="/service/architect" onClick={closeSidebar}>
               <span>Services</span>
             </Link>
 
@@ -90,7 +92,7 @@ const Navbar = () => {
           </Link>
           <LinkBig>
             <Link to="/">Projects</Link>
-            <Link to="/services/architect">Services</Link>
+            <Link to="/service/architect">Services</Link>
             <Link to="/about">About Us</Link>
             <Link to="/blog">Blogs</Link>
           </LinkBig>
@@ -166,10 +168,25 @@ const BigCon = styled.div`
   display: flex;
 
   margin: 0 auto;
-  max-width: 1200px;
+
   align-items: center;
   justify-content: space-between;
-  @media screen and (min-width: 1000px) {
+
+  @media (min-width: ${breakpoints.xs}) {
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 10px 40px;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    padding: 10px 40px;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    max-width: 1100px;
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    max-width: 1150px;
+    margin: 0 auto;
   }
 `;
 const LinkBig = styled.div`

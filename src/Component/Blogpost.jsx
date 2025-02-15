@@ -86,12 +86,12 @@ const Heading = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  gap: 15px; /* Adjust for spacing */
+  gap: 15px;
 
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
-    white-space: nowrap; /* Prevents text wrapping */
+    white-space: nowrap;
   }
 `;
 
@@ -120,7 +120,7 @@ const Major = styled.div`
   margin: 40px 0;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+
   justify-content: center;
 `;
 
@@ -129,16 +129,14 @@ const Container = styled.div`
   gap: 20px;
   grid-template-columns: 70% 30%;
   @media (min-width: ${breakpoints.xs}) {
-    gap: 20px;
-    grid-template-columns: 65% 35%;
+    /*  */
   }
 `;
 
 const ImageContainer = styled.div`
-  max-width: 360px;
   img {
     max-width: 100%;
-    height: 260px;
+    height: 280px;
     object-fit: cover;
     border-radius: 10px;
   }
@@ -147,9 +145,10 @@ const ImageContainer = styled.div`
 const MainFeature = styled.div`
   background: ${Colors.white};
   border-radius: 10px;
-  display: flex;
+  display: grid;
   gap: 20px;
   padding: 20px;
+  grid-template-columns: 45% 55%;
 `;
 
 const Content = styled.div`
@@ -160,9 +159,9 @@ const Content = styled.div`
 
 const Topic = styled.h3`
   color: ${Colors.blue};
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1.4;
-  max-width: 380px;
+  /* max-width: 380px; */
   font-weight: 500;
   margin: 0;
 `;

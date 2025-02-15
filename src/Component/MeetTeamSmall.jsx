@@ -10,6 +10,7 @@ import civilC from "../TeamImages/civilc.png";
 import managerC from "../TeamImages/manc.png";
 import managerB from "../TeamImages/manb.png";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+import SectionDiv from "../FixedComponent/SectionDiv";
 const TeamMember = [
   {
     id: "Ceo",
@@ -19,7 +20,7 @@ const TeamMember = [
     contents: [
       {
         name: "Arch. Temitope Adeusi ",
-        p1: "is a distinguished architect with nearly two decades of experience in architecture and construction. As Managing Director of Santhotad Concept, a leading Nigerian architectural firm, he delivers innovative and sustainable design solutions nationwide.  Under his leadership, Santhotad Concept thrives as a hub for bespoke, functional, and sustainable designs. His visionary approach makes him a trusted authority in architecture and construction",
+        p1: "is a distinguished architect with nearly two decades of experience in architecture and construction. As Managing Director of Santhotad Concept, a leading Nigerian architectural firm, he delivers innovative and sustainable design solutions nationwide.  Under his leadership, Santhotad Concept thrives as a hub for bespoke, functional, and sustainable designs.",
         p2: "He holds a National Diploma in Architectural Technology from Rufus Giwa Polytechnic and both Bachelor’s and Master’s degrees in Architecture from Obafemi Awolowo University.",
         p3: " A Fellow of esteemed professional associations, he is known for excellence in private, commercial, and public projects.",
         p4: " Previously serving as City Architect in Akure, he managed large-scale public projects. Under his leadership, Santhotad Concept thrives as a hub for bespoke, functinal, and sustainable designs. His visinary approach makes him a  trusted authority in architecture and construction",
@@ -76,7 +77,7 @@ const MeetTeamSmall = () => {
   const [activeTeam, setActiveTeam] = useState(TeamMember[0]);
 
   return (
-    <>
+    <SectionDiv>
       <Head>
         <h4>Meet Our Team</h4>
         <Line />
@@ -111,7 +112,7 @@ const MeetTeamSmall = () => {
           </TeamContainer>
         ))}
       </Container>
-    </>
+    </SectionDiv>
   );
 };
 
@@ -120,55 +121,38 @@ export default MeetTeamSmall;
 const Head = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px 0 10px 1rem;
-  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
+
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
-  }
-  @media (min-width: ${breakpoints.xs}) {
-    padding: 10px 60px;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
-
-  @media (min-width: ${breakpoints.lg}) {
-  }
-
-  @media (min-width: ${breakpoints.xl}) {
-  }
-
-  @media (min-width: ${breakpoints.xxl}) {
+    white-space: nowrap;
   }
 `;
 
 const Line = styled.div`
-  width: calc(73%);
-  /* max-width: 200px; */
+  flex-grow: 1;
   height: 1px;
   background: #aaaaaa;
-  @media (min-width: ${breakpoints.xs}) {
-  }
 `;
 const Container = styled.div`
   display: flex;
-
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
-  padding: 10px 1rem;
+  /* padding: 20px 1rem 3rem 1rem; */
   align-items: center;
   @media (min-width: ${breakpoints.xs}) {
-    padding: 10px 60px;
+    /* padding: 20px 1.5rem 5rem 1.5rem; */
+  }
+  @media (min-width: ${breakpoints.m}) {
+    /* padding: 20px 2.5rem 5rem 2.5rem; */
   }
 `;
 
 const TeamContainer = styled.div`
   display: flex;
-  flex-direction: column;
+
   gap: 15px;
   cursor: pointer;
   padding: ${(props) => (props.isActive ? "10px" : "none")};
@@ -178,14 +162,13 @@ const TeamContainer = styled.div`
 `;
 
 const BlackImage = styled.div`
-  height: ${(props) => (props.isActive ? "310px" : "240px")};
+  height: ${(props) => (props.isActive ? "410px" : "440px")};
 
   transition: transform 50.1s ease-in-out;
 
   img {
     max-width: 100%;
-    height: 300px;
-
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
   }
@@ -208,7 +191,7 @@ const Content = styled.div`
 `;
 
 const Description = styled.div`
-  /* width: 350px; */
+  width: 350px;
 `;
 
 const Writeup = styled.div`
