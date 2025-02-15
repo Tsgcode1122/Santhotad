@@ -8,6 +8,7 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Colors } from "../Colors/ColorComponent";
 import { StarFilled } from "@ant-design/icons";
+import SectionDiv from "../FixedComponent/SectionDiv";
 
 const testimonials = [
   {
@@ -101,6 +102,7 @@ const Testimonial = () => {
 
 export default Testimonial;
 const Container = styled.div`
+  overflow: hidden;
   padding: 10px 1rem;
   display: flex;
   flex-direction: column;
@@ -138,36 +140,36 @@ const Slider = styled.div`
   max-width: 1000px;
   margin: auto;
   @media (min-width: ${breakpoints.xs}) {
-    gap: 90px;
+    gap: 10px;
     padding: 10px 1rem;
   }
 `;
 
 const ImageContainer = styled.div`
   @media (min-width: ${breakpoints.xs}) {
-    width: 400px;
-    height: 460px;
+    width: 350px;
+    height: 500px;
   }
   img {
     max-width: 100%;
     height: 400px;
     object-fit: contain;
     @media (min-width: ${breakpoints.xs}) {
-      height: 300px;
+      height: 480px;
     }
   }
 `;
 
 const Writeup = styled.div`
   flex: 1;
-  margin-left: -170px;
+  margin-left: -130px;
   text-align: left;
   background: white;
 
   padding: 5px 10px;
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   @media (min-width: ${breakpoints.xs}) {
-    margin-left: -140px;
+    margin-left: -120px;
   }
 `;
 
@@ -204,8 +206,7 @@ const RecommenderName = styled.p`
   display: flex;
   justify-content: space-between;
   @media (min-width: ${breakpoints.xs}) {
-    font-size: 18px;
-    gap: 80px;
+    font-size: 14px;
   }
 `;
 
@@ -225,7 +226,7 @@ const Rate = styled.span`
   font-size: 14px;
   color: ${Colors.ashBlack} !important;
   @media (min-width: ${breakpoints.xs}) {
-    font-size: 1.2rem;
+    font-size: 14px;
   }
 `;
 
@@ -237,6 +238,6 @@ const ArrowButton = styled.button`
   color: ${Colors.blue};
   transition: 0.3s;
   &:hover {
-    color: #9e7a2c;
+    color: #232323;
   }
 `;

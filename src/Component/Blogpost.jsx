@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-
+import { breakpoints } from "../FixedComponent/BreakPoints";
+import SectionDiv from "../FixedComponent/SectionDiv";
 const Blogpost = () => {
   const [posts, setPosts] = useState([]);
 
@@ -25,54 +26,56 @@ const Blogpost = () => {
 
   return (
     <Major>
-      <Heading>
-        <h4>Our Blog Posts</h4>
-        <Line />
-        <CtaButton to="/blog">
-          View All
-          <ArrowDownOutlined />
-        </CtaButton>
-      </Heading>
-      <Container>
-        {posts.length > 0 && (
-          <>
-            <MainFeature>
-              <ImageContainer>
-                <img src={posts[0]?.imagesUrl} alt={posts[0]?.imagesAlt} />
-              </ImageContainer>
-              <Content>
-                <span>
-                  <Topic>
-                    {posts[0]?.title}: {posts[0]?.metaDescription}
-                  </Topic>
-                  <Author>- {posts[0]?.author}</Author>
-                </span>
-                <Date>{posts[0]?.formattedDate}</Date>
-              </Content>
-            </MainFeature>
-            <SideContent>
-              <Intro>More News Updates</Intro>
-              <Divider />
-              {posts.slice(1, 4).map((post, index) => (
-                <React.Fragment key={index}>
-                  <One>
-                    <img src={post.imagesUrl} alt={post.imagesAlt} />
-                    <OneSide>
-                      <AuthorDate>
-                        {post.author} - <span>{post.formattedDate}</span>
-                      </AuthorDate>
-                      <TopicMini>
-                        {post.title}:{post.metaDescription}
-                      </TopicMini>
-                    </OneSide>
-                  </One>
-                  {index < 2 && <Divider />}
-                </React.Fragment>
-              ))}
-            </SideContent>
-          </>
-        )}
-      </Container>
+      <SectionDiv>
+        <Heading>
+          <h4>Our Blog Posts</h4>
+          <Line />
+          <CtaButton to="/blog">
+            View All
+            <ArrowDownOutlined />
+          </CtaButton>
+        </Heading>
+        <Container>
+          {posts.length > 0 && (
+            <>
+              <MainFeature>
+                <ImageContainer>
+                  <img src={posts[0]?.imagesUrl} alt={posts[0]?.imagesAlt} />
+                </ImageContainer>
+                <Content>
+                  <span>
+                    <Topic>
+                      {posts[0]?.title}: {posts[0]?.metaDescription}
+                    </Topic>
+                    <Author>- {posts[0]?.author}</Author>
+                  </span>
+                  <Date>{posts[0]?.formattedDate}</Date>
+                </Content>
+              </MainFeature>
+              <SideContent>
+                <Intro>More News Updates</Intro>
+                <Divider />
+                {posts.slice(1, 4).map((post, index) => (
+                  <React.Fragment key={index}>
+                    <One>
+                      <img src={post.imagesUrl} alt={post.imagesAlt} />
+                      <OneSide>
+                        <AuthorDate>
+                          {post.author} - <span>{post.formattedDate}</span>
+                        </AuthorDate>
+                        <TopicMini>
+                          {post.title}:{post.metaDescription}
+                        </TopicMini>
+                      </OneSide>
+                    </One>
+                    {index < 2 && <Divider />}
+                  </React.Fragment>
+                ))}
+              </SideContent>
+            </>
+          )}
+        </Container>
+      </SectionDiv>
     </Major>
   );
 };
@@ -82,16 +85,18 @@ export default Blogpost;
 const Heading = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  width: 100%;
+  gap: 15px; /* Adjust for spacing */
+
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
+    white-space: nowrap; /* Prevents text wrapping */
   }
 `;
 
 const Line = styled.div`
-  width: 900px;
+  flex-grow: 1;
   height: 1px;
   background: #aaaaaa;
 `;
@@ -103,6 +108,7 @@ const CtaButton = styled(Link)`
   text-decoration: none;
   color: ${Colors.blue};
   gap: 3px;
+
   svg {
     transform: rotate(-45deg);
     color: ${Colors.blue};
@@ -111,19 +117,21 @@ const CtaButton = styled(Link)`
 
 const Major = styled.div`
   background: #f7f7f7;
-  margin: 100px 0;
+  margin: 40px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 `;
 
 const Container = styled.div`
-  margin: 30px 60px 60px 60px;
-  max-width: 800;
   display: grid;
-  gap: 40px;
+  gap: 20px;
   grid-template-columns: 70% 30%;
+  @media (min-width: ${breakpoints.xs}) {
+    gap: 20px;
+    grid-template-columns: 65% 35%;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -182,7 +190,7 @@ const Intro = styled.p`
 
 const Divider = styled.div`
   height: 1px;
-  width: 300px;
+  width: 100%;
   background: ${Colors.ashBlack};
 `;
 

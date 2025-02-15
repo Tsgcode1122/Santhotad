@@ -8,25 +8,31 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 
 const Hero = () => {
   return (
-    <Container>
-      <TextPart>
-        <Head>Transforming Visions into Exquisite Realities</Head>
-        <MiniText>
-          Welcome to our architect website, where innovation meets design
-          excellence
-        </MiniText>
+    <HeroSection>
+      <Container>
+        <TextPart>
+          <Head>Transforming Visions into Exquisite Realities</Head>
+          <MiniText>
+            Welcome to our architect website, where innovation meets design
+            excellence
+          </MiniText>
 
-        <CtaButton to="/project">View our projects</CtaButton>
-      </TextPart>
+          <CtaButton to="/project">View our projects</CtaButton>
+        </TextPart>
 
-      <HeroImage>
-        <img src={heroImg} />
-      </HeroImage>
-    </Container>
+        <HeroImage>
+          <img src={heroImg} />
+        </HeroImage>
+      </Container>
+    </HeroSection>
   );
 };
 
 export default Hero;
+const HeroSection = styled.div`
+  max-width: 1200;
+  margin: 0 0 0 auto;
+`;
 const Container = styled.div`
   padding-top: 1rem;
   padding-left: 2rem;
@@ -36,12 +42,12 @@ const Container = styled.div`
     padding-top: 2rem;
   }
   @media (min-width: ${breakpoints.sm}) {
-    padding-top: 60px;
-    padding-left: 60px;
-    height: 55vh;
-    display: flex;
-    position: relative;
-    grid-template-columns: 60% 40%;
+    padding-top: 4.5rem;
+    padding-left: 2rem;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    padding-top: 5.5rem;
+    padding-left: 3rem;
   }
   @media (min-width: ${breakpoints.md}) {
   }
@@ -74,11 +80,10 @@ const Head = styled.h1`
   @media (min-width: ${breakpoints.sm}) {
     font-size: 55px;
 
-    max-width: 550px;
     margin: 0;
     padding-bottom: 15px;
   }
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.m}) {
   }
   @media (min-width: ${breakpoints.md}) {
   }
@@ -107,14 +112,19 @@ const MiniText = styled.p`
 `;
 const HeroImage = styled.div`
   right: 0 !important;
+  z-index: -1;
   margin-top: -40px;
   @media (min-width: ${breakpoints.xs}) {
     margin-top: -100px;
   }
   @media (min-width: ${breakpoints.sm}) {
-    position: absolute;
+    margin-top: -150px;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    margin-top: -200px;
   }
   @media (min-width: ${breakpoints.md}) {
+    position: absolute;
     padding-top: 60px !important;
     padding-left: 60px;
     height: 55vh;
@@ -123,8 +133,6 @@ const HeroImage = styled.div`
     display: flex;
     position: relative;
     grid-template-columns: 60% 40%;
-  }
-  @media (min-width: ${breakpoints.md}) {
   }
 
   /* Laptop (lg and above) */
@@ -150,9 +158,11 @@ const HeroImage = styled.div`
 
 const CtaButton = styled(Link)`
   text-decoration: none;
-  display: inline-block !important;
+  /* display: inline-block !important; */
   background: ${Colors.blue};
   border-radius: 5px;
   padding: 10px;
   color: ${Colors.white};
+  cursor: pointer;
+  z-index: 99;
 `;

@@ -5,6 +5,8 @@ import { Colors } from "../Colors/ColorComponent";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import { Images } from "../PagesImages";
 import { Link } from "react-router-dom";
+import SectionDiv from "../FixedComponent/SectionDiv";
+
 const OurProjects = () => {
   const sliderRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,25 +47,27 @@ const OurProjects = () => {
 
   return (
     <>
-      <Head>
-        <Heading>Our Projects</Heading>
-        <ControlButton>
-          <Button
-            onClick={scrollLeft}
-            disabled={currentIndex === 0}
-            $isDisabled={currentIndex === 0}
-          >
-            <FaArrowLeft />
-          </Button>
-          <Button
-            onClick={scrollRight}
-            disabled={currentIndex === Images.length - 1}
-            $isDisabled={currentIndex === Images.length - 1}
-          >
-            <FaArrowRight />
-          </Button>
-        </ControlButton>
-      </Head>
+      <SectionDiv>
+        <Head>
+          <Heading>Our Projects</Heading>
+          <ControlButton>
+            <Button
+              onClick={scrollLeft}
+              disabled={currentIndex === 0}
+              $isDisabled={currentIndex === 0}
+            >
+              <FaArrowLeft />
+            </Button>
+            <Button
+              onClick={scrollRight}
+              disabled={currentIndex === Images.length - 1}
+              $isDisabled={currentIndex === Images.length - 1}
+            >
+              <FaArrowRight />
+            </Button>
+          </ControlButton>
+        </Head>
+      </SectionDiv>
 
       <SliderContainer>
         <ImageSlider ref={sliderRef}>
@@ -85,30 +89,19 @@ export default OurProjects;
 const Head = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px 1rem;
-  justify-content: space-between;
-  @media (min-width: ${breakpoints.xs}) {
-    padding: 10px 60px;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
+  width: 100%;
+  gap: 15px; /* Adjust for spacing */
 
-  @media (min-width: ${breakpoints.lg}) {
-  }
-
-  @media (min-width: ${breakpoints.xl}) {
-  }
-
-  @media (min-width: ${breakpoints.xxl}) {
+  h4 {
+    color: ${Colors.ashBlack};
+    font-weight: 300;
+    white-space: nowrap; /* Prevents text wrapping */
   }
 `;
 
 const Heading = styled.h2`
   font-size: 28px;
+  flex-grow: 1;
   font-weight: bold;
   @media (min-width: ${breakpoints.xs}) {
     font-size: 34px;

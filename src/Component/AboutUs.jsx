@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import SectionDiv from "../FixedComponent/SectionDiv";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { breakpoints } from "../FixedComponent/BreakPoints";
@@ -9,23 +9,25 @@ import BlueAbout from "./BlueAbout";
 const AboutUs = () => {
   return (
     <>
-      <Heading>
-        <h4>About Us</h4>
-        <Line />
-        <CtaButton to="/about">
-          Read More
-          <ArrowDownOutlined />
-        </CtaButton>
-      </Heading>
-      <Content>
-        <h1>We believe in excellence </h1>
-        <p>
-          We are dedicated to designing spaces that inspire, connect, and stand
-          the test of time. With a focus on innovation and excellence, we create
-          unique architectural solutions tailored to meet the needs of
-          homeowners, developers, and businesses.
-        </p>
-      </Content>
+      <SectionDiv>
+        <Heading>
+          <h4>About Us</h4>
+          <Line />
+          <CtaButton to="/about">
+            Read More
+            <ArrowDownOutlined />
+          </CtaButton>
+        </Heading>
+        <Content>
+          <h1>We believe in excellence </h1>
+          <p>
+            We are dedicated to designing spaces that inspire, connect, and
+            stand the test of time. With a focus on innovation and excellence,
+            we create unique architectural solutions tailored to meet the needs
+            of homeowners, developers, and businesses.
+          </p>
+        </Content>
+      </SectionDiv>
       <BlueAbout />
     </>
   );
@@ -35,42 +37,21 @@ export default AboutUs;
 
 const Heading = styled.div`
   display: flex;
-
-  padding: 0 1rem;
   align-items: center;
-  justify-content: space-between;
-  gap: 1px;
-  @media (min-width: ${breakpoints.xs}) {
-    gap: 20px;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
+  width: 100%;
+  gap: 15px; /* Adjust for spacing */
 
-  @media (min-width: ${breakpoints.lg}) {
-  }
-
-  @media (min-width: ${breakpoints.xl}) {
-  }
-
-  @media (min-width: ${breakpoints.xxl}) {
-  }
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
+    white-space: nowrap; /* Prevents text wrapping */
   }
 `;
+
 const Line = styled.div`
-  width: calc(60%);
-  /* max-width: 200px; */
+  flex-grow: 1;
   height: 1px;
   background: #aaaaaa;
-  @media (min-width: ${breakpoints.xs}) {
-    width: 900px;
-  }
 `;
 const CtaButton = styled(Link)`
   display: flex;
@@ -86,14 +67,15 @@ const CtaButton = styled(Link)`
 `;
 const Content = styled.div`
   display: grid;
-  padding: 20px 1rem;
+
   gap: 20px;
-  flex:flex-start;
+  flex: flex-start;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   justify-content: space-between;
-  align-items: center;
-  @media (min-width: ${breakpoints.xs}) {
-    padding: 20px 80px;
+  /* align-items: center; */
+  @media (min-width: ${breakpoints.m}) {
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
   }
   h1 {
     font-size: 35px;
@@ -103,7 +85,13 @@ const Content = styled.div`
     padding: 0;
     @media (min-width: ${breakpoints.xs}) {
       font-size: 40px;
-      max-width: 270px;
+      line-height: 1.2;
+      max-width: 570px;
+    }
+    @media (min-width: ${breakpoints.m}) {
+      line-height: 1.2;
+      font-size: 45px;
+      max-width: 380px;
     }
   }
   p {

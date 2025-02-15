@@ -8,8 +8,9 @@ import missionIcon from "../Images/missionn.png";
 import visionIcon from "../Images/vision.png";
 import linePattern from "../Images/linnebg.png";
 import { Link } from "react-router-dom";
-
+import SectionDiv from "../FixedComponent/SectionDiv";
 import MeetTeam from "../Component/MeetTeam";
+import { breakpoints } from "../FixedComponent/BreakPoints";
 const BlueAbout = () => {
   return (
     <>
@@ -49,21 +50,32 @@ export default BlueAbout;
 const BlueContent = styled.div`
   background: ${Colors.blue};
   margin-bottom: 40px;
+
+  /* justify-content: center; */
+  /* align-items: center; */
 `;
 const GridLine = styled.div`
   background: url(${linePattern});
   display: grid;
-  max-width: 1200px;
-  gap: 80px;
+
+  max-width: 800px;
+
   padding: 80px 60px;
   gap: 20px;
+  margin: 0 auto;
+
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  @media (min-width: ${breakpoints.m}) {
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+  }
 `;
 const Mission = styled.div`
   border-radius: 10px;
   background: ${Colors.white};
-
+  @media (min-width: ${breakpoints.m}) {
+  }
   padding: 20px;
   display: flex;
   text-align: center;
@@ -92,7 +104,9 @@ const Vision = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  @media (min-width: ${breakpoints.m}) {
+    /* max-width: 350px; */
+  }
   padding: 40px 20px 20px 20px;
   img {
     max-width: 100%;
@@ -103,6 +117,8 @@ const Vision = styled.div`
     font-weight: 250;
 
     line-height: 1.3;
+    @media (min-width: ${breakpoints.m}) {
+    }
   }
   h5 {
     margin: 0;

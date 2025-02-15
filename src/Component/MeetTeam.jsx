@@ -10,6 +10,7 @@ import civilC from "../TeamImages/civilc.png";
 import managerC from "../TeamImages/manc.png";
 import managerB from "../TeamImages/manb.png";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+import SectionDiv from "../FixedComponent/SectionDiv";
 const TeamMember = [
   {
     id: "Ceo",
@@ -76,7 +77,7 @@ const MeetTeam = () => {
   const [activeTeam, setActiveTeam] = useState(TeamMember[0]);
 
   return (
-    <>
+    <SectionDiv>
       <Head>
         <h4>Meet Our Team</h4>
         <Line />
@@ -111,7 +112,7 @@ const MeetTeam = () => {
           </TeamContainer>
         ))}
       </Container>
-    </>
+    </SectionDiv>
   );
 };
 
@@ -120,46 +121,33 @@ export default MeetTeam;
 const Head = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px 0 10px 1rem;
-  justify-content: space-between;
+  width: 100%;
+  gap: 15px; /* Adjust for spacing */
+
   h4 {
     color: ${Colors.ashBlack};
     font-weight: 300;
-  }
-  @media (min-width: ${breakpoints.xs}) {
-    padding: 10px 60px;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
-
-  @media (min-width: ${breakpoints.lg}) {
-  }
-
-  @media (min-width: ${breakpoints.xl}) {
-  }
-
-  @media (min-width: ${breakpoints.xxl}) {
+    white-space: nowrap; /* Prevents text wrapping */
   }
 `;
 
 const Line = styled.div`
-  width: calc(73%);
-  /* max-width: 200px; */
+  flex-grow: 1;
   height: 1px;
   background: #aaaaaa;
-  @media (min-width: ${breakpoints.xs}) {
-  }
 `;
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 20px 60px;
+  /* padding: 20px 1rem 3rem 1rem; */
   align-items: center;
+  @media (min-width: ${breakpoints.xs}) {
+    /* padding: 20px 1.5rem 5rem 1.5rem; */
+  }
+  @media (min-width: ${breakpoints.m}) {
+    /* padding: 20px 2.5rem 5rem 2.5rem; */
+  }
 `;
 
 const TeamContainer = styled.div`

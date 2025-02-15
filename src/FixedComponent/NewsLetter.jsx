@@ -4,6 +4,8 @@ import { Input, Button, Form, message } from "antd";
 import axios from "axios";
 import { Colors } from "../Colors/ColorComponent";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+import SectionDiv from "./SectionDiv";
+
 const NewsletterForm = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -31,39 +33,41 @@ const NewsletterForm = () => {
 
   return (
     <Container>
-      <Content>
-        <GroupOne>
-          <Title>Subscribe to our Newsletter</Title>
-          <p>
-            Subscribe for Updates: Stay informed about the latest investor
-            updates, financial results, and announcements by subscribing to our
-            newsletter
-          </p>
-        </GroupOne>
-        <GroupTwo>
-          <Form form={form}>
-            <InputWrapper noStyle>
-              <Form.Item
-                name="email"
-                rules={[
-                  { required: true, message: "Please enter your email" },
-                  { type: "email", message: "Please enter a valid email" },
-                ]}
-                style={{ flex: 1, marginBottom: 0 }} // Keeps original styling
-              >
-                <StyledInput placeholder="Enter your email" />
-              </Form.Item>
-              <StyledButton
-                type="primary"
-                loading={loading}
-                onClick={handleSubmit}
-              >
-                Subscribe
-              </StyledButton>
-            </InputWrapper>
-          </Form>
-        </GroupTwo>
-      </Content>
+      <SectionDiv>
+        <Content>
+          <GroupOne>
+            <Title>Subscribe to our Newsletter</Title>
+            <p>
+              Subscribe for Updates: Stay informed about the latest investor
+              updates, financial results, and announcements by subscribing to
+              our newsletter
+            </p>
+          </GroupOne>
+          <GroupTwo>
+            <Form form={form}>
+              <InputWrapper noStyle>
+                <Form.Item
+                  name="email"
+                  rules={[
+                    { required: true, message: "Please enter your email" },
+                    { type: "email", message: "Please enter a valid email" },
+                  ]}
+                  style={{ flex: 1, marginBottom: 0 }} // Keeps original styling
+                >
+                  <StyledInput placeholder="Enter your email" />
+                </Form.Item>
+                <StyledButton
+                  type="primary"
+                  loading={loading}
+                  onClick={handleSubmit}
+                >
+                  Subscribe
+                </StyledButton>
+              </InputWrapper>
+            </Form>
+          </GroupTwo>
+        </Content>
+      </SectionDiv>
     </Container>
   );
 };
@@ -76,14 +80,17 @@ const Container = styled.div`
 
 const Content = styled.div`
   display: grid;
-  padding: 3rem 1rem;
+
   gap: 1rem;
   @media (min-width: ${breakpoints.xs}) {
-    padding: 5rem 6rem;
-    gap: 5rem;
+    /* padding: 5rem 1.5rem; */
+    gap: 2rem;
   }
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   align-items: center;
+  @media (min-width: ${breakpoints.xs}) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const GroupOne = styled.div`

@@ -140,7 +140,7 @@ const ContactWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 1rem;
+  padding: 60px 1rem 150px 1rem;
   @media (min-width: ${breakpoints.xs}) {
     padding: 10px 60px;
   }

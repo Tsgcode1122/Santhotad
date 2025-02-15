@@ -7,6 +7,7 @@ import b3 from "../Images/l1.png";
 import b4 from "../Images/l4.png";
 import b5 from "../Images/l5.png";
 import { Colors } from "../Colors/ColorComponent";
+import SectionDiv from "../FixedComponent/SectionDiv";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 const HeroMoving = () => {
   const items = [
@@ -47,7 +48,7 @@ export default HeroMoving;
 const Container = styled.div`
   padding: 10px 0 40px 2rem;
   @media (min-width: ${breakpoints.xs}) {
-    padding: 10px 0 40px 60px;
+    padding: 10px 0 40px 2rem;
   }
   @media (min-width: ${breakpoints.sm}) {
   }
@@ -92,7 +93,7 @@ const ImageContainer = styled.div`
   display: flex;
   gap: 30px;
   @media (min-width: ${breakpoints.xs}) {
-    gap: 50px;
+    gap: 30px;
   }
 `;
 
