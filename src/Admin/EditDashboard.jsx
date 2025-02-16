@@ -27,8 +27,8 @@ const { TextArea } = Input;
 const authors = [
   "Select author",
   "solomon Tosin",
-  "falola Tosin",
-  "Adeleye Tosin",
+  "Temitope Adeusi",
+  "Agbo Ola Israel",
 ];
 const EditDashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -226,14 +226,14 @@ const EditDashboard = () => {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Enter the meta description..."
-                maxLength={300}
+                maxLength={100}
                 style={{
                   marginTop: "10px",
                   height: "160px",
                   paddingBottom: "24px",
                 }} // Extra padding for counter
               />
-              <span className="counter">({text.length}/300)</span>
+              <span className="counter">({text.length}/100)</span>
             </Wrapper>
           </StyledFormItem>
         </div>

@@ -14,7 +14,7 @@ const Layout = () => {
 
   return (
     <>
-      {<Navbar />}
+      {!isAdminPage && !isAll && <Navbar />}
       <Outlet />
       {!isAdminPage && !isAll && <Footer />}
     </>

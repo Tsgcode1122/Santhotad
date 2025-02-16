@@ -1,23 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled, { keyframes } from "styled-components";
-import {
-  MenuOutlined,
-  TrophyOutlined,
-  DollarOutlined,
-  MailOutlined,
-  FormOutlined,
-  BellOutlined,
-  UsergroupAddOutlined,
-} from "@ant-design/icons";
+import styled from "styled-components";
+import { Squash as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
-import { Menu } from "antd";
 
-const { SubMenu } = Menu;
+import logo from "../Images/sanlogo.png";
+import arrowUp from "../Icons/arrow-up-right.png";
+import { Colors } from "../Colors/ColorComponent";
 
+import SectionDiv from "../FixedComponent/SectionDiv";
+import { breakpoints } from "../FixedComponent/BreakPoints";
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [visible, setVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   const sidebarRef = useRef(null);
 
   const toggleSidebar = () => {
@@ -33,7 +29,9 @@ const Navbar = () => {
     setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
     setPrevScrollPos(currentScrollPos);
   };
-
+  const handleProfileClick = () => {
+    setModalVisible(true);
+  };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -42,85 +40,238 @@ const Navbar = () => {
   return (
     <>
       <StyledNavbar style={{ top: visible ? 0 : "-5rem" }}>
-        <Inner>
-          <NotificationCount>...</NotificationCount>
-          <BellOutlined style={{ fontSize: "24px", color: "#000000" }} />
-        </Inner>
-        <MenuToggle onClick={toggleSidebar}>
-          <MenuOutlined />
-        </MenuToggle>
+        <HeadSpace>
+          <Link to="/"></Link>
+          <MenuToggle onClick={toggleSidebar}>
+            <Hamburger
+              toggled={isSidebarOpen}
+              toggle={setIsSidebarOpen}
+              color="#000000"
+            />
+          </MenuToggle>
+        </HeadSpace>
       </StyledNavbar>
       <NavHeight></NavHeight>
       <Sidebar isOpen={isSidebarOpen} ref={sidebarRef}>
         <SidebarContent>
-          <Menu mode="inline" defaultSelectedKeys={["0"]} theme="light">
-            <Menu.Item key="0" icon={<FormOutlined />}>
-              <Link to="/admin" onClick={closeSidebar}>
-                Overview
-              </Link>
-            </Menu.Item>
+          <LinkContainer>
+            <Link
+              to="/"
+              onClick={closeSidebar}
+              style={{ background: "black", color: "white" }}
+            >
+              <span>Projects</span>
+            </Link>
+            <Link to="/service/architect" onClick={closeSidebar}>
+              <span>Services</span>
+            </Link>
 
-            <Menu.Item key="2" icon={<MailOutlined />}>
-              <Link to="/admin/request" onClick={closeSidebar}>
-                Users Requests
+            <Link to="/about" onClick={closeSidebar}>
+              <span>About Us</span>
+            </Link>
+            <Link to="/blog" onClick={closeSidebar}>
+              <span>Blogs</span>
+            </Link>
+            <Contact1>
+              <Link to="/contact">
+                Contact Us
+                <img src={arrowUp} />{" "}
               </Link>
-            </Menu.Item>
-            <Menu.Item key="3" icon={<UsergroupAddOutlined />}>
-              <Link to="/admin/registered-users" onClick={closeSidebar}>
-                Registered Users
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="4" icon={<TrophyOutlined />}>
-              <Link to="/admin/leadership" onClick={closeSidebar}>
-                Leadership Dashboard
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="5" icon={<DollarOutlined />}>
-              <Link to="/admin/withdrawals" onClick={closeSidebar}>
-                Withdrawals
-              </Link>
-            </Menu.Item>
-          </Menu>
+            </Contact1>
+          </LinkContainer>
         </SidebarContent>
       </Sidebar>
-      {isSidebarOpen && <Overlay onClick={closeSidebar} />}
+
+      {/* {isSidebarOpen && <Overlay onClick={closeSidebar} />} */}
+
+      <BigNav>
+        <BigCon>
+          <Link to="/"></Link>
+          <LinkBig>
+            <Link to="/">Projects</Link>
+            <Link to="/service/architect">Services</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/blog">Blogs</Link>
+          </LinkBig>
+          <Contact>
+            <Link to="/contact">
+              Contact Us
+              <img src={arrowUp} />{" "}
+            </Link>
+          </Contact>
+        </BigCon>
+      </BigNav>
     </>
   );
 };
-const NavHeight = styled.div`
-  height: 3rem;
+const Contact1 = styled.div`
+  border: 1.8px solid #0316cd;
+  display: inline-block;
+  padding: 7px 12px;
+  a {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    justify-content: center;
+    gap: 4px;
+    color: ${Colors.blue} !important;
+  }
+  color: ${Colors.blue} !important;
+
+  border-radius: 5px;
 `;
-// Styled components
-const Inner = styled.div`
-  position: relative;
+const Contact = styled.div`
+  border: 1.8px solid #0316cd;
+  padding: 7px 12px;
+  a {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    justify-content: center;
+    gap: 4px;
+    color: ${Colors.blue} !important;
+  }
+  color: ${Colors.blue} !important;
+
+  border-radius: 5px;
 `;
 
-const NotificationCount = styled.span`
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 5px;
-  font-size: 4px;
-`;
-const StyledNavbar = styled.nav`
-  display: flex;
+const BigNav = styled.div`
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 999;
-  right: 0;
-  height: 3rem;
-  gap: 20px;
-  margin: 0;
+
+  display: none;
+  a {
+    text-decoration: none;
+    font-size: 16px;
+  }
+  @media screen and (min-width: 820px) {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  z-index: 999 !important;
+  background: ${Colors.white};
+  img {
+    max-width: 100%;
+    height: 20px;
+  }
+`;
+const BigCon = styled.div`
+  height: 40px;
+  padding: 10px 40px;
+  display: flex;
+
+  margin: 0 auto;
+
   align-items: center;
-  justify-content: flex-end;
-  padding: 1px 20px;
-  background-color: #ffffff;
+  justify-content: space-between;
+
+  @media (min-width: ${breakpoints.xs}) {
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 10px 40px;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    padding: 10px 40px;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    max-width: 1100px;
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    max-width: 1150px;
+    margin: 0 auto;
+  }
+`;
+const LinkBig = styled.div`
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  padding: 0 2rem;
+  gap: 20px;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: ${Colors.ashBlack};
+    font-size: 18px;
+  }
+`;
+
+const SidebarContent = styled.div`
+  list-style: none;
+  a {
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+
+    padding: 8px;
+
+    img {
+      max-width: 100%;
+      height: 15px;
+    }
+    @media screen and (max-width: 320px) {
+      font-size: 14px;
+    }
+    @media (min-width: 321px) and (max-width: 399px) {
+      font-size: 16px;
+    }
+    @media (min-width: 400px) and (max-width: 499px) {
+    }
+  }
+`;
+
+const LinkContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    padding: 20px !important;
+    text-align: center;
+    justify-content: space-between;
+    z-index: 999;
+  }
+`;
+
+const NavHeight = styled.div`
+  height: 3rem;
+`;
+
+const StyledNavbar = styled.div`
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999 !important;
+  background: ${Colors.white};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: top 0.3s;
+
+  img {
+    max-width: 100%;
+    height: 20px;
+  }
+  @media screen and (min-width: 820px) {
+    display: none;
+  }
+`;
+
+const HeadSpace = styled.div`
+  align-items: center;
+  display: flex;
+  margin: 0px 20px;
+
+  justify-content: space-between;
+  img {
+    height: 25px;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const MenuToggle = styled.div`
@@ -130,21 +281,25 @@ const MenuToggle = styled.div`
 
 const Sidebar = styled.div`
   position: fixed;
-  top: 0;
-  left: ${({ isOpen }) => (isOpen ? "0" : "-300px")};
-  width: 300px;
-  height: 100vh;
-  background-color: #ffffff;
-  border-radius: 0 20px 20px 0;
-  border-right: 0.5px solid #313538;
-  transition: left 0.5s ease-in-out;
-  z-index: 1000; /* Ensure Sidebar is on top */
-  overflow-x: hidden;
-`;
+  top: 3rem;
+  top: ${({ isOpen }) => (isOpen ? "3rem" : "-400px")};
+  width: 100%;
 
-const SidebarContent = styled.div`
-  padding: 10px;
-  padding-top: 3rem;
+  background-color: #f5f5f5;
+
+  border-left: 0.5px solid #313538;
+  transition: top 0.4s ease-in-out;
+  z-index: 20;
+  overflow-x: hidden;
+  @media screen and (max-width: 320px) {
+    width: 100%;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    width: 100%;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    width: 100%;
+  }
 `;
 
 const Overlay = styled.div`
@@ -153,8 +308,8 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998; /* Ensure Overlay is below Sidebar */
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 998;
 `;
 
 export default Navbar;

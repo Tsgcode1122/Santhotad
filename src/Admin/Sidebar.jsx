@@ -13,7 +13,7 @@ import { useUserData } from "../context/UserDataContext";
 const { Sider } = Layout;
 
 const SidebarContainer = styled(Sider)`
-  margin-top: -4rem;
+  margin-top: -3rem;
   z-index: 999;
   position: fixed;
 
@@ -112,7 +112,7 @@ const Sidebar = () => {
   const [imageUrl, setImageUrl] = useState(null);
   const handleLinkClick = (circleName) => {
     setActiveCircle(circleName);
-    setOpenMenu(null); // Close menu only when clicking the Link
+    setOpenMenu(null);
   };
   useEffect(() => {
     const fetchUsers = async () => {
@@ -134,7 +134,7 @@ const Sidebar = () => {
     const formData = new FormData();
 
     formData.append("image", file);
-    formData.append("userId", userData?._id); // Include userId
+    formData.append("userId", userData?._id);
 
     try {
       const response = await axios.post(

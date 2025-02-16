@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { TiSocialFacebook } from "react-icons/ti";
 import axios from "axios";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+
+import SectionDiv from "../FixedComponent/SectionDiv";
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
@@ -44,105 +46,129 @@ const ContactForm = () => {
   };
   const phoneRegex = /^\+?[0-9\s\-()]{7,15}$/;
   return (
-    <ContactWrapper>
-      <Head>
-        <div>
-          <Intro>Get Started</Intro>
-          <Title>
-            Get in touch with us. <br />
-            We're here to assist you
-          </Title>
-        </div>
-        <SocialIcons>
-          <TiSocialFacebook />
-          <InstagramOutlined />
-          <TwitterOutlined />
-        </SocialIcons>
-      </Head>
-      <StyledForm form={form} onFinish={onFinish} layout="vertical">
-        <ThreeGroup>
+    <SectionContainer>
+      <ContactWrapper>
+        <Head>
+          <div>
+            <Intro>Get Started</Intro>
+            <Title>
+              Get in touch with us. <br />
+              We're here to assist you
+            </Title>
+          </div>
+          <SocialIcons>
+            <TiSocialFacebook />
+            <InstagramOutlined />
+            <TwitterOutlined />
+          </SocialIcons>
+        </Head>
+        <StyledForm form={form} onFinish={onFinish} layout="vertical" noStyle>
+          <ThreeGroup>
+            <Form.Item
+              name="name"
+              rules={[{ required: true, message: "Please enter your name" }]}
+            >
+              <Input.TextArea
+                bordered={false}
+                style={{ borderBottom: "1px solid black" }}
+                autoSize={{ minRows: 1.2 }}
+                placeholder="Your Name"
+              />
+            </Form.Item>
+            <TwoGroup>
+              <Form.Item
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    type: "email",
+                    message: "Please enter a valid email",
+                  },
+                ]}
+              >
+                <Input.TextArea
+                  placeholder="Email "
+                  bordered={false}
+                  style={{ borderBottom: "1px solid black" }}
+                  autoSize={{ minRows: 1.2 }}
+                />
+              </Form.Item>
+              <Form.Item
+                name="number"
+                rules={[
+                  {
+                    // required: true,
+
+                    message: "Please enter a valid number",
+                  },
+                  {
+                    pattern: phoneRegex,
+                    message: "Please enter a valid phone number",
+                  },
+                ]}
+              >
+                <Input.TextArea
+                  placeholder="Phone Number (optional)"
+                  bordered={false}
+                  style={{ borderBottom: "1px solid black" }}
+                  autoSize={{ minRows: 1.2 }}
+                />
+              </Form.Item>
+            </TwoGroup>
+          </ThreeGroup>
           <Form.Item
-            name="name"
-            rules={[{ required: true, message: "Please enter your name" }]}
+            name="message"
+            rules={[{ required: true, message: "Please enter your message" }]}
           >
             <Input.TextArea
+              placeholder="Message"
+              autoSize={{ minRows: 3 }}
               bordered={false}
               style={{ borderBottom: "1px solid black" }}
-              autoSize={{ minRows: 1.2 }}
-              placeholder="Your Name"
             />
           </Form.Item>
-          <TwoGroup>
-            <Form.Item
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  type: "email",
-                  message: "Please enter a valid email",
-                },
-              ]}
-            >
-              <Input.TextArea
-                placeholder="Email "
-                bordered={false}
-                style={{ borderBottom: "1px solid black" }}
-                autoSize={{ minRows: 1.2 }}
-              />
-            </Form.Item>
-            <Form.Item
-              name="number"
-              rules={[
-                {
-                  // required: true,
-
-                  message: "Please enter a valid number",
-                },
-                {
-                  pattern: phoneRegex,
-                  message: "Please enter a valid phone number",
-                },
-              ]}
-            >
-              <Input.TextArea
-                placeholder="Phone Number (optional)"
-                bordered={false}
-                style={{ borderBottom: "1px solid black" }}
-                autoSize={{ minRows: 1.2 }}
-              />
-            </Form.Item>
-          </TwoGroup>
-        </ThreeGroup>
-        <Form.Item
-          name="message"
-          rules={[{ required: true, message: "Please enter your message" }]}
-        >
-          <Input.TextArea
-            placeholder="Message"
-            autoSize={{ minRows: 3 }}
-            bordered={false}
-            style={{ borderBottom: "1px solid black" }}
-          />
-        </Form.Item>
-        <SubmitButton htmlType="submit" loading={loading}>
-          Leave us a Message →
-        </SubmitButton>
-      </StyledForm>
-    </ContactWrapper>
+          <SubmitButton htmlType="submit" loading={loading}>
+            Leave us a Message →
+          </SubmitButton>
+        </StyledForm>
+      </ContactWrapper>
+    </SectionContainer>
   );
 };
 
 export default ContactForm;
+const SectionContainer = styled.div`
+  /* margin: 0 auto; */
+  padding: 2rem 1.5rem;
+  @media (min-width: ${breakpoints.xs}) {
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 2rem 2.5rem;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    padding: 10px 40px;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    padding: 2rem 3rem;
+  }
 
+  @media (min-width: ${breakpoints.lg}) {
+    padding: 2rem 10rem;
+  }
+
+  @media (min-width: ${breakpoints.xxl}) {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+`;
 const ContactWrapper = styled.div`
-  /* max-width: 800px; */
-  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 60px 1rem 150px 1rem;
+  width: 100%;
   @media (min-width: ${breakpoints.xs}) {
-    padding: 10px 60px;
+    padding-bottom: 4rem;
   }
 `;
 const Head = styled.div`
@@ -186,8 +212,8 @@ const ThreeGroup = styled.div`
   display: grid;
 
   gap: 20px;
-  @media (min-width: ${breakpoints.xs}) {
-    grid-template-columns: 1fr 1fr 1fr;
+  @media (min-width: ${breakpoints.md}) {
+    grid-template-columns: 30% 65%;
     gap: 50px;
   }
 
@@ -197,8 +223,8 @@ const TwoGroup = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  @media (min-width: ${breakpoints.xs}) {
-    grid-template-columns: 1fr 1fr 1fr;
+  @media (min-width: ${breakpoints.md}) {
+    grid-template-columns: 1fr 1fr;
     gap: 50px;
   }
 

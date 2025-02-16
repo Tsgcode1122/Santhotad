@@ -50,9 +50,6 @@ export default BlueAbout;
 const BlueContent = styled.div`
   background: ${Colors.blue};
   margin-bottom: 40px;
-
-  /* justify-content: center; */
-  /* align-items: center; */
 `;
 const GridLine = styled.div`
   background: url(${linePattern});

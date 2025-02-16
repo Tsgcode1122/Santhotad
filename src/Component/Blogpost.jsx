@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import SectionDiv from "../FixedComponent/SectionDiv";
+
 const Blogpost = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -18,6 +20,8 @@ const Blogpost = () => {
         setPosts(data);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
+      } finally {
+        setLoading(false); // Stop loading after data is fetched
       }
     };
 
@@ -36,7 +40,12 @@ const Blogpost = () => {
           </CtaButton>
         </Heading>
         <Container>
-          {posts.length > 0 && (
+          {loading ? (
+            <LoadingContainer>
+              <Spinner />
+              <p>Loading posts...</p>
+            </LoadingContainer>
+          ) : posts.length > 0 ? (
             <>
               <MainFeature>
                 <ImageContainer>
@@ -73,6 +82,8 @@ const Blogpost = () => {
                 ))}
               </SideContent>
             </>
+          ) : (
+            <p>No blog posts available.</p>
           )}
         </Container>
       </SectionDiv>
@@ -120,7 +131,7 @@ const Major = styled.div`
   margin: 40px 0;
   display: flex;
   flex-direction: column;
-
+  width: 100%;
   justify-content: center;
 `;
 
@@ -128,9 +139,34 @@ const Container = styled.div`
   display: grid;
   gap: 20px;
   grid-template-columns: 70% 30%;
-  @media (min-width: ${breakpoints.xs}) {
-    /*  */
-  }
+  align-items: center;
+  justify-content: center;
+`;
+
+const LoadingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  color: ${Colors.blue};
+`;
+
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const Spinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 4px solid ${Colors.blue};
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
+  margin-bottom: 10px;
 `;
 
 const ImageContainer = styled.div`
@@ -161,7 +197,6 @@ const Topic = styled.h3`
   color: ${Colors.blue};
   font-size: 18px;
   line-height: 1.4;
-  /* max-width: 380px; */
   font-weight: 500;
   margin: 0;
 `;
@@ -196,9 +231,12 @@ const Divider = styled.div`
 const One = styled.div`
   display: flex;
   gap: 10px;
+  width: 100%;
+
   img {
-    max-width: 100%;
-    height: 60px;
+    min-width: 90px;
+    max-width: 90px;
+    height: 70px;
   }
 `;
 
@@ -214,8 +252,14 @@ const AuthorDate = styled.p`
 
 const TopicMini = styled.p`
   margin: 0;
-  padding: 8px 0 2px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1.2;
+  padding: 8px 0 2px 0;
+  flex-wrap: nowrap;
 `;
 
 const OneSide = styled.div`

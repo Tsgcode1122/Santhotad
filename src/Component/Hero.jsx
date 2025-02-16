@@ -19,7 +19,6 @@ const Hero = () => {
 
           <CtaButton to="/project">View our projects</CtaButton>
         </TextPart>
-
         <HeroImage>
           <img src={heroImg} />
         </HeroImage>
@@ -30,7 +29,7 @@ const Hero = () => {
 
 export default Hero;
 const HeroSection = styled.div`
-  padding-top: 4.5rem;
+  padding-top: 1.5rem;
   padding-left: 1.5rem;
 
   @media (min-width: ${breakpoints.xs}) {
@@ -66,72 +65,19 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  /* Laptop (lg and above) */
   @media (min-width: ${breakpoints.md}) {
     flex-direction: row;
   }
   @media (min-width: ${breakpoints.lg}) {
   }
 
-  /* Desktop (xl and above) */
   @media (min-width: ${breakpoints.xl}) {
   }
 
   @media (min-width: ${breakpoints.xxl}) {
   }
 `;
-const TextPart = styled.div`
-  @media (min-width: ${breakpoints.xs}) {
-    max-width: 700px;
-  }
 
-  @media (min-width: ${breakpoints.md}) {
-    padding-top: 3rem;
-    max-width: 1000px;
-  }
-`;
-const Head = styled.h1`
-  line-height: 1.2;
-  font-weight: bold;
-  /* font-size: 30px; */
-  color: ${Colors.ashBlack};
-
-  @media (min-width: ${breakpoints.xs}) {
-    font-size: 55px;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-    font-size: 55px;
-
-    margin: 0;
-    padding-bottom: 15px;
-  }
-  @media (min-width: ${breakpoints.m}) {
-  }
-  @media (min-width: ${breakpoints.md}) {
-  }
-
-  /* Laptop (lg and above) */
-  @media (min-width: ${breakpoints.lg}) {
-  }
-
-  /* Desktop (xl and above) */
-  @media (min-width: ${breakpoints.xl}) {
-  }
-
-  /* 4K Screens (xxl and above) */
-  @media (min-width: ${breakpoints.xxl}) {
-  }
-`;
-
-const MiniText = styled.p`
-  font-size: 22px;
-  font-weight: 200 !important;
-  color: #1e1e1e;
-
-  line-height: 1.3;
-  max-width: 450px;
-  padding-bottom: 15px;
-`;
 const HeroImage = styled.div`
   right: 0 !important;
   z-index: -1;
@@ -146,41 +92,63 @@ const HeroImage = styled.div`
     margin-top: -250px;
   }
   @media (min-width: ${breakpoints.md}) {
-    position: absolute;
-
     top: 30px;
     margin-top: 0;
-    display: flex;
-    position: relative;
   }
 
-  /* Laptop (lg and above) */
-  @media (min-width: ${breakpoints.lg}) {
-  }
-
-  /* Desktop (xl and above) */
-  @media (min-width: ${breakpoints.xl}) {
-  }
-
-  /* 4K Screens (xxl and above) */
-  @media (min-width: ${breakpoints.xxl}) {
+  @media (min-width: ${breakpoints.md}) {
   }
   img {
     max-width: 100%;
-
-    @media (min-width: ${breakpoints.xs}) {
-      /* width: 150px; */
+    @media (min-width: ${breakpoints.md}) {
     }
   }
 `;
+const TextPart = styled.div`
+  @media (min-width: ${breakpoints.xs}) {
+  }
 
+  @media (min-width: ${breakpoints.md}) {
+    position: absolute;
+    padding-top: 3rem;
+  }
+`;
 const CtaButton = styled(Link)`
   text-decoration: none;
-  /* display: inline-block !important; */
+
   background: ${Colors.blue};
   border-radius: 5px;
   padding: 10px;
   color: ${Colors.white};
   cursor: pointer;
   z-index: 99;
+`;
+const MiniText = styled.p`
+  font-size: 22px;
+  font-weight: 200 !important;
+  color: #1e1e1e;
+
+  line-height: 1.3;
+  max-width: 450px;
+  padding-bottom: 15px;
+  @media (min-width: ${breakpoints.md}) {
+    max-width: 520px;
+  }
+`;
+const Head = styled.h1`
+  line-height: 1.2;
+  font-weight: bold;
+  color: ${Colors.ashBlack};
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 55px;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    font-size: 55px;
+    max-width: 620px !important;
+    margin: 0;
+    padding-bottom: 15px;
+    @media (min-width: ${breakpoints.md}) {
+      max-width: 700px !important;
+    }
+  }
 `;

@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import SectionDiv from "../FixedComponent/SectionDiv";
-import { breakpoints } from "../FixedComponent/BreakPoints";
+import { Spin } from "antd"; // Import Ant Design spinner
+
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
   const [isSticky, setIsSticky] = useState(false);
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -16,6 +19,8 @@ const BlogPage = () => {
         setPosts(data);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
+      } finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -27,11 +32,7 @@ const BlogPage = () => {
       const scrollY = window.scrollY;
       const triggerPoint = window.innerHeight * 0.2; // 20% from top
 
-      if (scrollY > triggerPoint) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
+      setIsSticky(scrollY > triggerPoint);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -39,82 +40,95 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <>
-      <SectionDiv>
-        <Line />
+    <SectionDiv>
+      <Line />
+      {posts.length > 0 && (
         <Head>
           <h1>What's New?</h1>
           <p>
-            Check out our latest blog pposts and stay informed on the newest
+            Check out our latest blog posts and stay informed on the newest
             trends, insights, and updates.
           </p>
         </Head>
-        <Major>
-          {posts.length > 0 ? (
-            <>
-              <Container>
-                <Main>
-                  {posts.slice(0, 6).map((post, index) => (
-                    <React.Fragment key={index}>
-                      <MainFeature>
-                        <ImageContainer>
-                          <img src={post.imagesUrl} alt={post.imagesAlt} />
-                        </ImageContainer>
-                        <Content>
-                          <span>
-                            <Topic>
-                              {" "}
-                              {post.title}:{post.metaDescription}
-                            </Topic>
-                            <Author>-{post.author}</Author>
-                          </span>
-                          <Date>{post.formattedDate}</Date>
-                        </Content>
-                      </MainFeature>
-                    </React.Fragment>
-                  ))}
-                </Main>
-                <SideContent>
-                  <Intro>More News Updates</Intro>
-
-                  <Divider />
-                  {posts.slice(6, 10).map((post, index) => (
-                    <React.Fragment key={index}>
-                      <One>
-                        <img src={post.imagesUrl} alt={post.imagesAlt} />
-                        <OneSide>
-                          <AuthorDate>
-                            {post.author} - <span>{post.formattedDate}</span>
-                          </AuthorDate>
-                          <TopicMini>
-                            {post.title}: {post.metaDescription}
-                          </TopicMini>
-                        </OneSide>
-                      </One>
-                      {index < 2 && <Divider />}
-                    </React.Fragment>
-                  ))}
-                </SideContent>
-              </Container>
-            </>
-          ) : (
-            <p
-              style={{
-                textAlign: "center",
-                fontSize: "18px",
-                marginTop: "20px",
-              }}
-            >
-              No blog posts yet.
-            </p>
-          )}
-        </Major>
-      </SectionDiv>
-    </>
+      )}
+      <Major>
+        {loading ? ( // Show spinner while loading
+          <LoaderContainer>
+            <Spin size="large" />
+            <p>Loading blog posts...</p>
+          </LoaderContainer>
+        ) : posts.length > 0 ? (
+          <Container>
+            <Main>
+              {posts.slice(0, 6).map((post, index) => (
+                <MainFeature key={index}>
+                  <ImageContainer>
+                    <img src={post.imagesUrl} alt={post.imagesAlt} />
+                  </ImageContainer>
+                  <Content>
+                    <span>
+                      <Topic>
+                        {post.title}: {post.metaDescription}
+                      </Topic>
+                      <Author>-{post.author}</Author>
+                    </span>
+                    <Date>{post.formattedDate}</Date>
+                  </Content>
+                </MainFeature>
+              ))}
+            </Main>
+            <SideContent>
+              <Intro>More News Updates</Intro>
+              <Divider />
+              {posts.slice(6, 10).map((post, index) => (
+                <React.Fragment key={index}>
+                  <One>
+                    <img src={post.imagesUrl} alt={post.imagesAlt} />
+                    <OneSide>
+                      <AuthorDate>
+                        {post.author} - <span>{post.formattedDate}</span>
+                      </AuthorDate>
+                      <TopicMini>
+                        {post.title}: {post.metaDescription}
+                      </TopicMini>
+                    </OneSide>
+                  </One>
+                  {index < 2 && <Divider />}
+                </React.Fragment>
+              ))}
+            </SideContent>
+          </Container>
+        ) : (
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "18px",
+              marginTop: "20px",
+            }}
+          >
+            No blog posts yet.
+          </p>
+        )}
+      </Major>
+    </SectionDiv>
   );
 };
 
 export default BlogPage;
+
+const LoaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+  }
+`;
+
 const Line = styled.div`
   width: 100%;
   height: 1px;
@@ -124,7 +138,7 @@ const Head = styled.div`
   display: flex;
 
   justify-content: space-between;
-
+  /* width: 70vw; */
   align-items: center;
 
   p {
@@ -177,12 +191,15 @@ const Container = styled.div`
   grid-template-columns: 70% 30%;
 `;
 const ImageContainer = styled.div`
-  max-width: 360px;
-  /* max-height: 280px; */
+  max-height: 280px;
+
+  min-width: 360px;
+
   img {
     max-width: 100%;
-
-    height: 240px;
+    min-width: 360px;
+    max-width: 360px;
+    height: 280px;
     object-fit: cover;
     border-radius: 10px;
   }
@@ -221,7 +238,7 @@ const Date = styled.p`
 
 const SideContent = styled.div`
   display: flex;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   border: 1.5px solid #e7e6e6;
   flex-direction: column;
   gap: 10px;
@@ -237,16 +254,18 @@ const Intro = styled.p`
 `;
 const Divider = styled.div`
   height: 1px;
-  width: 260px;
+  width: 100%;
   background: #aeaeae;
 `;
 
 const One = styled.div`
   display: flex;
+  width: 100%;
   gap: 10px;
   img {
-    max-width: 100%;
-    height: 60px;
+    min-width: 90px;
+    max-width: 90px;
+    height: 70px;
   }
 `;
 
@@ -262,12 +281,14 @@ const AuthorDate = styled.p`
 
 const TopicMini = styled.p`
   margin: 0;
-  padding: 8px 0 2px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1.2;
-  max-width: 200px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
+  padding: 8px 0 2px 0;
+  flex-wrap: nowrap;
 `;
 const OneSide = styled.div`
   display: flex;
