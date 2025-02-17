@@ -263,7 +263,7 @@ const Sidebar = () => {
 export default Sidebar;
 
 const SiderGap = styled.div`
-  width: 300px !important;
+  width: 260px !important;
 `;
 const CustomButton = styled(Button)`
   background: transparent !important;
@@ -297,8 +297,7 @@ const MiniImage = styled.div`
 `;
 
 const Divider = styled.div`
-  height: 60%; /* Second container spaced 20% from the first */
-  /* display: flex; */
+  height: 60%;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;

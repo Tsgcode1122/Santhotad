@@ -23,9 +23,9 @@ import axios from "axios";
 const { TextArea } = Input;
 const authors = [
   "Select author",
-  "solomon Tosin",
+  "Ojuawo Damilola",
   "Temitope Adeusi",
-  "Agbo Ola Israel",
+  "Oludele M.T",
 ];
 import ImageUpload from "./ImageUpload";
 const Dashboard = () => {

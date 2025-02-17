@@ -4,15 +4,20 @@ import { Card, Tooltip, Modal, message } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { breakpoints } from "../FixedComponent/BreakPoints";
+
 const IntroTitle = styled.p`
   padding-left: 20px;
 `;
 const Container = styled.div`
   background: #ececec;
   width: 100%;
-  margin: 0 !important;
-
-  padding: 40px 60px 40px 60px;
+  margin-top: -1rem !important;
+  padding: 40px 1rem;
+  @media (min-width: ${breakpoints.m}) {
+    margin-top: 1rem !important;
+    padding: 40px 60px 40px 60px;
+  }
 `;
 const PostsContainer = styled.div`
   display: grid;
@@ -20,9 +25,11 @@ const PostsContainer = styled.div`
   overflow-y: auto;
   margin: 0 !important;
   border-radius: 5px;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 16px;
-
+  @media (min-width: ${breakpoints.m}) {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
   width: 100%;
 
   padding: 0 20px 40px 20px;
@@ -53,12 +60,14 @@ const PostsContainer = styled.div`
 const Wrapper = styled.div`
   background: white;
   border: 1px solid #ccc;
-  padding: 20px;
+  padding: 10px 5px;
   border-radius: 10px;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   margin: 0 !important;
+  @media (min-width: ${breakpoints.m}) {
+    padding: 20px;
+  }
 `;
 const ActionsContainer = styled.div`
   background: white;
@@ -90,8 +99,10 @@ const StyledCard = styled.div`
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 180px;
-
+  height: 150px;
+  @media (min-width: ${breakpoints.m}) {
+    height: 180px;
+  }
   display: flex;
   align-items: center;
   justify-content: center;

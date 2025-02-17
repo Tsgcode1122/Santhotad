@@ -20,23 +20,22 @@ import { IoIosLink } from "react-icons/io";
 import { CiUser, CiIndent } from "react-icons/ci";
 import { useBlogContext } from "../context/BlogContext";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import ImageUpload from "./ImageUpload";
 const { TextArea } = Input;
-
 const authors = [
   "Select author",
   "Ojuawo Damilola",
   "Temitope Adeusi",
   "Oludele M.T",
 ];
-const EditDashboard = () => {
+import ImageUpload from "./ImageUpload";
+const DashboardSmall = () => {
   const [loading, setLoading] = useState(false);
-  const [quillText, setQuillText] = useState("");
-  const [text, setText] = useState("");
+  const [quillText, setQuillText] = useState(""); // Separate state for Quill
+  const [text, setText] = useState(""); // Separate state for TextArea
   const [imagesUrl, setImagesUrl] = useState(null);
-  const [form] = Form.useForm();
-  const { id } = useParams();
+  const { createBlog } = useBlogContext();
+
+  // Function to count words in Quill editor
   const countWords = (content) => {
     return content
       .replace(/<[^>]+>/g, " ") // Remove HTML tags
@@ -44,65 +43,48 @@ const EditDashboard = () => {
       .split(/\s+/)
       .filter(Boolean).length; // Filter empty spaces
   };
-  // Fetch post data
+
+  const [form] = Form.useForm();
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await axios.get(
-          `https://santhotad.onrender.com/api/blogs/${id}`,
-        );
-        const data = response.data;
-        console.log(data);
-
-        // Populate form fields with data
-        form.setFieldsValue({
-          title: data.title,
-          author: data.author,
-          imagesAlt: data.imagesAlt,
-          metaDescription: data.metaDescription,
-        });
-
-        setQuillText(data.description);
-        setText(data.metaDescription);
-        setImagesUrl(data.imagesUrl);
-      } catch (error) {
-        console.error("Error fetching post:", error);
-      }
-    };
-
-    fetchPost();
-  }, [id, form]);
+    window.scrollTo(0, 0);
+  });
   const onFinish = async (values) => {
+    console.log("Form Values before modification:", values);
+
     setLoading(true);
 
     try {
-      const updatedData = { ...values, description: quillText, imagesUrl };
-      await axios.put(
-        `https://santhotad.onrender.com/api/blogs/${id}`,
-        updatedData,
+      const blogData = { ...values, description: quillText, imagesUrl };
+      await axios.post(
+        "https://santhotad.onrender.com/api/blogs/postBlogs",
+        blogData,
       );
 
-      message.success("Post updated successfully!");
+      message.success({
+        content: "Your message has been sent successfully.",
+        style: {
+          textAlign: "center",
+          marginTop: "20px",
+        },
+      });
 
-      // Redirect or show success notification
+      // Reset form fields
+      form.resetFields();
+      setQuillText("");
+      setImagesUrl(null);
+      setText("");
     } catch (error) {
-      console.error("Error updating post:", error);
+      console.error("Error submitting form:", error);
       notification.error({
-        message: "Update Failed",
-        description: "There was an issue updating the post.",
+        message: "Error",
+        description: "Failed to send your message. Please try again.",
       });
     } finally {
       setLoading(false);
     }
   };
-
   return (
-    <DashboardContainer
-      form={form}
-      onFinish={onFinish}
-      layout="vertical"
-      noStyle
-    >
+    <DashboardContainer form={form} onFinish={onFinish} noStyle>
       <TypeCard>
         <StyledFormItem label="Description" name="description" noStyle>
           <StyledWrapper>
@@ -117,7 +99,7 @@ const EditDashboard = () => {
         <StyledFormItem noStyle>
           <CustomButtons style={{ textAlign: "right", marginTop: "10px" }}>
             <Butt type="primary" htmlType="submit" loading={loading}>
-              Update Blog
+              Publish
             </Butt>
           </CustomButtons>
         </StyledFormItem>
@@ -134,37 +116,41 @@ const EditDashboard = () => {
           }}
         >
           <p style={{ margin: "0", paddingBottom: "5px" }}>URL & Author</p>
-          <StyledFormItem name="title" noStyle>
-            <Input
-              placeholder="URL Friendly Title"
-              prefix={
-                <IoIosLink style={{ color: "#000000", fontSize: "18px" }} />
-              }
-            />
-          </StyledFormItem>
-          <StyledFormItem
-            name="author"
-            noStyle
-            rules={[
-              {
-                required: true,
+          <Split1>
+            <StyledFormItem name="title" noStyle>
+              <Input
+                placeholder="URL Friendly Title"
+                prefix={
+                  <IoIosLink style={{ color: "#000000", fontSize: "18px" }} />
+                }
+              />
+            </StyledFormItem>
+            <StyledFormItem
+              name="author"
+              noStyle
+              rules={[
+                {
+                  required: true,
 
-                message: "Please select author",
-              },
-            ]}
-          >
-            <Select
-              placeholder="Author"
-              style={{ marginTop: "10px", width: "100%" }}
-              prefix={<CiUser style={{ color: "#000000", fontSize: "18px" }} />}
+                  message: "Please select author",
+                },
+              ]}
             >
-              {authors.map((service, index) => (
-                <Option key={index} value={service}>
-                  {service}
-                </Option>
-              ))}
-            </Select>
-          </StyledFormItem>
+              <Select
+                placeholder="Author"
+                style={{ marginTop: "10px", width: "100%" }}
+                prefix={
+                  <CiUser style={{ color: "#000000", fontSize: "18px" }} />
+                }
+              >
+                {authors.map((service, index) => (
+                  <Option key={index} value={service}>
+                    {service}
+                  </Option>
+                ))}
+              </Select>
+            </StyledFormItem>
+          </Split1>
         </div>
 
         {/* Cover Image & Meta Description */}
@@ -245,9 +231,15 @@ const EditDashboard = () => {
   );
 };
 
-export default EditDashboard;
+export default DashboardSmall;
 
-const StyledFormItem = styled(Form.Item)``;
+const StyledFormItem = styled(Form.Item)`
+  width: 100%;
+`;
+
+const Split1 = styled.div`
+  width: 100%;
+`;
 
 const CustomButtons = styled.div`
   background: transparent !important;
@@ -255,43 +247,36 @@ const CustomButtons = styled.div`
   margin: 0;
 `;
 const DashboardContainer = styled(Form)`
-  .ant-form-item {
-    margin-bottom: 34px;
-  }
-
-  padding: 20px;
+  padding-bottom: 8rem !important;
+  margin: 2rem 1rem;
+  padding: 1rem;
   background: #f5f5f5;
-  min-height: calc(100vh - 4rem);
+  border-radius: 10px;
   display: flex;
-  gap: 20px;
-  width: 100%;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+  .ant-form-item {
+    width: 100%;
+  }
 `;
 
 const SecondPart = styled.div`
-  display: flex;
   flex-direction: column;
-  max-width: 300px;
-  gap: 60px;
-  min-height: calc(100vh - 8rem);
+
+  display: flex;
+  gap: 20px;
+  width: 90%;
 `;
 
 const TypeCard = styled.div`
-  min-width: 500px;
-  max-width: 500px;
   background: white;
-  min-height: calc(100vh - 8rem);
+  width: 80%;
   padding: 20px;
   border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  border: 1px solid #ccc;
-`;
 
-const CustomButton = styled.div`
-  margin-right: 40px;
+  border: 1px solid #ccc;
 `;
 
 const Butt = styled(Button)`
@@ -315,11 +300,12 @@ const StyledWrapper = styled.div`
 
 const StyledQuill = styled(ReactQuill)`
   .ql-container {
-    height: 60vh !important;
+    width: 100%;
+    height: 50vh !important;
   }
   .ql-editor {
-    min-height: 250px;
-    padding-bottom: 30px; /* Prevent overlap */
+    min-height: 150px;
+    padding-bottom: 30px;
   }
 `;
 

@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { EditOutlined, ReadOutlined, LogoutOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { message } from "antd";
-import { useUserData } from "../context/UserDataContext";
 
 const FooterNav = () => {
-  const [activeLink, setActiveLink] = useState("");
   const navigate = useNavigate();
-  const { userData } = useUserData();
-
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
-  };
+  const location = useLocation();
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -22,11 +16,7 @@ const FooterNav = () => {
 
   return (
     <StyledFooter>
-      <StyledLink
-        to="/admin"
-        active={activeLink === "create"}
-        onClick={() => handleLinkClick("create")}
-      >
+      <StyledLink to="/admin" active={location.pathname === "/admin"}>
         <IconWrapper>
           <EditOutlined />
           <IconName>Create Blog</IconName>
@@ -35,8 +25,7 @@ const FooterNav = () => {
 
       <StyledLink
         to="/admin/allpost"
-        active={activeLink === "allpost"}
-        onClick={() => handleLinkClick("allpost")}
+        active={location.pathname === "/admin/allpost"}
       >
         <IconWrapper>
           <ReadOutlined />
@@ -69,10 +58,10 @@ const StyledFooter = styled.footer`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: ${({ active }) => (active ? "red" : "black")};
+  color: ${({ active }) => (active ? "blue" : "black")};
 
   svg {
-    color: ${({ active }) => (active ? "red" : "black")};
+    color: ${({ active }) => (active ? "blue" : "black")};
   }
 `;
 
@@ -90,7 +79,7 @@ const LogoutButton = styled.div`
   align-items: center;
 
   &:hover {
-    color: red;
+    color: blue;
   }
 
   svg {

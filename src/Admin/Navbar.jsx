@@ -2,85 +2,85 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Squash as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
-
+import { Layout, Upload, Button, message } from "antd";
 import logo from "../Images/sanlogo.png";
 import arrowUp from "../Icons/arrow-up-right.png";
 import { Colors } from "../Colors/ColorComponent";
-
+import { useUserData } from "../context/UserDataContext";
 import SectionDiv from "../FixedComponent/SectionDiv";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 const Navbar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
-  const [visible, setVisible] = useState(true);
-  const [modalVisible, setModalVisible] = useState(false);
-  const sidebarRef = useRef(null);
+  const { userData } = useUserData();
+  const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
+  const handleUpload = async ({ file }) => {
+    setLoading(true);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+    const formData = new FormData();
 
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-  };
+    formData.append("image", file);
+    formData.append("userId", userData?._id);
 
-  const handleScroll = () => {
-    const currentScrollPos = window.scrollY;
-    setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
-    setPrevScrollPos(currentScrollPos);
+    try {
+      const response = await axios.post(
+        "https://santhotad.onrender.com/api/signature/send",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        },
+      );
+
+      const uploadedImageUrl = response.data.imageUrl;
+
+      setImageUrl(uploadedImageUrl);
+
+      message.success("Profile image updated successfully!");
+    } catch (error) {
+      message.error("Upload failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
-  const handleProfileClick = () => {
-    setModalVisible(true);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, visible]);
 
   return (
     <>
-      <StyledNavbar style={{ top: visible ? 0 : "-5rem" }}>
+      <StyledNavbar>
         <HeadSpace>
-          <Link to="/"></Link>
-          <MenuToggle onClick={toggleSidebar}>
-            <Hamburger
-              toggled={isSidebarOpen}
-              toggle={setIsSidebarOpen}
-              color="#000000"
-            />
+          <Link to="/">
+            <img src={logo} />
+          </Link>
+          <MenuToggle>
+            <p>
+              Welcome{" "}
+              {userData && (
+                <span>
+                  {userData.fullName && userData.fullName.split(" ")[0]}
+                </span>
+              )}
+            </p>
+            <MiniImage>
+              <Upload customRequest={handleUpload} showUploadList={false}>
+                <CustomButton loading={loading}>
+                  <img
+                    src={
+                      imageUrl ||
+                      userData?.image ||
+                      "https://www.gravatar.com/avatar/?s=200&d=mp"
+                    }
+                    style={{
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                      cursor: "pointer",
+                      opacity: loading ? 0.5 : 1,
+                    }}
+                  />
+                </CustomButton>
+              </Upload>
+            </MiniImage>
           </MenuToggle>
         </HeadSpace>
       </StyledNavbar>
       <NavHeight></NavHeight>
-      <Sidebar isOpen={isSidebarOpen} ref={sidebarRef}>
-        <SidebarContent>
-          <LinkContainer>
-            <Link
-              to="/"
-              onClick={closeSidebar}
-              style={{ background: "black", color: "white" }}
-            >
-              <span>Projects</span>
-            </Link>
-            <Link to="/service/architect" onClick={closeSidebar}>
-              <span>Services</span>
-            </Link>
-
-            <Link to="/about" onClick={closeSidebar}>
-              <span>About Us</span>
-            </Link>
-            <Link to="/blog" onClick={closeSidebar}>
-              <span>Blogs</span>
-            </Link>
-            <Contact1>
-              <Link to="/contact">
-                Contact Us
-                <img src={arrowUp} />{" "}
-              </Link>
-            </Contact1>
-          </LinkContainer>
-        </SidebarContent>
-      </Sidebar>
 
       {/* {isSidebarOpen && <Overlay onClick={closeSidebar} />} */}
 
@@ -104,21 +104,19 @@ const Navbar = () => {
     </>
   );
 };
-const Contact1 = styled.div`
-  border: 1.8px solid #0316cd;
-  display: inline-block;
-  padding: 7px 12px;
-  a {
-    display: flex;
-    align-items: center;
-    font-weight: 500;
-    justify-content: center;
-    gap: 4px;
-    color: ${Colors.blue} !important;
-  }
-  color: ${Colors.blue} !important;
 
-  border-radius: 5px;
+const CustomButton = styled(Button)`
+  background: transparent !important;
+  border: none !important;
+`;
+const MiniImage = styled.div`
+  img {
+    border-radius: 50%;
+    height: 30px !important;
+    width: 30px !important;
+    max-width: 100%;
+    object-fit: cover;
+  }
 `;
 const Contact = styled.div`
   border: 1.8px solid #0316cd;
@@ -200,46 +198,6 @@ const LinkBig = styled.div`
   }
 `;
 
-const SidebarContent = styled.div`
-  list-style: none;
-  a {
-    text-decoration: none;
-    font-size: 16px;
-    color: black;
-
-    padding: 8px;
-
-    img {
-      max-width: 100%;
-      height: 15px;
-    }
-    @media screen and (max-width: 320px) {
-      font-size: 14px;
-    }
-    @media (min-width: 321px) and (max-width: 399px) {
-      font-size: 16px;
-    }
-    @media (min-width: 400px) and (max-width: 499px) {
-    }
-  }
-`;
-
-const LinkContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  text-align: center;
-  a {
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
-    padding: 20px !important;
-    text-align: center;
-    justify-content: space-between;
-    z-index: 999;
-  }
-`;
-
 const NavHeight = styled.div`
   height: 3rem;
 `;
@@ -252,10 +210,6 @@ const StyledNavbar = styled.div`
   background: ${Colors.white};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  img {
-    max-width: 100%;
-    height: 20px;
-  }
   @media screen and (min-width: 820px) {
     display: none;
   }
@@ -277,39 +231,14 @@ const HeadSpace = styled.div`
 const MenuToggle = styled.div`
   margin: 0;
   cursor: pointer;
-`;
-
-const Sidebar = styled.div`
-  position: fixed;
-  top: 3rem;
-  top: ${({ isOpen }) => (isOpen ? "3rem" : "-400px")};
-  width: 100%;
-
-  background-color: #f5f5f5;
-
-  border-left: 0.5px solid #313538;
-  transition: top 0.4s ease-in-out;
-  z-index: 20;
-  overflow-x: hidden;
-  @media screen and (max-width: 320px) {
-    width: 100%;
+  display: flex;
+  align-items: center;
+  p {
+    font-style: italic;
   }
-  @media (min-width: 321px) and (max-width: 399px) {
-    width: 100%;
+  span {
+    font-style: normal;
   }
-  @media (min-width: 400px) and (max-width: 499px) {
-    width: 100%;
-  }
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
-  z-index: 998;
 `;
 
 export default Navbar;

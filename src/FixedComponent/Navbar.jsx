@@ -14,7 +14,7 @@ const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const sidebarRef = useRef(null);
-
+  const overlayRef = useRef(null);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -40,7 +40,7 @@ const Navbar = () => {
     <>
       <StyledNavbar style={{ top: visible ? 0 : "-5rem" }}>
         <HeadSpace>
-          <Link to="/">
+          <Link to="/" onClick={isSidebarOpen ? closeSidebar : undefined}>
             <img src={logo} />{" "}
           </Link>
           <MenuToggle onClick={toggleSidebar}>
@@ -56,34 +56,27 @@ const Navbar = () => {
       <Sidebar isOpen={isSidebarOpen} ref={sidebarRef}>
         <SidebarContent>
           <LinkContainer>
-            <Link
-              to="/project"
-              onClick={closeSidebar}
-              style={{ background: "black", color: "white" }}
-            >
-              <span>Projects</span>
-            </Link>
-            <Link to="/service/architect" onClick={closeSidebar}>
-              <span>Services</span>
-            </Link>
-
-            <Link to="/about" onClick={closeSidebar}>
-              <span>About Us</span>
-            </Link>
-            <Link to="/blog" onClick={closeSidebar}>
-              <span>Blogs</span>
-            </Link>
-            <Contact1>
-              <Link to="/contact">
-                Contact Us
-                <img src={arrowUp} />{" "}
-              </Link>
-            </Contact1>
+            {[
+              { to: "/project", label: "Projects" },
+              { to: "/service/architect", label: "Services" },
+              { to: "/about", label: "About Us" },
+              { to: "/blog", label: "Blogs" },
+              { to: "/contact", label: "Contact Us" },
+            ].map((link) => (
+              <StyledLink
+                key={link.to}
+                to={link.to}
+                onClick={closeSidebar}
+                className={location.pathname === link.to ? "active" : ""}
+              >
+                {link.label}
+              </StyledLink>
+            ))}
           </LinkContainer>
         </SidebarContent>
       </Sidebar>
 
-      {/* {isSidebarOpen && <Overlay onClick={closeSidebar} />} */}
+      {isSidebarOpen && <Overlay ref={overlayRef} onClick={closeSidebar} />}
 
       <BigNav>
         <BigCon>
@@ -107,24 +100,8 @@ const Navbar = () => {
     </>
   );
 };
-const Contact1 = styled.div`
-  border: 1.8px solid #0316cd;
-  display: inline-block;
-  padding: 7px 12px;
-  a {
-    display: flex;
-    align-items: center;
-    font-weight: 500;
-    justify-content: center;
-    gap: 4px;
-    color: ${Colors.blue} !important;
-  }
-  color: ${Colors.blue} !important;
 
-  border-radius: 5px;
-`;
 const Contact = styled.div`
-  border: 1.8px solid #0316cd;
   padding: 7px 12px;
   a {
     display: flex;
@@ -287,11 +264,11 @@ const Sidebar = styled.div`
   top: 3rem;
   top: ${({ isOpen }) => (isOpen ? "3rem" : "-400px")};
   width: 100%;
-
+  z-index: 999;
   background-color: #f5f5f5;
 
   border-left: 0.5px solid #313538;
-  transition: top 0.4s ease-in-out;
+  transition: top 0.3s ease-in-out;
   z-index: 20;
   overflow-x: hidden;
   @media screen and (max-width: 320px) {
@@ -312,7 +289,26 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
-  z-index: 998;
+  z-index: 1;
+`;
+const StyledLink = styled(Link)`
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &:hover {
+    color: ${Colors.blue};
+  }
+
+  &.active {
+    background: black !important;
+    color: ${Colors.light};
+    font-weight: bold;
+  }
 `;
 
 export default Navbar;

@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import FooterNav from "./FooterNav";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import styled from "styled-components";
+import DashboardSmall from "./DashboardSmall";
 const AdminDashboard = () => {
   return (
     <>
@@ -17,15 +18,21 @@ const AdminDashboard = () => {
           <Sidebar />
         </HideSmall>
         <>
-          <Dashboard />
-        </>
-
-        <>
-          <HideBig>
-            <FooterNav />
-          </HideBig>
+          {" "}
+          <HideSmall>
+            <Dashboard />
+          </HideSmall>
         </>
       </Layout>
+      <>
+        <HideBig>
+          <DashboardSmall />
+        </HideBig>
+      </>
+
+      <HideBig>
+        <FooterNav />
+      </HideBig>
     </>
   );
 };

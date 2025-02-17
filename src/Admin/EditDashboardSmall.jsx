@@ -30,7 +30,7 @@ const authors = [
   "Temitope Adeusi",
   "Oludele M.T",
 ];
-const EditDashboard = () => {
+const EditDashboardSmall = () => {
   const [loading, setLoading] = useState(false);
   const [quillText, setQuillText] = useState("");
   const [text, setText] = useState("");
@@ -245,9 +245,15 @@ const EditDashboard = () => {
   );
 };
 
-export default EditDashboard;
+export default EditDashboardSmall;
 
-const StyledFormItem = styled(Form.Item)``;
+const StyledFormItem = styled(Form.Item)`
+  width: 100%;
+`;
+
+const Split1 = styled.div`
+  width: 100%;
+`;
 
 const CustomButtons = styled.div`
   background: transparent !important;
@@ -255,43 +261,36 @@ const CustomButtons = styled.div`
   margin: 0;
 `;
 const DashboardContainer = styled(Form)`
-  .ant-form-item {
-    margin-bottom: 34px;
-  }
-
-  padding: 20px;
+  padding-bottom: 8rem !important;
+  margin: 2rem 1rem;
+  padding: 1rem;
   background: #f5f5f5;
-  min-height: calc(100vh - 4rem);
+  border-radius: 10px;
   display: flex;
-  gap: 20px;
-  width: 100%;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+  .ant-form-item {
+    width: 100%;
+  }
 `;
 
 const SecondPart = styled.div`
-  display: flex;
   flex-direction: column;
-  max-width: 300px;
-  gap: 60px;
-  min-height: calc(100vh - 8rem);
+
+  display: flex;
+  gap: 20px;
+  width: 90%;
 `;
 
 const TypeCard = styled.div`
-  min-width: 500px;
-  max-width: 500px;
   background: white;
-  min-height: calc(100vh - 8rem);
+  width: 90%;
   padding: 20px;
   border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  border: 1px solid #ccc;
-`;
 
-const CustomButton = styled.div`
-  margin-right: 40px;
+  border: 1px solid #ccc;
 `;
 
 const Butt = styled(Button)`
@@ -315,11 +314,12 @@ const StyledWrapper = styled.div`
 
 const StyledQuill = styled(ReactQuill)`
   .ql-container {
-    height: 60vh !important;
+    width: 100%;
+    height: 50vh !important;
   }
   .ql-editor {
-    min-height: 250px;
-    padding-bottom: 30px; /* Prevent overlap */
+    min-height: 150px;
+    padding-bottom: 30px;
   }
 `;
 

@@ -6,6 +6,7 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 import styled from "styled-components";
 import EditDashboard from "./EditDashboard";
 import Navbar from "./Navbar";
+import EditDashboardSmall from "./EditDashboardSmall";
 
 const EditPost = () => {
   return (
@@ -17,7 +18,13 @@ const EditPost = () => {
         </HideSmall>
 
         <>
-          <EditDashboard />
+          <HideSmall>
+            <EditDashboard />
+          </HideSmall>
+
+          <HideBig>
+            <EditDashboardSmall />
+          </HideBig>
           <HideBig>
             <FooterNav />
           </HideBig>
