@@ -21,6 +21,7 @@ import BlogPage from "./Pages/BlogPage";
 import ResetPasswordPage from "./Admin/ResetPasswordPage";
 import AllPost from "./Admin/AllPost";
 import AnimatedCursor from "react-animated-cursor";
+import ProjectPage from "./Pages/ProjectPage";
 const GlobalStyle = createGlobalStyle`
 
   html, body {
@@ -91,6 +92,7 @@ const routes = [
 
       { path: "/projects/:imageId", element: <SingleProjectDetails /> },
       { path: "/services/:serviceId", element: <ServiceFromHome /> },
+      { path: "/project", element: <ProjectPage /> },
 
       { path: "/service/architect", element: <ServicePage /> },
       { path: "/contact", element: <ContactForm /> },

@@ -57,7 +57,7 @@ const Navbar = () => {
         <SidebarContent>
           <LinkContainer>
             <Link
-              to="/"
+              to="/project"
               onClick={closeSidebar}
               style={{ background: "black", color: "white" }}
             >
@@ -91,7 +91,7 @@ const Navbar = () => {
             <img src={logo} />{" "}
           </Link>
           <LinkBig>
-            <Link to="/">Projects</Link>
+            <Link to="/project">Projects</Link>
             <Link to="/service/architect">Services</Link>
             <Link to="/about">About Us</Link>
             <Link to="/blog">Blogs</Link>

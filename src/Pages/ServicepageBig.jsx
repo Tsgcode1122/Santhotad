@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
-import { ArrowDownOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-
+import { breakpoints } from "../FixedComponent/BreakPoints";
+import { Modal } from "antd"; // Import Ant Design's Modal component
 import { Service } from "../Service";
 import SectionDiv from "../FixedComponent/SectionDiv";
-import { breakpoints } from "../FixedComponent/BreakPoints";
-
 const ServicepageBig = () => {
   const [activeService, setActiveService] = useState(Service[0]);
+  const [isModalVisible, setIsModalVisible] = useState(false); // State to control modal visibility
+
+  // Function to handle image click and show modal
+  const handleImageClick = () => {
+    setIsModalVisible(true);
+  };
+
+  // Function to handle modal cancel (close)
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   return (
     <>
@@ -17,7 +25,9 @@ const ServicepageBig = () => {
         <ServiceChanging>
           <LeftSide>
             <h3>{activeService.head}</h3>
-            <ImageContainer>
+            <ImageContainer onClick={handleImageClick}>
+              {" "}
+              {/* Add onClick here */}
               <img src={activeService.img} alt={activeService.head} />
             </ImageContainer>
             <Description>
@@ -38,6 +48,34 @@ const ServicepageBig = () => {
           </ServiceListContainer>
         </ServiceChanging>
       </SectionDiv>
+
+      {/* Modal to show full-size image */}
+      <Modal
+        visible={isModalVisible}
+        onCancel={handleCancel} // Close the modal when canceling
+        footer={null} // Remove default footer with OK/Cancel buttons
+        width="80%" // You can adjust width as needed
+        style={{
+          maxWidth: "900px", // Optional styling for max width of modal
+          backdropFilter: "blur(5px)", // Apply the background blur effect
+        }}
+        bodyStyle={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 0, // Remove padding
+        }}
+      >
+        <img
+          src={activeService.img}
+          alt={activeService.head}
+          style={{
+            maxWidth: "100%",
+            maxHeight: "80vh", // Make sure the image fits within the screen
+            objectFit: "contain", // Maintain aspect ratio of image
+          }} // Make image fill modal
+        />
+      </Modal>
     </>
   );
 };
@@ -50,7 +88,11 @@ const Description = styled.div`
   }
 `;
 
-const LeftSide = styled.div``;
+const LeftSide = styled.div`
+  h3 {
+  }
+`;
+
 const ServiceChanging = styled.div`
   display: grid;
   width: 100%;
@@ -89,20 +131,8 @@ const ServiceItem = styled.div`
     font-size: 18px;
     padding-bottom: 10px;
   }
-  @media (min-width: ${breakpoints.sm}) {
-  }
   &:hover {
     color: ${Colors.blue};
-  }
-  a {
-    font-size: 16px;
-    text-decoration: none;
-    margin: 0;
-    padding-bottom: 10px;
-    color: black !important;
-    @media (min-width: ${breakpoints.xs}) {
-      font-size: 18px;
-    }
   }
 `;
 
@@ -122,9 +152,11 @@ const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  width: 100%;
   height: 300px;
-
   border-radius: 20px;
+  cursor: pointer; /* Show pointer on hover to indicate clickable image */
+
   @media (min-width: ${breakpoints.xs}) {
     height: 330px;
   }
@@ -140,10 +172,12 @@ const ImageContainer = styled.div`
   @media (min-width: ${breakpoints.lg}) {
     height: 400px;
   }
+
   img {
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
-    object-fit: contain;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
   }
 `;

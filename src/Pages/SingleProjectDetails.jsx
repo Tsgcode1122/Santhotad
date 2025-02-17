@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Images } from "../PagesImages";
 import styled from "styled-components";
+import SectionDiv from "../FixedComponent/SectionDiv";
+import { breakpoints } from "../FixedComponent/BreakPoints";
 
 const SingleProjectDetails = () => {
   useEffect(() => {
@@ -11,33 +13,33 @@ const SingleProjectDetails = () => {
   const image = Images.find((image) => image.id === imageId);
 
   return (
-    <Container>
-      {/* First Image - Stands Alone */}
-      <IntroImage>
-        <img src={image.singleImg0} alt={image.name} />
-        <OverlayText>
-          <h2>{image.name}</h2>
-          <DashAdd>
-            <Line />
-            <p>
-              {image.location} - {image.year}
-            </p>
-          </DashAdd>
-        </OverlayText>
-      </IntroImage>
+    <SectionDiv>
+      <Container>
+        {/* First Image - Stands Alone */}
+        <IntroImage>
+          <img src={image.singleImg0} alt={image.name} />
+          <OverlayText>
+            <h2>{image.name}</h2>
+            <DashAdd>
+              <Line />
+              <p>
+                {image.location} - {image.year}
+              </p>
+            </DashAdd>
+          </OverlayText>
+        </IntroImage>
 
-      {/* First Grid - Image Split (60/40) */}
-      <SplitGridOne>
-        <img src={image.singleImg} alt="Project Image 1" />
-        <img src={image.singleImg2} alt="Project Image 2" />
-      </SplitGridOne>
+        <SplitGridOne>
+          <img src={image.singleImg} alt="Project Image 1" />
+          <img src={image.singleImg2} alt="Project Image 2" />
+        </SplitGridOne>
 
-      {/* Second Grid - Image Split (40/60) */}
-      <SplitGridTwo>
-        <img src={image.singleImg3} alt="Project Image 3" />
-        <img src={image.singleImg4} alt="Project Image 4" />
-      </SplitGridTwo>
-    </Container>
+        <SplitGridTwo>
+          <img src={image.singleImg3} alt="Project Image 3" />
+          <img src={image.singleImg4} alt="Project Image 4" />
+        </SplitGridTwo>
+      </Container>
+    </SectionDiv>
   );
 };
 
@@ -49,7 +51,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 20px 60px;
+
   border-radius: 10px;
   img {
     max-width: 100%;
@@ -63,7 +65,6 @@ const Container = styled.div`
   }
 `;
 
-/* First Image - Stands Alone */
 const IntroImage = styled.div`
   position: relative;
   width: 100%;
@@ -79,7 +80,6 @@ const IntroImage = styled.div`
   }
 `;
 
-/* Text Overlay at Top Left */
 const OverlayText = styled.div`
   position: absolute;
   top: 20px;
@@ -115,35 +115,44 @@ const Line = styled.div`
   background: #303030;
 `;
 
-/* First Grid - 60% / 40% */
 const SplitGridOne = styled.div`
   display: grid;
   grid-template-columns: 60% 40%;
-  gap: 10px;
-  height: 400px;
-  overflow-y: hidden;
 
-  max-width: 1200px;
+  gap: 10px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 10px;
   border-radius: 10px;
   img {
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    max-width: 100%;
     object-fit: cover;
   }
 `;
 
-/* Second Grid - 40% / 60% */
 const SplitGridTwo = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
   gap: 10px;
-  height: 400px;
+  width: 100%;
+  height: auto;
   overflow: hidden;
   padding-bottom: 3rem;
 
   border-radius: 10px;
-  max-width: 1200px;
   img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     max-width: 100%;
     object-fit: cover;
