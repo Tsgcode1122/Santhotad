@@ -46,15 +46,15 @@ const HeroMoving = () => {
 export default HeroMoving;
 
 const Container = styled.div`
-  padding: 10px 0 40px 2rem;
+  padding: 10px 0 40px 0rem;
   @media (min-width: ${breakpoints.xs}) {
-    padding: 10px 0 40px 2rem;
+    padding: 10px 0 40px 0rem;
   }
   @media (min-width: ${breakpoints.sm}) {
-    padding: 10px 0 40px 2rem;
+    padding: 10px 0 40px 0rem;
   }
   @media (min-width: ${breakpoints.m}) {
-    padding: 10px 0 40px 3rem;
+    /* padding: 10px 0 40px 3rem; */
   }
   @media (min-width: ${breakpoints.md}) {
   }

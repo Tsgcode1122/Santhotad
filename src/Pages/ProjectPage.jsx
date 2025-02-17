@@ -7,7 +7,7 @@ import f22 from "../Images/sub.png";
 import f2 from "../ProjectImg/projhead.png";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import { Colors } from "../Colors/ColorComponent";
-
+import { ArrowDownOutlined } from "@ant-design/icons";
 const ProjectPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,11 +34,15 @@ const ProjectPage = () => {
                   <img src={image.img} alt={`Project ${index + 1}`} />
                 </ImageContainer>
                 <OverlayText>
-                  <h2>{image.name}</h2>
+                  <div>
+                    <h2>{image.name}</h2>
 
-                  <p>
-                    {image.location} - {image.year}
-                  </p>
+                    <p>
+                      {image.location} - {image.year}
+                    </p>
+                  </div>
+
+                  <ArrowDownOutlined />
                 </OverlayText>
               </Link>
             </ImageContain>
@@ -126,10 +130,14 @@ const OverlayText = styled.div`
   margin-top: 10px;
 
   background: rgba(255, 255, 255, 0.4);
-
+  display: flex;
+  justify-content: space-between;
   border-radius: 8px;
   color: black;
-
+  svg {
+    transform: rotate(-135deg);
+    color: black;
+  }
   h2 {
     margin: 0;
     font-size: 15px;
