@@ -246,6 +246,7 @@ const Intro = styled.p`
 const Divider = styled.div`
   height: 1px;
   width: 100%;
+  margin-top: -20px;
   background: #8d8d8d;
 `;
 const Divider2 = styled.div`
@@ -258,6 +259,8 @@ const Divider2 = styled.div`
 const One = styled.div`
   display: flex;
   gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #8c8c8c;
   img {
     min-width: 90px;
     max-width: 90px;

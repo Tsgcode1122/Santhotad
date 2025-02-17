@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { Service } from "../Service";
 import { Link } from "react-router-dom";
 
-const ServicesSmall = () => {
+const ServicepageSmall = () => {
   const [selectedService, setSelectedService] = useState(0);
 
   const toggleFaq = (index) => {
@@ -18,22 +18,7 @@ const ServicesSmall = () => {
 
   return (
     <>
-      <SectionDiv>
-        <Heading>
-          <h4>Services</h4>
-          <Line />
-          <CtaButton to="/services/architect">
-            See All
-            <ArrowDownOutlined />
-          </CtaButton>
-        </Heading>
-        <Content>
-          <h1>Build to Inspire, Design to Last</h1>
-          <p>
-            At Santhotad Concepts, we deliver tailored services that blend
-            innovation, and client satisfaction to meet your unique needs.
-          </p>
-        </Content>
+      <>
         <ContentMain>
           {Service.map((serve, index) => (
             <SectionItem key={index}>
@@ -60,17 +45,17 @@ const ServicesSmall = () => {
                   <img src={serve.img} />
                 </Image>
                 <p>{serve.description1}</p>
-                {/* <p>{serve.description2}</p> */}
+                <p>{serve.description2}</p>
               </Answer>
             </SectionItem>
           ))}
         </ContentMain>
-      </SectionDiv>
+      </>
     </>
   );
 };
 
-export default ServicesSmall;
+export default ServicepageSmall;
 const Content = styled.div`
   display: grid;
   padding: 20px 0 2rem;

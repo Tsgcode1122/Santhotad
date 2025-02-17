@@ -3,151 +3,124 @@ import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-
+import f2 from "../Images/aboutHero.jpg";
+import f22 from "../Images/sub.png";
 import { Service } from "../Service";
 import { useParams } from "react-router-dom";
-import { breakpoints } from "../FixedComponent/BreakPoints";
+
 import SectionDiv from "../FixedComponent/SectionDiv";
+import { breakpoints } from "../FixedComponent/BreakPoints";
+import ServicepageBig from "./ServicepageBig";
+import ServicepageSmall from "./ServicepageSmall";
 const ServiceFromHome = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
   const { serviceId } = useParams();
   const services = Service.find((service) => service.id === serviceId);
-  const [activeService, setActiveService] = useState(services);
 
   return (
     <>
+      <IntroHero>
+        <Content>
+          <h3>
+            Explore <br /> Our Services
+          </h3>
+          <img src={f22} />
+        </Content>
+      </IntroHero>
       <SectionDiv>
-        <ServiceChanging>
-          <LeftSide>
-            <h3>{activeService.head}</h3>
-            <ImageContainer>
-              <img src={activeService.img} alt={activeService.head} />
-            </ImageContainer>
-            <Description>
-              <p>{activeService.description1}</p>
-              <p>{activeService.description2}</p>
-            </Description>
-          </LeftSide>
-          <ServiceListContainer>
-            {Service.map((service, index) => (
-              <ServiceItem
-                key={index}
-                onMouseEnter={() => setActiveService(service)}
-              >
-                {service.head}
-                <Underline active={activeService.id === service.id} />
-              </ServiceItem>
-            ))}
-          </ServiceListContainer>
-        </ServiceChanging>
+        <HideBig>
+          <ServicepageSmall />
+        </HideBig>
+        <HideSmall>
+          <ServicepageBig />
+        </HideSmall>
       </SectionDiv>
     </>
   );
 };
 
 export default ServiceFromHome;
+const IntroHero = styled.div`
+  background: url(${f2}) center/contain;
+`;
+
+const Content = styled.div`
+  display: flex;
+  height: 260px;
+  @media (min-width: ${breakpoints.xs}) {
+    height: 360px;
+  }
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 1.5rem;
+  overflow: hidden;
+  @media (min-width: ${breakpoints.m}) {
+    padding: 0 0 0 2rem;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    padding: 0 0 0 3rem;
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    padding: 0 0 0 6rem;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    max-width: 1290px;
+
+    margin: 0 0 0 auto;
+  }
+
+  h3 {
+    font-size: 35px;
+
+    line-height: 0.9;
+    @media (min-width: ${breakpoints.xs}) {
+      line-height: 1.2;
+      font-size: 40px;
+    }
+    @media (min-width: ${breakpoints.sm}) {
+      line-height: 1.2;
+      font-size: 56px;
+    }
+    @media (min-width: ${breakpoints.md}) {
+      font-size: 60px;
+    }
+    @media (min-width: ${breakpoints.lg}) {
+      font-size: 60px;
+    }
+  }
+  img {
+    max-width: 100%;
+    height: 260px;
+    @media (min-width: ${breakpoints.xs}) {
+      max-width: 100%;
+      height: 450px;
+    }
+    @media (min-width: ${breakpoints.md}) {
+      max-width: 100%;
+      height: 550px;
+    }
+
+    image-resolution: initial;
+  }
+`;
 const Description = styled.div`
   p {
     text-align: justify;
   }
 `;
 
-const LeftSide = styled.div``;
-const ServiceChanging = styled.div`
-  display: grid;
-  width: 100%;
-  gap: 20px;
-  grid-template-columns: 70% 30%;
-  align-items: baseline;
-  justify-content: space-between;
-  @media (min-width: ${breakpoints.xs}) {
-    gap: 30px;
-  }
-  @media (min-width: ${breakpoints.m}) {
-    gap: 35px;
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    gap: 45px;
+const HideBig = styled.div`
+  @media (min-width: ${breakpoints.sm}) {
+    display: none;
   }
 `;
-
-const ServiceListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  height: 100%;
-`;
-
-const ServiceItem = styled.div`
-  font-size: 16px;
-  font-weight: 500;
-  color: ${Colors.ashBlack};
-  cursor: pointer;
-  position: relative;
-  padding-bottom: 5px;
-  transition: color 0.3s ease-in-out;
-  height: fit-content;
+const HideSmall = styled.div`
+  display: none;
   @media (min-width: ${breakpoints.xs}) {
-    font-size: 18px;
-    padding-bottom: 10px;
   }
   @media (min-width: ${breakpoints.sm}) {
-  }
-  &:hover {
-    color: ${Colors.blue};
-  }
-  a {
-    font-size: 16px;
-    text-decoration: none;
-    margin: 0;
-    padding-bottom: 10px;
-    color: black !important;
-    @media (min-width: ${breakpoints.xs}) {
-      font-size: 18px;
-    }
-  }
-`;
-
-const Underline = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  width: ${({ active }) => (active ? "60%" : "0%")};
-  height: 3px;
-  background-color: ${Colors.blue};
-  transition: width 0.3s ease-in-out;
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  height: 300px;
-
-  border-radius: 20px;
-  @media (min-width: ${breakpoints.xs}) {
-    height: 330px;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-    height: 380px;
-  }
-  @media (min-width: ${breakpoints.m}) {
-    height: 380px;
-  }
-  @media (min-width: ${breakpoints.md}) {
-    height: 380px;
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    height: 400px;
-  }
-  img {
-    max-width: 100%;
-    border-radius: 10px;
-    object-fit: contain;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    display: block;
   }
 `;

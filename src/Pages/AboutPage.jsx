@@ -143,7 +143,9 @@ const Content = styled.div`
 const About = styled.div`
   display: grid;
 
-  grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+  @media (min-width: ${breakpoints.sm}) {
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+  }
   @media (min-width: ${breakpoints.md}) {
     grid-template-columns: 1fr 1fr;
   }
