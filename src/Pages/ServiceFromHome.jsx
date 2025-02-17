@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
@@ -9,6 +9,9 @@ import { useParams } from "react-router-dom";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import SectionDiv from "../FixedComponent/SectionDiv";
 const ServiceFromHome = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const { serviceId } = useParams();
   const services = Service.find((service) => service.id === serviceId);
   const [activeService, setActiveService] = useState(services);

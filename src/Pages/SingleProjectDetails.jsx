@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Images } from "../PagesImages";
 import styled from "styled-components";
 
 const SingleProjectDetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const { imageId } = useParams();
   const image = Images.find((image) => image.id === imageId);
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
@@ -9,6 +9,9 @@ import SectionDiv from "../FixedComponent/SectionDiv";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 
 const ServicePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const [activeService, setActiveService] = useState(Service[0]);
 
   return (

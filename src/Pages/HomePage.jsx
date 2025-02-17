@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Hero from "../Component/Hero";
 import HeroMoving from "../Component/HeroMoving";
 import OurProjects from "../Component/OurProjects";
@@ -11,7 +11,11 @@ import MeetTeamSmall from "../Component/MeetTeamSmall";
 import styled from "styled-components";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import ServicesSmall from "../Component/ServicesSmall";
+
 const HomePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <>
       <Hero />

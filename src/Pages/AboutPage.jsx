@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import f2 from "../Images/aboutHero.jpg";
 import f22 from "../Images/sub.png";
@@ -12,6 +12,9 @@ import MeetTeamSmall from "../Component/MeetTeamSmall";
 import ServicesSmall from "../Component/ServicesSmall";
 import Services from "../Component/Services";
 const AboutPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Container>
       <IntroHero>
