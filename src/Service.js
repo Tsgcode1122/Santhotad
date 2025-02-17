@@ -12,9 +12,9 @@ export const Service = [
     head: "Architectural Design",
     img: f3,
     description1:
-      "At Santhotad Concept, we specialize in crafting innovative and functional architectural designs that seamlessly blend aesthetics with practicality. Whether you're developing residential, commercial, or industrial projects, our team is dedicated to transforming your vision into reality. We prioritize modern design principles, sustainability, and efficiency, ensuring that every structure is not only visually striking but also built for long-term durability and purpose.",
+      "Santhotad Concept is a leading architectural and construction firm based in Nigeria, with a growing footprint in the United States. Established in December 2011 and rebranded as Santhotad Concept Plus Nigeria Limited in 2019, we have been at the forefront ofinnovation, delivering world-class architectural design, building construction, and project management services.",
     description2:
-      "Our architectural design process is rooted in collaboration and precision. From initial concept development to detailed blueprints, we work closely with our clients to ensure every aspect aligns with their needs and aspirations. Using advanced design tools and a keen eye for detail, we create spaces that inspire and enhance functionality. At Santhotad Concept, we don’t just design buildings—we design experiences that stand the test of time.",
+      "Our diverse portfolio spans residential, commercial, and institutional projects, including schools, hospitals, and religious facilities. By leveraging cutting-edge technology, sustainable practices, and a deep understanding of client needs, we create structures that harmonize functionality, aesthetics, and innovation. At Santhotad Concept, we pride ourselves on redefining architectural excellence and setting new standards in the built environment.",
   },
   {
     id: "building",

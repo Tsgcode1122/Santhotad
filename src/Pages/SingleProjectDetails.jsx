@@ -47,7 +47,7 @@ const Container = styled.div`
   justify-content: center;
   gap: 20px;
   padding: 20px 60px;
-
+  border-radius: 10px;
   img {
     max-width: 100%;
     border-radius: 12px;
@@ -71,6 +71,7 @@ const IntroImage = styled.div`
   img {
     width: 100%;
     height: 500px;
+    border-radius: 10px;
     object-fit: cover;
   }
 `;
@@ -118,10 +119,12 @@ const SplitGridOne = styled.div`
   gap: 10px;
   height: 400px;
   overflow-y: hidden;
-  max-width: 1200px;
 
+  max-width: 1200px;
+  border-radius: 10px;
   img {
     max-width: 100%;
+    border-radius: 10px;
     object-fit: cover;
   }
 `;
@@ -134,8 +137,11 @@ const SplitGridTwo = styled.div`
   height: 400px;
   overflow: hidden;
   padding-bottom: 3rem;
+
+  border-radius: 10px;
   max-width: 1200px;
   img {
+    border-radius: 10px;
     max-width: 100%;
     object-fit: cover;
   }

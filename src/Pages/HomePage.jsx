@@ -10,6 +10,7 @@ import Blogpost from "../Component/Blogpost";
 import MeetTeamSmall from "../Component/MeetTeamSmall";
 import styled from "styled-components";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+import ServicesSmall from "../Component/ServicesSmall";
 const HomePage = () => {
   return (
     <>
@@ -17,14 +18,20 @@ const HomePage = () => {
       <HeroMoving />
       <OurProjects />
       <AboutUs />
-      <MeetTeam />
-      {/* <HideBig>
+      {/* <MeetTeam /> */}
+      <HideBig>
         <MeetTeamSmall />
       </HideBig>
       <HideSmall>
         <MeetTeam />
-      </HideSmall> */}
-      <Services />
+      </HideSmall>
+      <HideBig>
+        <ServicesSmall />
+      </HideBig>
+      <HideSmall>
+        <Services />
+      </HideSmall>
+
       <Blogpost />
       <Testimonial />
     </>
@@ -33,15 +40,15 @@ const HomePage = () => {
 
 export default HomePage;
 const HideBig = styled.div`
-  @media (min-width: ${breakpoints.xs}) {
+  @media (min-width: ${breakpoints.m}) {
     display: none;
   }
 `;
 const HideSmall = styled.div`
   display: none;
   @media (min-width: ${breakpoints.xs}) {
-    display: block;
   }
-  @media (min-width: ${breakpoints.sm}) {
+  @media (min-width: ${breakpoints.m}) {
+    display: block;
   }
 `;

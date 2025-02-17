@@ -4,9 +4,13 @@ import f2 from "../Images/aboutHero.jpg";
 import f22 from "../Images/sub.png";
 import { Colors } from "../Colors/ColorComponent";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+
 import BlueAbout from "../Component/BlueAbout";
 import MeetTeam from "../Component/MeetTeam";
 import SectionDiv from "../FixedComponent/SectionDiv";
+import MeetTeamSmall from "../Component/MeetTeamSmall";
+import ServicesSmall from "../Component/ServicesSmall";
+import Services from "../Component/Services";
 const AboutPage = () => {
   return (
     <Container>
@@ -39,13 +43,36 @@ const AboutPage = () => {
         </About>
       </SectionDiv>
       <BlueAbout />
-      <MeetTeam />
+      <HideBig>
+        <MeetTeamSmall />
+      </HideBig>
+      <HideSmall>
+        <MeetTeam />
+      </HideSmall>
+      <HideBig>
+        <ServicesSmall />
+      </HideBig>
+      <HideSmall>
+        <Services />
+      </HideSmall>
     </Container>
   );
 };
 
 export default AboutPage;
-
+const HideBig = styled.div`
+  @media (min-width: ${breakpoints.m}) {
+    display: none;
+  }
+`;
+const HideSmall = styled.div`
+  display: none;
+  @media (min-width: ${breakpoints.xs}) {
+  }
+  @media (min-width: ${breakpoints.m}) {
+    display: block;
+  }
+`;
 const Container = styled.div``;
 const IntroHero = styled.div`
   background: url(${f2}) center/contain;

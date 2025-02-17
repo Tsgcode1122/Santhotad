@@ -61,10 +61,25 @@ const Blogpost = () => {
                   <Date>{posts[0]?.formattedDate}</Date>
                 </Content>
               </MainFeature>
+
+              <MainFeature2>
+                <ImageContainer>
+                  <img src={posts[1]?.imagesUrl} alt={posts[1]?.imagesAlt} />
+                </ImageContainer>
+                <Content>
+                  <span>
+                    <Topic>
+                      {posts[1]?.title}: {posts[1]?.metaDescription}
+                    </Topic>
+                    <Author>- {posts[1]?.author}</Author>
+                  </span>
+                  <Date>{posts[1]?.formattedDate}</Date>
+                </Content>
+              </MainFeature2>
               <SideContent>
                 <Intro>More News Updates</Intro>
                 <Divider />
-                {posts.slice(1, 4).map((post, index) => (
+                {posts.slice(2, 5).map((post, index) => (
                   <React.Fragment key={index}>
                     <One>
                       <img src={post.imagesUrl} alt={post.imagesAlt} />
@@ -138,9 +153,22 @@ const Major = styled.div`
 const Container = styled.div`
   display: grid;
   gap: 20px;
-  grid-template-columns: 70% 30%;
-  align-items: center;
-  justify-content: center;
+  @media (min-width: ${breakpoints.xs}) {
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 70% 30%;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: ${breakpoints.m}) {
+  }
+  @media (min-width: ${breakpoints.md}) {
+  }
+
+  @media (min-width: ${breakpoints.md}) {
+  }
 `;
 
 const LoadingContainer = styled.div`
@@ -170,21 +198,43 @@ const Spinner = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  height: 200px;
+  width: 100%;
+  @media (min-width: ${breakpoints.sm}) {
+    height: 280px;
+  }
+
   img {
     max-width: 100%;
-    height: 280px;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
   }
 `;
 
 const MainFeature = styled.div`
-  background: ${Colors.white};
   border-radius: 10px;
   display: grid;
-  gap: 20px;
-  padding: 20px;
-  grid-template-columns: 45% 55%;
+  gap: 10px;
+
+  overflow: hidden;
+  grid-template-columns: 57% 43%;
+  @media (min-width: ${breakpoints.sm}) {
+    background: ${Colors.white};
+    padding: 20px;
+    grid-template-columns: 45% 55%;
+  }
+`;
+const MainFeature2 = styled.div`
+  border-radius: 10px;
+  display: grid;
+  gap: 10px;
+
+  overflow: hidden;
+  grid-template-columns: 57% 43%;
+  @media (min-width: ${breakpoints.sm}) {
+    display: none;
+  }
 `;
 
 const Content = styled.div`
@@ -195,10 +245,13 @@ const Content = styled.div`
 
 const Topic = styled.h3`
   color: ${Colors.blue};
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
   font-weight: 500;
   margin: 0;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 18px;
+  }
 `;
 
 const Author = styled.p`
@@ -214,12 +267,19 @@ const SideContent = styled.div`
   overflow-y: auto;
   flex-direction: column;
   gap: 10px;
+  max-width: 80%;
+  @media (min-width: ${breakpoints.sm}) {
+    max-width: 100%;
+  }
 `;
 
 const Intro = styled.p`
   font-size: 12px;
   margin: 0;
   padding: 0;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 14px;
+  }
 `;
 
 const Divider = styled.div`
@@ -243,10 +303,13 @@ const One = styled.div`
 const AuthorDate = styled.p`
   color: black;
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   padding: 0;
   span {
     color: #8d8d8d !important;
+  }
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 14px;
   }
 `;
 
@@ -259,7 +322,11 @@ const TopicMini = styled.p`
   text-overflow: ellipsis;
   line-height: 1.2;
   padding: 8px 0 2px 0;
+  font-size: 12px;
   flex-wrap: nowrap;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 14px;
+  }
 `;
 
 const OneSide = styled.div`
