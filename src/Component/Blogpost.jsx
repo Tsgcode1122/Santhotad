@@ -14,7 +14,7 @@ const Blogpost = () => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5009/api/blogs/getBlogs",
+          "https://santhotad.onrender.com/api/blogs/getBlogs",
         );
         const data = await response.json();
         setPosts(data);

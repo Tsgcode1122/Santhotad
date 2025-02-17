@@ -15,7 +15,7 @@ const NewsletterForm = () => {
       const values = await form.validateFields();
       setLoading(true);
 
-      await axios.post("http://localhost:5009/api/email/subscribe", {
+      await axios.post("https://santhotad.onrender.com/api/email/subscribe", {
         email: values.email,
       });
       message.success("Subscribed successfully!");

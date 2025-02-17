@@ -14,7 +14,7 @@ const BlogMainSmall = () => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5009/api/blogs/getBlogs",
+          "https://santhotad.onrender.com/api/blogs/getBlogs",
         );
         const data = await response.json();
         setPosts(data);
@@ -52,21 +52,23 @@ const BlogMainSmall = () => {
           <Container>
             <Main>
               {posts.slice(0, 2).map((post, index) => (
-                <MainFeature key={index}>
-                  <ImageContainer>
-                    <img src={post.imagesUrl} alt={post.imagesAlt} />
-                  </ImageContainer>
-                  <Content>
-                    <Topic>
-                      {post.title}: {post.metaDescription}
-                    </Topic>
-                    <span>
-                      <Author>-{post.author}</Author>
-                      <Date>{post.formattedDate}</Date>
-                    </span>
-                  </Content>
+                <React.Fragment key={index}>
+                  <MainFeature>
+                    <ImageContainer>
+                      <img src={post.imagesUrl} alt={post.imagesAlt} />
+                    </ImageContainer>
+                    <Content>
+                      <Topic>
+                        {post.title}: {post.metaDescription}
+                      </Topic>
+                      <span>
+                        <Author>-{post.author}</Author>
+                        <Date>{post.formattedDate}</Date>
+                      </span>
+                    </Content>
+                  </MainFeature>
                   <>{index < 1 && <Divider />}</>
-                </MainFeature>
+                </React.Fragment>
               ))}
             </Main>
 
@@ -87,6 +89,12 @@ const BlogMainSmall = () => {
                       </TopicMini>
                     </OneSide>
                   </One>
+                  <Divider2 />
+                  {/* {index !== post.length - 1 && (
+                    <p>
+                   
+                    </p>
+                  )} */}
                 </React.Fragment>
               ))}
             </SideContent>
@@ -153,6 +161,7 @@ const ImageContainer = styled.div`
     border-radius: 10px;
   }
 `;
+
 const MainFeature = styled.div`
   border-radius: 10px;
   display: grid;
@@ -170,7 +179,6 @@ const Content = styled.div`
   justify-content: space-between;
   span {
     display: flex;
-
     justify-content: space-between;
     @media (min-width: 600px) {
       flex-direction: column;
@@ -181,10 +189,8 @@ const Topic = styled.h3`
   color: black;
   font-size: 16px;
   line-height: 1.4;
-
   font-weight: 500;
   margin: 0;
-
   @media (min-width: ${breakpoints.xs}) {
     max-width: 330px;
     font-size: 19px;
@@ -243,14 +249,14 @@ const Divider = styled.div`
   background: #8d8d8d;
 `;
 const Divider2 = styled.div`
-  height: 10px;
+  height: 1px;
   width: 100%;
-  background: #581414 !important;
+
+  background: #8c8c8c !important;
 `;
 
 const One = styled.div`
   display: flex;
-
   gap: 10px;
   img {
     min-width: 90px;

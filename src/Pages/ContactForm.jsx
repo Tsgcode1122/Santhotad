@@ -19,7 +19,7 @@ const ContactForm = () => {
     try {
       // Send form data to backend
       await axios.post(
-        "http://localhost:5009/api/email/formSubmission",
+        "https://santhotad.onrender.com/api/email/formSubmission",
         values,
       );
 

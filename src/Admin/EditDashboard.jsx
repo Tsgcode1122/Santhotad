@@ -49,7 +49,7 @@ const EditDashboard = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5009/api/blogs/${id}`,
+          `https://santhotad.onrender.com/api/blogs/${id}`,
         );
         const data = response.data;
         console.log(data);
@@ -77,7 +77,10 @@ const EditDashboard = () => {
 
     try {
       const updatedData = { ...values, description: quillText, imagesUrl };
-      await axios.put(`http://localhost:5009/api/blogs/${id}`, updatedData);
+      await axios.put(
+        `https://santhotad.onrender.com/api/blogs/${id}`,
+        updatedData,
+      );
 
       message.success("Post updated successfully!");
 
