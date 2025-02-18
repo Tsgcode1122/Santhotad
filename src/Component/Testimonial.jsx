@@ -172,7 +172,7 @@ const Slider = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  width: 350px;
+  width: 300px;
   @media screen and (max-width: 320px) {
     width: 220px;
   }
@@ -205,7 +205,7 @@ const ImageContainer = styled.div`
 
 const Writeup = styled.div`
   flex: 1;
-
+  margin-left: -120px;
   text-align: left;
   background: white;
 
