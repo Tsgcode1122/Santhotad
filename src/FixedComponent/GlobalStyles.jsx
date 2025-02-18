@@ -13,7 +13,7 @@ h1 {
     font-size: 1.8rem;
     }
     @media (min-width: 400px) and (max-width: 499px) {
-        font-size: 2.1rem;
+        font-size: 2rem;
     }
   }
   
@@ -27,7 +27,7 @@ h1 {
        font-size: 24px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-         font-size: 26px;
+         font-size: 24px;
   }
    @media (min-width: ${breakpoints.xs}) {
       font-size: 40px;
@@ -60,7 +60,7 @@ h1 {
      }
      @media (min-width: 400px) and (max-width: 499px) {
   
-       font-size: 20px;
+       font-size: 18px;
      }
   }
 
@@ -96,7 +96,7 @@ h1 {
      }
      @media (min-width: 400px) and (max-width: 499px) {
   
-       font-size: 20px;
+       font-size: 18px;
      }
      @media (min-width: ${breakpoints.md}) {
        font-size: 25px;
