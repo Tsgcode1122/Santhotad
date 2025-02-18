@@ -23,6 +23,7 @@ import AllPost from "./Admin/AllPost";
 import AnimatedCursor from "react-animated-cursor";
 import ProjectPage from "./Pages/ProjectPage";
 import GlobalStyles from "./FixedComponent/GlobalStyles";
+import PageUnderConstruction from "./Pages/PageUnderConstruction";
 
 const StyledResult = styled(Result)`
   .ant-result-title {
@@ -88,9 +89,10 @@ const router = createBrowserRouter(routes);
 
 const App = () => (
   <>
-    <GlobalStyles />
-    {/* <AnimatedCursor /> */}
-    <RouterProvider router={router} />
+    <PageUnderConstruction />
+    {/* <GlobalStyles />
+    
+    <RouterProvider router={router} /> */}
   </>
 );
 
