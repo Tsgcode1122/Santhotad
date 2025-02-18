@@ -28,7 +28,7 @@ const ServicesSmall = () => {
           </CtaButton>
         </Heading>
         <Content>
-          <h1>Build to Inspire, Design to Last</h1>
+          <h2>Build to Inspire, Design to Last</h2>
           <p>
             At Santhotad Concepts, we deliver tailored services that blend
             innovation, and client satisfaction to meet your unique needs.
@@ -44,7 +44,7 @@ const ServicesSmall = () => {
                 <IconWrapper>
                   {selectedService === index ? null : <ArrowDownOutlined />}
                 </IconWrapper>
-                {serve.head}
+                <h5>{serve.head}</h5>
               </Question>
               <Answer
                 initial={{ height: 0, opacity: 0 }}
@@ -84,14 +84,11 @@ const Content = styled.div`
   @media (min-width: ${breakpoints.m}) {
     grid-template-columns: 1fr 1fr;
   }
-  h1 {
-    font-size: 30px;
-
+  h2 {
     margin: 0;
     line-height: 0.9;
     padding: 0;
     @media (min-width: ${breakpoints.xs}) {
-      font-size: 40px;
       max-width: 570px;
     }
     @media (min-width: ${breakpoints.m}) {

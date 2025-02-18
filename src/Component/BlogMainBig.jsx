@@ -31,7 +31,7 @@ const BlogMainBig = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const triggerPoint = window.innerHeight * 0.2; // 20% from top
+      const triggerPoint = window.innerHeight * 0.2;
 
       setIsSticky(scrollY > triggerPoint);
     };

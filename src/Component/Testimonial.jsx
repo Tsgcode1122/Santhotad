@@ -74,25 +74,25 @@ const Testimonial = () => {
           <ArrowButton onClick={prevTestimonial}>
             <IoIosArrowRoundBack />
           </ArrowButton>
+          <SlideMain>
+            <ImageContainer>
+              <img src={img} alt={name} />
+            </ImageContainer>
 
-          <ImageContainer>
-            <img src={img} alt={name} />
-          </ImageContainer>
-
-          <Writeup>
-            <Heading>{heading}</Heading>
-            <Content>{content}</Content>
-            <RecommenderName>
-              <div>
-                {name}, <Who>{who}</Who>
-              </div>
-              <Rating>
-                {" "}
-                <StarFilled /> <Rate>{rating}</Rate>
-              </Rating>
-            </RecommenderName>
-          </Writeup>
-
+            <Writeup>
+              <Heading>{heading}</Heading>
+              <Content>{content}</Content>
+              <RecommenderName>
+                <div>
+                  {name}, <Who>{who}</Who>
+                </div>
+                <Rating>
+                  {" "}
+                  <StarFilled /> <Rate>{rating}</Rate>
+                </Rating>
+              </RecommenderName>
+            </Writeup>
+          </SlideMain>
           <ArrowButton onClick={nextTestimonial}>
             <IoIosArrowRoundForward />
           </ArrowButton>
@@ -135,6 +135,28 @@ const Intro = styled.p`
   }
 `;
 
+const SlideMain = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  position: relative;
+  @media screen and (max-width: 320px) {
+    flex-direction: column;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    flex-direction: column;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    flex-direction: column;
+  }
+  @media (min-width: ${breakpoints.xs}) {
+    gap: 10px;
+    padding: 10px 1rem;
+  }
+`;
+
 const Slider = styled.div`
   display: flex;
   align-items: center;
@@ -143,7 +165,6 @@ const Slider = styled.div`
   padding: 10px 7px;
   position: relative;
 
-  /* margin: auto; */
   @media (min-width: ${breakpoints.xs}) {
     gap: 10px;
     padding: 10px 1rem;
@@ -151,6 +172,16 @@ const Slider = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  width: 350px;
+  @media screen and (max-width: 320px) {
+    width: 220px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    width: 260px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    width: 280px;
+  }
   @media (min-width: ${breakpoints.xs}) {
     width: 350px;
   }
@@ -174,12 +205,27 @@ const ImageContainer = styled.div`
 
 const Writeup = styled.div`
   flex: 1;
-  margin-left: -130px;
+
   text-align: left;
   background: white;
 
   padding: 5px 10px;
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+  @media screen and (max-width: 320px) {
+    width: 170px;
+    margin-top: -120px;
+    border-radius: 3px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    width: 200px;
+    border-radius: 5px;
+    margin-top: -180px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    width: 230px;
+    border-radius: 5px;
+    margin-top: -120px;
+  }
   @media (min-width: ${breakpoints.xs}) {
     margin-left: -120px;
   }

@@ -57,12 +57,25 @@ const GridLine = styled.div`
 
   max-width: 800px;
 
-  padding: 80px 60px;
   gap: 20px;
   margin: 0 auto;
+  padding: 80px 60px;
+  @media screen and (max-width: 320px) {
+    padding: 80px 0.8rem;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    padding: 80px 1rem;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    padding: 80px 1.2rem;
+  }
 
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 80px 60px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
   @media (min-width: ${breakpoints.m}) {
     grid-template-columns: 1fr 1fr;
     gap: 100px;

@@ -22,30 +22,7 @@ import ResetPasswordPage from "./Admin/ResetPasswordPage";
 import AllPost from "./Admin/AllPost";
 import AnimatedCursor from "react-animated-cursor";
 import ProjectPage from "./Pages/ProjectPage";
-const GlobalStyle = createGlobalStyle`
-
-  html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-   /* scroll-behavior: smooth; s */
-
-font-family: 'Inter', sans-serif; 
-  font-optical-sizing: auto;
-
-
-    min-height: 100%;
-  }
-
-  body.modal-open {
-    overflow: hidden;
-  }
-
-  #root {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-`;
+import GlobalStyles from "./FixedComponent/GlobalStyles";
 
 const StyledResult = styled(Result)`
   .ant-result-title {
@@ -111,7 +88,7 @@ const router = createBrowserRouter(routes);
 
 const App = () => (
   <>
-    <GlobalStyle />
+    <GlobalStyles />
     {/* <AnimatedCursor /> */}
     <RouterProvider router={router} />
   </>

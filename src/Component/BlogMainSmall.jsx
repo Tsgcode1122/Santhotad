@@ -148,8 +148,8 @@ const Container = styled.div`
   display: grid;
 `;
 const ImageContainer = styled.div`
-  height: 300px;
   overflow: hidden;
+  height: 100%;
   border-radius: 10px;
   @media (min-width: 600px) {
     height: 100%;
@@ -165,11 +165,19 @@ const ImageContainer = styled.div`
 const MainFeature = styled.div`
   border-radius: 10px;
   display: grid;
-
   gap: 10px;
-  @media (min-width: 600px) {
-    gap: 20px;
-    grid-template-columns: 50% 50%;
+
+  overflow: hidden;
+
+  @media (min-width: ${breakpoints.sm}) {
+    background: ${Colors.white};
+    padding: 20px;
+    grid-template-columns: 45% 55%;
+  }
+  span {
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
   }
 `;
 
@@ -185,9 +193,9 @@ const Content = styled.div`
     }
   }
 `;
-const Topic = styled.h3`
+const Topic = styled.h5`
   color: black;
-  font-size: 16px;
+
   line-height: 1.4;
   font-weight: 500;
   margin: 0;
@@ -214,7 +222,16 @@ const SideContent = styled.div`
   padding: 10px;
   max-height: 60vh;
   display: flex;
-  width: 80%;
+  max-width: 80%;
+  @media screen and (max-width: 320px) {
+    max-width: 100%;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    max-width: 100%;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    max-width: 100%;
+  }
   flex-direction: column;
   gap: 16px;
   &::-webkit-scrollbar {
@@ -236,6 +253,15 @@ const SideContent = styled.div`
   &::-webkit-scrollbar-track {
     background: transparent;
     margin-left: 10px !important;
+  }
+  @media screen and (max-width: 320px) {
+    max-width: 100%;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    max-width: 100%;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    max-width: 100%;
   }
 `;
 const Intro = styled.p`

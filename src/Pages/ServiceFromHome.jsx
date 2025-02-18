@@ -72,8 +72,6 @@ const Content = styled.div`
   }
 
   h3 {
-    font-size: 35px;
-
     line-height: 0.9;
     @media (min-width: ${breakpoints.xs}) {
       line-height: 1.2;
@@ -103,11 +101,6 @@ const Content = styled.div`
     }
 
     image-resolution: initial;
-  }
-`;
-const Description = styled.div`
-  p {
-    text-align: justify;
   }
 `;
 

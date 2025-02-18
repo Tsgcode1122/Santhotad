@@ -19,7 +19,7 @@ const AboutUs = () => {
           </CtaButton>
         </Heading>
         <Content>
-          <h1>We believe in excellence </h1>
+          <h2>We believe in excellence </h2>
           <p>
             We are dedicated to designing spaces that inspire, connect, and
             stand the test of time. With a focus on innovation and excellence,
@@ -69,28 +69,24 @@ const Content = styled.div`
   display: grid;
 
   gap: 20px;
-  flex: flex-start;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  @media (min-width: ${breakpoints.xs}) {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+
   justify-content: space-between;
   /* align-items: center; */
   @media (min-width: ${breakpoints.m}) {
     grid-template-columns: 1fr 1fr;
     gap: 100px;
   }
-  h1 {
-    font-size: 35px;
-
+  h2 {
     margin: 0;
     line-height: 0.9;
     padding: 0;
     @media (min-width: ${breakpoints.xs}) {
-      font-size: 40px;
-      line-height: 1.2;
       max-width: 570px;
     }
     @media (min-width: ${breakpoints.m}) {
-      line-height: 1.2;
-      font-size: 45px;
       max-width: 380px;
     }
   }

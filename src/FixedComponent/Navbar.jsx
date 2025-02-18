@@ -102,6 +102,7 @@ const Navbar = () => {
 };
 
 const Contact = styled.div`
+  border: 1.8px solid #0316cd;
   padding: 7px 12px;
   a {
     display: flex;

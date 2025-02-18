@@ -37,14 +37,14 @@ const NewsletterForm = () => {
         <Content>
           <GroupOne>
             <Title>Subscribe to our Newsletter</Title>
-            <p>
+            <small>
               Subscribe for Updates: Stay informed about the latest investor
               updates, financial results, and announcements by subscribing to
               our newsletter
-            </p>
+            </small>
           </GroupOne>
           <GroupTwo>
-            <Form form={form}>
+            <Form form={form} noStyle>
               <InputWrapper noStyle>
                 <Form.Item
                   name="email"
@@ -94,7 +94,7 @@ const Content = styled.div`
 `;
 
 const GroupOne = styled.div`
-  p {
+  small {
     color: #f9f9f9;
     margin: 0;
     padding-top: 10px;
@@ -123,6 +123,15 @@ const InputWrapper = styled.div`
     left: 10px;
     color: red;
     font-size: 12px;
+  }
+  @media screen and (max-width: 320px) {
+    max-width: 90%;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    max-width: 90%;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    max-width: 90%;
   }
 `;
 

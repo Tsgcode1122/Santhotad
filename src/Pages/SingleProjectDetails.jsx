@@ -51,7 +51,15 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-
+  @media screen and (max-width: 320px) {
+    gap: 7px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    gap: 8px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    gap: 10px;
+  }
   border-radius: 10px;
   img {
     max-width: 100%;
@@ -77,6 +85,15 @@ const IntroImage = styled.div`
     height: 500px;
     border-radius: 10px;
     object-fit: cover;
+    @media screen and (max-width: 320px) {
+      height: 300px;
+    }
+    @media (min-width: 321px) and (max-width: 399px) {
+      height: 300px;
+    }
+    @media (min-width: 400px) and (max-width: 499px) {
+      height: 300px;
+    }
   }
 `;
 

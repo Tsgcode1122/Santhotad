@@ -91,6 +91,15 @@ const Content = styled.div`
   justify-content: space-between;
   padding: 0 0 0 1.5rem;
   overflow: hidden;
+  @media screen and (max-width: 320px) {
+    padding: 0 0 0 0.8rem;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    padding: 0 0 0 1rem;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    padding: 0 0 0 1.2rem;
+  }
   @media (min-width: ${breakpoints.m}) {
     padding: 0 0 0 2rem;
   }

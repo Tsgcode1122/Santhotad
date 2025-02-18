@@ -8,9 +8,11 @@ import BlogMainSmall from "../Component/BlogMainSmall";
 import BlogMainBig from "../Component/BlogMainBig";
 
 const BlogPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
-  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -28,18 +30,6 @@ const BlogPage = () => {
     };
 
     fetchPosts();
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const triggerPoint = window.innerHeight * 0.2; // 20% from top
-
-      setIsSticky(scrollY > triggerPoint);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -74,6 +64,7 @@ const Line = styled.div`
 const Head = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 1rem;
   @media (min-width: ${breakpoints.xs}) {
     flex-direction: row;
     align-items: center;

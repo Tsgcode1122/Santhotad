@@ -58,9 +58,10 @@ const Line = styled.div`
 `;
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   align-items: center;
+
   @media (min-width: ${breakpoints.xs}) {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   }

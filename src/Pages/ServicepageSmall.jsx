@@ -29,7 +29,7 @@ const ServicepageSmall = () => {
                 <IconWrapper>
                   {selectedService === index ? null : <ArrowDownOutlined />}
                 </IconWrapper>
-                {serve.head}
+                <h4>{serve.head}</h4>
               </Question>
               <Answer
                 initial={{ height: 0, opacity: 0 }}
@@ -102,7 +102,9 @@ const Question = styled.div`
   font-weight: 300;
   position: relative;
   margin-left: ${(props) => (props.active ? "-5px" : "0")};
-
+  h4 {
+    margin: 0;
+  }
   &::after {
     content: "";
     display: ${(props) => (props.active ? "block" : "none")};

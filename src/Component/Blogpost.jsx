@@ -52,13 +52,14 @@ const Blogpost = () => {
                   <img src={posts[0]?.imagesUrl} alt={posts[0]?.imagesAlt} />
                 </ImageContainer>
                 <Content>
+                  <Topic>
+                    {posts[0]?.title}: {posts[0]?.metaDescription}
+                  </Topic>
                   <span>
-                    <Topic>
-                      {posts[0]?.title}: {posts[0]?.metaDescription}
-                    </Topic>
                     <Author>- {posts[0]?.author}</Author>
+
+                    <Date>{posts[0]?.formattedDate}</Date>
                   </span>
-                  <Date>{posts[0]?.formattedDate}</Date>
                 </Content>
               </MainFeature>
 
@@ -67,13 +68,14 @@ const Blogpost = () => {
                   <img src={posts[1]?.imagesUrl} alt={posts[1]?.imagesAlt} />
                 </ImageContainer>
                 <Content>
+                  <Topic>
+                    {posts[1]?.title}: {posts[1]?.metaDescription}
+                  </Topic>
                   <span>
-                    <Topic>
-                      {posts[1]?.title}: {posts[1]?.metaDescription}
-                    </Topic>
                     <Author>- {posts[1]?.author}</Author>
+
+                    <Date>{posts[1]?.formattedDate}</Date>
                   </span>
-                  <Date>{posts[1]?.formattedDate}</Date>
                 </Content>
               </MainFeature2>
               <SideContent>
@@ -199,14 +201,14 @@ const Spinner = styled.div`
 
 const ImageContainer = styled.div`
   height: 200px;
-  width: 100%;
-  @media (min-width: ${breakpoints.sm}) {
-    height: 280px;
+  overflow: hidden;
+  border-radius: 10px;
+  @media (min-width: 600px) {
+    height: 100%;
   }
-
   img {
     max-width: 100%;
-    height: 100%;
+
     object-fit: cover;
     border-radius: 10px;
   }
@@ -218,11 +220,16 @@ const MainFeature = styled.div`
   gap: 10px;
 
   overflow: hidden;
-  grid-template-columns: 57% 43%;
+
   @media (min-width: ${breakpoints.sm}) {
     background: ${Colors.white};
     padding: 20px;
     grid-template-columns: 45% 55%;
+  }
+  span {
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
   }
 `;
 const MainFeature2 = styled.div`
@@ -231,7 +238,11 @@ const MainFeature2 = styled.div`
   gap: 10px;
 
   overflow: hidden;
-  grid-template-columns: 57% 43%;
+  span {
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
+  }
   @media (min-width: ${breakpoints.sm}) {
     display: none;
   }
@@ -255,10 +266,12 @@ const Topic = styled.h3`
 `;
 
 const Author = styled.p`
+  font-size: 16px;
   color: ${Colors.blue};
 `;
 
 const Date = styled.p`
+  font-size: 16px;
   color: ${Colors.ashBlack};
 `;
 
@@ -267,6 +280,15 @@ const SideContent = styled.div`
   overflow-y: auto;
   flex-direction: column;
   gap: 10px;
+  @media screen and (max-width: 320px) {
+    max-width: 100%;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    max-width: 100%;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    max-width: 100%;
+  }
   max-width: 80%;
   @media (min-width: ${breakpoints.sm}) {
     max-width: 100%;

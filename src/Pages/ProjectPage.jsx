@@ -23,7 +23,7 @@ const ProjectPage = () => {
       </IntroHero>
       <ServiceDiv>
         <Head>
-          <h4>Click Project to review more...</h4>
+          <h4>Click Project to view more...</h4>
           <Line />
         </Head>
         <ImageGrid>

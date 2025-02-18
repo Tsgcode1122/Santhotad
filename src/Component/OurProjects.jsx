@@ -87,7 +87,15 @@ const OurProjects = () => {
 export default OurProjects;
 
 const ProjectDiv = styled.div`
-  /* margin: 0 auto; */
+  @media screen and (max-width: 320px) {
+    padding: 0.5rem 0.8rem;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    padding: 0.5rem 1rem;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    padding: 0.5rem 1.2rem;
+  }
   padding: 0.5rem 1.5rem;
   @media (min-width: ${breakpoints.xs}) {
   }
@@ -99,7 +107,6 @@ const ProjectDiv = styled.div`
   }
   @media (min-width: ${breakpoints.md}) {
     padding: 0.5rem 3rem;
-    /* max-width: 1100px; */
   }
 
   @media (min-width: ${breakpoints.lg}) {
@@ -131,12 +138,8 @@ const Head = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 28px;
   flex-grow: 1;
   font-weight: bold;
-  @media (min-width: ${breakpoints.xs}) {
-    font-size: 34px;
-  }
 `;
 
 const ControlButton = styled.div`
@@ -206,6 +209,15 @@ const ImageContain = styled.div`
 
     height: 300px;
     transition: transform 0.3s ease-in-out;
+    @media screen and (max-width: 320px) {
+      height: 200px;
+    }
+    @media (min-width: 321px) and (max-width: 399px) {
+      height: 220px;
+    }
+    @media (min-width: 400px) and (max-width: 499px) {
+      height: 240px;
+    }
     @media (min-width: ${breakpoints.xs}) {
       height: 450px;
     }
