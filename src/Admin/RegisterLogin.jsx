@@ -118,4 +118,18 @@ const Content = styled.div`
   border: 1px solid #0316cd;
   background: white;
   border-radius: 8px;
+  @media screen and (max-width: 320px) {
+    max-width: 260px;
+    margin: 0px 0.8rem !important;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    max-width: 280px;
+    padding: 40px 20px;
+    margin: 0px 1rem !important;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    max-width: 360px;
+    padding: 40px 20px;
+    margin: 0px 1.2rem !important;
+  }
 `;

@@ -14,13 +14,13 @@ const RegisterPageContainer = styled.div`
   background: white;
 
   @media screen and (max-width: 320px) {
-    width: 270px;
+    width: 240px;
   }
   @media (min-width: 321px) and (max-width: 399px) {
-    width: 300px;
+    width: 270px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-    width: 380px;
+    width: 300px;
   }
 `;
 const StyledModal = styled(Modal)`
