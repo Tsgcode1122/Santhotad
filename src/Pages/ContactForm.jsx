@@ -8,9 +8,9 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 
 import SectionDiv from "../FixedComponent/SectionDiv";
 const ContactForm = () => {
-   useEffect(() => {
-     window.scrollTo(0, 0);
-   });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   useEffect(() => {
@@ -181,7 +181,6 @@ const Head = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 28px;
   @media (min-width: ${breakpoints.xs}) {
     font-size: 48px;
   }
@@ -190,7 +189,6 @@ const Title = styled.h2`
 `;
 
 const Intro = styled.p`
-  font-size: 18px;
   margin-bottom: 20px;
   font-weight: 200;
 `;
@@ -226,6 +224,15 @@ const TwoGroup = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  @media screen and (max-width: 320px) {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    grid-template-columns: 1fr;
+  }
   @media (min-width: ${breakpoints.md}) {
     grid-template-columns: 1fr 1fr;
     gap: 50px;
