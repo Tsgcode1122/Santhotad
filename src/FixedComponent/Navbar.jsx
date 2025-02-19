@@ -166,6 +166,10 @@ const BigCon = styled.div`
     max-width: 1150px;
     margin: 0 auto;
   }
+  @media (min-width: ${breakpoints.xl}) {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
 `;
 const LinkBig = styled.div`
   display: flex;
