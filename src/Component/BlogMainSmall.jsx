@@ -139,8 +139,17 @@ const Major = styled.div`
 `;
 const Main = styled.div`
   display: flex;
-  gap: 40px;
+  gap: 30px;
   flex-direction: column;
+  @media screen and (max-width: 320px) {
+    gap: 20px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    gap: 20px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    gap: 20px;
+  }
 `;
 const Container = styled.div`
   justify-content: center;
@@ -196,6 +205,15 @@ const Topic = styled.h5`
   line-height: 1.4;
   font-weight: 500;
   margin: 0;
+  @media screen and (max-width: 320px) {
+    font-size: 13px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    font-size: 14px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    font-size: 15px;
+  }
 `;
 
 const Author = styled.p`
@@ -280,6 +298,18 @@ const One = styled.div`
   gap: 10px;
   padding-bottom: 20px;
   border-bottom: 1px solid #8c8c8c;
+  @media screen and (max-width: 320px) {
+    gap: 6px;
+    padding-bottom: 10px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    padding-bottom: 10px;
+    gap: 6px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    gap: 6px;
+    padding-bottom: 10px;
+  }
   img {
     min-width: 90px;
     max-width: 90px;

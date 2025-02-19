@@ -180,7 +180,7 @@ const ImageContainer = styled.div`
     width: 260px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-    width: 280px;
+    width: 260px;
   }
   @media (min-width: ${breakpoints.xs}) {
     width: 350px;
@@ -214,16 +214,19 @@ const Writeup = styled.div`
   @media screen and (max-width: 320px) {
     width: 170px;
     margin-top: -120px;
+    margin-left: 0;
     border-radius: 3px;
   }
   @media (min-width: 321px) and (max-width: 399px) {
     width: 200px;
     border-radius: 5px;
+    margin-left: 0;
     margin-top: -180px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
     width: 230px;
     border-radius: 5px;
+    margin-left: 0;
     margin-top: -120px;
   }
   @media (min-width: ${breakpoints.xs}) {

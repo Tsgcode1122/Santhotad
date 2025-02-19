@@ -18,13 +18,19 @@ const Footer = () => {
           <Group>
             <h5>Email Address</h5>
             <MiniDash />
-            <p>Tope@santhotad.com</p>
+            <p>
+              <a href="mailto:tope@santhotad.com">Tope@santhotad.com</a>
+            </p>
           </Group>
+
           <Group>
             <h5>Number</h5>
             <MiniDash />
-            <p>(234) 8038586165</p>
+            <p>
+              <a href="tel:+2348038586165">(234) 803-858-6165</a>
+            </p>
           </Group>
+
           <Group>
             <h5>Office Address</h5>
             <MiniDash />
@@ -66,6 +72,14 @@ const Group = styled.div`
   p {
     margin: 7px 0;
     padding: 0;
+    a {
+      text-decoration: none;
+      color: black !important;
+      &:hover {
+        text-decoration: underline;
+        margin-left: 3px;
+      }
+    }
   }
 
   h5 {

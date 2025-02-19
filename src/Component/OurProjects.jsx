@@ -147,6 +147,7 @@ const ControlButton = styled.div`
   align-items: center;
   gap: 15px;
   height: 30px;
+
   @media (min-width: ${breakpoints.xs}) {
     gap: 15px;
     height: 40px;
@@ -158,7 +159,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 0 !important;
   height: ${(props) => (props.$isDisabled ? "25px" : "30px")};
   width: ${(props) => (props.$isDisabled ? "25px" : "30px")};
   border: 1px solid
@@ -172,7 +173,7 @@ const Button = styled.button`
   }
   svg {
     color: ${(props) => (props.$isDisabled ? Colors.ashBlack : Colors.blue)};
-    font-size: ${(props) => (props.$isDisabled ? "14px" : "18px")};
+    font-size: ${(props) => (props.$isDisabled ? "14px" : "18px")} !important;
   }
 `;
 
