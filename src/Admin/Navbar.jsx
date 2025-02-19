@@ -88,7 +88,7 @@ const Navbar = () => {
         <BigCon>
           <Link to="/"></Link>
           <LinkBig>
-            <Link to="/">Projects</Link>
+            <Link to="/project">Projects</Link>
             <Link to="/service/architect">Services</Link>
             <Link to="/about">About Us</Link>
             <Link to="/blog">Blogs</Link>
