@@ -193,7 +193,7 @@ const StyledLink = styled(Link)`
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
   background: white;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   overflow: hidden;
 `;
 
@@ -221,6 +221,7 @@ const ImageContainer = styled.div`
 
 const Writeup = styled.p`
   margin: 0;
-  text-align: justify;
+  text-align: left;
   line-height: 1.6;
+  font-size: 16px;
 `;

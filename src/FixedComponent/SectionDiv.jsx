@@ -32,6 +32,9 @@ const SectionContainer = styled.div`
   }
 
   @media (min-width: ${breakpoints.xl}) {
+    max-width: 1400px;
+    padding: 2rem 0rem;
+    margin: 0 auto;
   }
 
   @media (min-width: ${breakpoints.xxl}) {

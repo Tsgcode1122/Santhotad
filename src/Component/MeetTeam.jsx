@@ -22,7 +22,7 @@ const TeamMember = [
         name: "Arch. Temitope Adeusi ",
         p1: "is a distinguished architect with nearly two decades of experience in architecture and construction. As Managing Director of Santhotad Concept, a leading Nigerian architectural firm, he delivers innovative and sustainable design solutions nationwide.  Under his leadership, Santhotad Concept thrives as a hub for bespoke, functional, and sustainable designs.",
         p2: "He holds a National Diploma in Architectural Technology from Rufus Giwa Polytechnic and both Bachelor’s and Master’s degrees in Architecture from Obafemi Awolowo University.",
-        p3: " A Fellow of esteemed professional associations, he is known for excellence in private, commercial, and public projects.",
+        p3: " ",
         p4: " Previously serving as City Architect in Akure, he managed large-scale public projects. Under his leadership, Santhotad Concept thrives as a hub for bespoke, functinal, and sustainable designs. His visinary approach makes him a  trusted authority in architecture and construction",
       },
     ],
@@ -196,10 +196,11 @@ const Description = styled.div`
 
 const Writeup = styled.div`
   p {
-    font-weight: 300 !important;
+    /* font-weight: 600 !important; */
     font-size: 14px;
-    line-height: 1.3;
+    line-height: 1.4;
     margin: 0;
-    color: ${Colors.ashBlack};
+    color: ${Colors.black};
+    padding-bottom: 10px;
   }
 `;

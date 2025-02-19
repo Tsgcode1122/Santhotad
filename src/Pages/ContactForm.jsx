@@ -195,6 +195,7 @@ const ContactWrapper = styled.div`
   align-items: center;
   width: 100%;
   @media (min-width: ${breakpoints.xs}) {
+    padding-top: 4rem;
     padding-bottom: 4rem;
   }
 `;

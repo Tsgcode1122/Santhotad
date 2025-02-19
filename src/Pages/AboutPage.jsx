@@ -114,6 +114,11 @@ const Content = styled.div`
 
     margin: 0 0 0 auto;
   }
+  @media (min-width: ${breakpoints.xl}) {
+    max-width: 1400px;
+
+    margin: 0 0 0 auto;
+  }
 
   h3 {
     font-size: 35px;

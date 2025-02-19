@@ -79,6 +79,13 @@ const Container = styled.div`
     align-items: center;
     margin: 0 auto;
   }
+  @media (min-width: ${breakpoints.xl}) {
+    max-width: 1400px;
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+  }
   @media (min-width: ${breakpoints.md}) {
   }
   @media (min-width: ${breakpoints.m}) {
