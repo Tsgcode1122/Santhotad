@@ -184,9 +184,8 @@ const SectionContainer = styled.div`
     padding: 2rem 10rem;
   }
 
-  @media (min-width: ${breakpoints.xxl}) {
-    margin: 0 auto;
-    padding: 0 2rem;
+  @media (min-width: ${breakpoints.xl}) {
+    padding: 2rem 17rem;
   }
 `;
 const ContactWrapper = styled.div`
