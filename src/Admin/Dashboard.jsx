@@ -253,7 +253,7 @@ const DashboardContainer = styled(Form)`
   grid-template-columns: 7fr 3fr;
   gap: 20px;
   width: 100%;
-  /* align-items: center; */
+
   justify-content: center;
 `;
 
@@ -276,6 +276,9 @@ const TypeCard = styled.div`
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #ccc;
+  @media (min-width: ${breakpoints.xl}) {
+    min-width: 700px;
+  }
 `;
 
 const CustomButton = styled.div`
