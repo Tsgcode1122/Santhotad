@@ -89,10 +89,10 @@ const router = createBrowserRouter(routes);
 
 const App = () => (
   <>
-    <PageUnderConstruction />
-    {/* <GlobalStyles />
-    
-    <RouterProvider router={router} /> */}
+    {/* <PageUnderConstruction /> */}
+    <GlobalStyles />
+
+    <RouterProvider router={router} />
   </>
 );
 

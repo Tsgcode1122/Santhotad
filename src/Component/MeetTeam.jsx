@@ -187,7 +187,7 @@ const Content = styled.div`
     props.isActive ? "translateY(0)" : "translateY(-10px)"};
   transition:
     opacity 9.1s ease-in-out,
-    transform 4.4s ease-in-out;
+    transform 0.4s ease-in-out;
 `;
 
 const Description = styled.div`
@@ -196,9 +196,10 @@ const Description = styled.div`
 
 const Writeup = styled.div`
   p {
-    font-weight: 100 !important;
+    font-weight: 300 !important;
     font-size: 14px;
     line-height: 1.3;
+    margin: 0;
     color: ${Colors.ashBlack};
   }
 `;

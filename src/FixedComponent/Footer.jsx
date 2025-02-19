@@ -18,7 +18,7 @@ const Footer = () => {
           <Group>
             <h5>Email Address</h5>
             <MiniDash />
-            <p>Topeadeusi@santhotad.com</p>
+            <p>Tope@santhotad.com</p>
           </Group>
           <Group>
             <h5>Number</h5>
@@ -49,13 +49,16 @@ const Container = styled.div`
 
 const TopOne = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 
-  @media (max-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.xs}) {
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  @media (min-width: ${breakpoints.md}) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
   }
 `;
 

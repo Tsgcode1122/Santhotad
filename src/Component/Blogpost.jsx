@@ -84,10 +84,13 @@ const Blogpost = () => {
                 {posts.slice(2, 5).map((post, index) => (
                   <React.Fragment key={index}>
                     <One>
-                      <img src={post.imagesUrl} alt={post.imagesAlt} />
+                      <SideImage>
+                        <img src={post.imagesUrl} alt={post.imagesAlt} />
+                      </SideImage>
                       <OneSide>
                         <AuthorDate>
-                          {post.author} - <span>{post.formattedDate}</span>
+                          <span>{post.author} </span>
+                          <span>- {post.formattedDate}</span>
                         </AuthorDate>
                         <TopicMini>
                           {post.title}:{post.metaDescription}
@@ -157,11 +160,11 @@ const Container = styled.div`
   gap: 20px;
   @media (min-width: ${breakpoints.xs}) {
   }
-  @media (min-width: ${breakpoints.sm}) {
+  @media (min-width: ${breakpoints.m}) {
     display: grid;
     gap: 20px;
     grid-template-columns: 70% 30%;
-    align-items: center;
+
     justify-content: center;
   }
   @media (min-width: ${breakpoints.m}) {
@@ -200,17 +203,18 @@ const Spinner = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: 200px;
-  overflow: hidden;
-  border-radius: 10px;
-  @media (min-width: 600px) {
-    height: 100%;
-  }
-  img {
-    max-width: 100%;
+  flex: 1;
 
-    object-fit: cover;
+  display: flex;
+
+  justify-content: center;
+
+  img {
     border-radius: 10px;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: cover;
   }
 `;
 
@@ -218,10 +222,10 @@ const MainFeature = styled.div`
   border-radius: 10px;
   display: grid;
   gap: 10px;
-
+  /* height: 50%; */
   overflow: hidden;
 
-  @media (min-width: ${breakpoints.sm}) {
+  @media (min-width: ${breakpoints.xs}) {
     background: ${Colors.white};
     padding: 20px;
     grid-template-columns: 45% 55%;
@@ -236,14 +240,20 @@ const MainFeature2 = styled.div`
   border-radius: 10px;
   display: grid;
   gap: 10px;
-
+  /* height: 50%; */
   overflow: hidden;
+
+  @media (min-width: ${breakpoints.xs}) {
+    background: ${Colors.white};
+    padding: 20px;
+    grid-template-columns: 45% 55%;
+  }
   span {
     margin-top: -10px;
     display: flex;
     justify-content: space-between;
   }
-  @media (min-width: ${breakpoints.sm}) {
+  @media (min-width: ${breakpoints.m}) {
     display: none;
   }
 `;
@@ -291,6 +301,9 @@ const SideContent = styled.div`
   }
   max-width: 80%;
   @media (min-width: ${breakpoints.sm}) {
+    max-width: 60%;
+  }
+  @media (min-width: ${breakpoints.m}) {
     max-width: 100%;
   }
 `;
@@ -311,14 +324,25 @@ const Divider = styled.div`
 `;
 
 const One = styled.div`
-  display: flex;
+  display: grid;
   gap: 10px;
+  overflow: hidden;
   width: 100%;
+  grid-template-columns: 28% 70%;
+`;
+const SideImage = styled.div`
+  /* flex: 1; */
 
+  display: flex;
+
+  justify-content: center;
+  height: 60px;
   img {
-    min-width: 90px;
-    max-width: 90px;
-    height: 70px;
+    border-radius: 4px;
+    width: 100%;
+
+    /* max-height: 100%; */
+    object-fit: cover;
   }
 `;
 
@@ -327,11 +351,12 @@ const AuthorDate = styled.p`
   margin: 0;
   font-size: 12px;
   padding: 0;
+
   span {
     color: #8d8d8d !important;
   }
   @media (min-width: ${breakpoints.xs}) {
-    font-size: 14px;
+    font-size: 10px;
   }
 `;
 
@@ -347,7 +372,7 @@ const TopicMini = styled.p`
   font-size: 12px;
   flex-wrap: nowrap;
   @media (min-width: ${breakpoints.xs}) {
-    font-size: 14px;
+    font-size: 12px;
   }
 `;
 

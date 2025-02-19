@@ -35,7 +35,6 @@ const SectionContainer = styled.div`
   }
 
   @media (min-width: ${breakpoints.xxl}) {
-    max-width: 1500px;
   }
 `;
 

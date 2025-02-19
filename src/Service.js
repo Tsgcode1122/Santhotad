@@ -39,7 +39,7 @@ export const Service = [
     head: "Interior Design & Space Planning",
     img: f33,
     description1:
-      "Santhotad Concept transforms interiors into functional, stylish, and inspiring spaces that reflect personality and purpose. Our interior design approach blends creativity with practicality, ensuring that every element—from color schemes to furniture selection—enhances the ambiance and usability of a space. Whether it’s a residential, commercial, or corporate setting, we create interiors that balance aesthetics with comfort and functionality.",
+      "Santhotad Concept transforms interiors into functional, stylish, and inspiring spaces that reflect personality and purpose. Our interior design approach blends creativity with practicality, ensuring that every element—from color schemes to furniture selection—enhances the ambiance and usability of a space. Whether it’s a residential or commercial we create interiors that balance aesthetics with comfort and functionality.",
     description2:
       "Effective space planning is at the heart of great design. We optimize layouts to improve flow, maximize efficiency, and make the best use of available space. By considering lighting, materials, and spatial relationships, Santhotad Concept crafts interiors that are not only visually appealing but also enhance the way people interact with their environment. Every detail is thoughtfully designed to create spaces that are both beautiful and purposeful.",
   },

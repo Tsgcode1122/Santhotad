@@ -18,11 +18,11 @@ const HomePage = () => {
   });
   return (
     <>
-      {/* <Hero />
+      <Hero />
       <HeroMoving />
       <OurProjects />
       <AboutUs />
-     
+
       <HideBig>
         <MeetTeamSmall />
       </HideBig>
@@ -37,7 +37,7 @@ const HomePage = () => {
       </HideSmall>
 
       <Blogpost />
-      <Testimonial /> */}
+      <Testimonial />
     </>
   );
 };

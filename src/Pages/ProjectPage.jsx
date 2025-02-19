@@ -82,7 +82,6 @@ const ServiceDiv = styled.div`
   }
 
   @media (min-width: ${breakpoints.xxl}) {
-    max-width: 1500px;
     padding: 2rem 0rem;
     margin: 0 auto;
   }

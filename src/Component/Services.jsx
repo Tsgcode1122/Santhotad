@@ -42,9 +42,12 @@ const Services = () => {
             </ServiceItem>
           ))}
         </ServiceListContainer>
-        <ImageContainer>
-          <img src={activeService.img} alt={activeService.head} />
-        </ImageContainer>
+        <StyledLink to={`/services/${activeService.id}`}>
+          <ImageContainer>
+            <img src={activeService.img} alt={activeService.head} />
+          </ImageContainer>
+          <Writeup>{activeService.description1}</Writeup>
+        </StyledLink>
       </ServiceChanging>
     </SectionDiv>
   );
@@ -120,23 +123,25 @@ const Content = styled.div`
 `;
 
 const ServiceChanging = styled.div`
-  display: flex;
-  /* align-items: center; */
-
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
   gap: 10px;
+  justify-content: space-between;
+  @media (min-width: ${breakpoints.xs}) {
+    gap: 100px;
+  }
 `;
 
 const ServiceListContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 100%;
+  /* height: 100%; */
 `;
 
 const ServiceItem = styled.div`
   font-size: 16px;
-  font-weight: 500;
+
   color: ${Colors.ashBlack};
   cursor: pointer;
   position: relative;
@@ -147,8 +152,7 @@ const ServiceItem = styled.div`
     font-size: 18px;
     padding-bottom: 10px;
   }
-  @media (min-width: ${breakpoints.sm}) {
-  }
+
   &:hover {
     color: ${Colors.blue};
   }
@@ -156,8 +160,11 @@ const ServiceItem = styled.div`
     font-size: 16px;
     text-decoration: none;
     margin: 0;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     color: black !important;
+    &:hover {
+      color: ${Colors.blue} !important;
+    }
     @media (min-width: ${breakpoints.xs}) {
       font-size: 18px;
     }
@@ -179,38 +186,41 @@ const Underline = styled.div`
   }
 `;
 
-const ImageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const StyledLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  color: black !important;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
   overflow: hidden;
-  height: 300px;
-  width: 500px;
-  border-radius: 20px;
-  @media (min-width: ${breakpoints.xs}) {
-    height: 330px;
-    width: 500px;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-    height: 380px;
-    width: 600px;
-  }
-  @media (min-width: ${breakpoints.m}) {
-    height: 380px;
-    width: 600px;
-  }
-  @media (min-width: ${breakpoints.md}) {
-    height: 380px;
-    width: 650px;
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    height: 400px;
-    width: 700px;
-  }
+`;
+
+const ImageContainer = styled.div`
+  float: left;
+  width: 50%;
+  margin-right: 15px;
+  border-radius: 5px;
+  overflow: hidden;
+
   img {
-    max-width: 100%;
-    border-radius: 10px;
-    object-fit: contain;
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    border-radius: 5px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    @media (min-width: ${breakpoints.sm}) {
+      height: 240px;
+    }
+    @media (min-width: ${breakpoints.sm}) {
+      height: 240px;
+    }
   }
+`;
+
+const Writeup = styled.p`
+  margin: 0;
+  text-align: justify;
+  line-height: 1.6;
 `;

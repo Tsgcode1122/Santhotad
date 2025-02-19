@@ -83,14 +83,14 @@ const Head = styled.div`
 `;
 
 const HideBig = styled.div`
-  @media (min-width: ${breakpoints.m}) {
+  @media (min-width: ${breakpoints.md}) {
     display: none;
   }
 `;
 const HideSmall = styled.div`
   display: none;
 
-  @media (min-width: ${breakpoints.m}) {
+  @media (min-width: ${breakpoints.md}) {
     display: block;
   }
 `;

@@ -7,6 +7,7 @@ import axios from "axios";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 
 import SectionDiv from "../FixedComponent/SectionDiv";
+import { Link } from "react-router-dom";
 const ContactForm = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -60,6 +61,7 @@ const ContactForm = () => {
             </Title>
           </div>
           <SocialIcons>
+            <Link to=""></Link>
             <TiSocialFacebook />
             <InstagramOutlined />
             <TwitterOutlined />
@@ -160,7 +162,6 @@ const SectionContainer = styled.div`
   }
 
   @media (min-width: ${breakpoints.xxl}) {
-    max-width: 1500px;
     margin: 0 auto;
     padding: 0 2rem;
   }

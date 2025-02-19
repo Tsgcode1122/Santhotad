@@ -77,7 +77,8 @@ const BlogMainBig = () => {
                     <img src={post.imagesUrl} alt={post.imagesAlt} />
                     <OneSide>
                       <AuthorDate>
-                        {post.author} - <span>{post.formattedDate}</span>
+                        <span>{post.author}</span>
+                        <span> -{post.formattedDate}</span>
                       </AuthorDate>
                       <TopicMini>
                         {post.title}: {post.metaDescription}
@@ -195,9 +196,9 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
-const Topic = styled.h3`
+const Topic = styled.h4`
   color: black;
-  font-size: 22px;
+
   line-height: 1.4;
   max-width: 380px;
   font-weight: 500;
@@ -213,7 +214,7 @@ const Date = styled.p`
 
 const SideContent = styled.div`
   display: flex;
-  /* overflow-y: auto; */
+  overflow-y: auto;
   border: 1.5px solid #e7e6e6;
   flex-direction: column;
   gap: 10px;
@@ -240,13 +241,14 @@ const One = styled.div`
   img {
     min-width: 90px;
     max-width: 90px;
-    height: 70px;
+    height: auto;
   }
 `;
 
 const AuthorDate = styled.p`
   color: black;
   margin: 0;
+  display: grid;
   font-size: 14px;
   padding: 0;
   span {
@@ -264,6 +266,7 @@ const TopicMini = styled.p`
   line-height: 1.2;
   padding: 8px 0 2px 0;
   flex-wrap: nowrap;
+  font-size: 12px !important;
 `;
 const OneSide = styled.div`
   display: flex;

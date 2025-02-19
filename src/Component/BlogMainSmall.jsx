@@ -169,7 +169,7 @@ const MainFeature = styled.div`
 
   overflow: hidden;
 
-  @media (min-width: ${breakpoints.sm}) {
+  @media (min-width: ${breakpoints.xs}) {
     background: ${Colors.white};
     padding: 20px;
     grid-template-columns: 45% 55%;
@@ -188,9 +188,6 @@ const Content = styled.div`
   span {
     display: flex;
     justify-content: space-between;
-    @media (min-width: 600px) {
-      flex-direction: column;
-    }
   }
 `;
 const Topic = styled.h5`
@@ -199,10 +196,6 @@ const Topic = styled.h5`
   line-height: 1.4;
   font-weight: 500;
   margin: 0;
-  @media (min-width: ${breakpoints.xs}) {
-    max-width: 330px;
-    font-size: 19px;
-  }
 `;
 
 const Author = styled.p`

@@ -83,7 +83,7 @@ const Content = styled.div`
 
   gap: 1rem;
   @media (min-width: ${breakpoints.xs}) {
-    /* padding: 5rem 1.5rem; */
+    padding: 1.5rem 5rem;
     gap: 2rem;
   }
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -98,15 +98,21 @@ const GroupOne = styled.div`
     color: #f9f9f9;
     margin: 0;
     padding-top: 10px;
+    @media (min-width: ${breakpoints.xs}) {
+      font-size: 14px;
+    }
   }
 `;
 
 const GroupTwo = styled.div``;
 
-const Title = styled.h2`
+const Title = styled.h3`
   color: ${Colors.white};
   margin: 0;
   padding: 0;
+  @media (min-width: ${breakpoints.xs}) {
+    font-size: 20px;
+  }
 `;
 
 const InputWrapper = styled.div`

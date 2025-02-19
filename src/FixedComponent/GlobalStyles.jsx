@@ -42,7 +42,7 @@ h1 {
   }
   
   h3 {
-    font-size: 1.75rem;
+    font-size: 18px;
     font-weight: bold;
 
   }
@@ -99,7 +99,7 @@ h1 {
        font-size: 18px;
      }
      @media (min-width: ${breakpoints.md}) {
-       font-size: 25px;
+       
    
      }
   }
