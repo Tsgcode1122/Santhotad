@@ -29,7 +29,7 @@ const Blogpost = () => {
   }, []);
 
   return (
-    <Major>
+    <Major style={{ padding: "1rem 0" }}>
       <SectionDiv>
         <Heading>
           <h4>Our Blog Posts</h4>

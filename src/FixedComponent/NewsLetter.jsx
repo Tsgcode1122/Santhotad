@@ -108,10 +108,14 @@ const GroupTwo = styled.div``;
 
 const Title = styled.h3`
   color: ${Colors.white};
-  margin: 0;
+  margin: 10px 0;
   padding: 0;
   @media (min-width: ${breakpoints.xs}) {
     font-size: 20px;
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    font-size: 24px;
+    margin: 20px 0;
   }
 `;
 

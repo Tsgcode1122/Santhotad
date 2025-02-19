@@ -206,4 +206,8 @@ const Writeup = styled.div`
     color: ${Colors.black};
     padding-bottom: 10px;
   }
+  @media (min-width: ${breakpoints.xl}) {
+    font-size: 16px;
+    line-height: 1.6;
+  }
 `;
