@@ -117,6 +117,10 @@ const ProjectDiv = styled.div`
   }
 
   @media (min-width: ${breakpoints.xl}) {
+    max-width: 1400px;
+    padding: 0.5rem 0rem;
+    width: 100%;
+    margin: 0 auto;
   }
 
   @media (min-width: ${breakpoints.xxl}) {

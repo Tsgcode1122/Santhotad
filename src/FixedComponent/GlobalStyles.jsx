@@ -15,6 +15,9 @@ h1 {
     @media (min-width: 400px) and (max-width: 499px) {
         font-size: 2rem;
     }
+    @media (min-width: ${breakpoints.xl}) {
+   font-size: 3rem;
+  }
   }
   
   h2 {
@@ -39,12 +42,19 @@ h1 {
       font-size: 45px;
 
     }
+    @media (min-width: ${breakpoints.xl}) {
+   font-size: 2.4rem;
+     line-height: 1.4;
+  }
   }
   
   h3 {
     font-size: 18px;
     font-weight: bold;
-
+  @media (min-width: ${breakpoints.xl}) {
+   font-size: 20px;
+     
+  }
   }
 
   h4 {
@@ -62,6 +72,10 @@ h1 {
   
        font-size: 18px;
      }
+     @media (min-width: ${breakpoints.xl}) {
+   font-size: 20px;
+     
+  }
   }
 
   h5 {
@@ -78,8 +92,12 @@ h1 {
      }
      @media (min-width: 400px) and (max-width: 499px) {
   
-       font-size: 20px;
+       font-size: 18px;
      }
+@media (min-width: ${breakpoints.xl}) {
+   font-size: 20px;
+     
+  }
   }
 
   p {
@@ -98,10 +116,10 @@ h1 {
   
        font-size: 16px;
      }
-     @media (min-width: ${breakpoints.md}) {
-       
-   
-     }
+    @media (min-width: ${breakpoints.xl}) {
+   font-size: 20px;
+     
+  }
   }
 
   article {

@@ -192,6 +192,9 @@ const Content = styled.div`
 
 const Description = styled.div`
   width: 350px;
+  @media (min-width: ${breakpoints.xl}) {
+    width: 500px;
+  }
 `;
 
 const Writeup = styled.div`
