@@ -101,4 +101,13 @@ const MiniDash = styled.div`
   width: 20px;
   height: 2px;
   background: black;
+  @media screen and (max-width: 320px) {
+    width: 30px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    width: 40px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    width: 40px;
+  }
 `;

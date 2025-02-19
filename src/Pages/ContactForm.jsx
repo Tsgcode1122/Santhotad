@@ -61,10 +61,27 @@ const ContactForm = () => {
             </Title>
           </div>
           <SocialIcons>
-            <Link to=""></Link>
-            <TiSocialFacebook />
-            <InstagramOutlined />
-            <TwitterOutlined />
+            <a
+              href="https://www.facebook.com/yourpage"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TiSocialFacebook />
+            </a>
+            <a
+              href="https://www.instagram.com/yourprofile"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramOutlined />
+            </a>
+            <a
+              href="https://twitter.com/yourhandle"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TwitterOutlined />
+            </a>
           </SocialIcons>
         </Head>
         <StyledForm form={form} onFinish={onFinish} layout="vertical" noStyle>
@@ -75,7 +92,7 @@ const ContactForm = () => {
             >
               <Input.TextArea
                 bordered={false}
-                style={{ borderBottom: "1px solid black" }}
+                style={{ borderBottom: "1px solid black", paddingLeft: "0px" }}
                 autoSize={{ minRows: 1.2 }}
                 placeholder="Your Name"
               />
@@ -94,7 +111,10 @@ const ContactForm = () => {
                 <Input.TextArea
                   placeholder="Email "
                   bordered={false}
-                  style={{ borderBottom: "1px solid black" }}
+                  style={{
+                    borderBottom: "1px solid black",
+                    paddingLeft: "0px",
+                  }}
                   autoSize={{ minRows: 1.2 }}
                 />
               </Form.Item>
@@ -115,7 +135,10 @@ const ContactForm = () => {
                 <Input.TextArea
                   placeholder="Phone Number (optional)"
                   bordered={false}
-                  style={{ borderBottom: "1px solid black" }}
+                  style={{
+                    borderBottom: "1px solid black",
+                    paddingLeft: "0px",
+                  }}
                   autoSize={{ minRows: 1.2 }}
                 />
               </Form.Item>
@@ -129,7 +152,7 @@ const ContactForm = () => {
               placeholder="Message"
               autoSize={{ minRows: 3 }}
               bordered={false}
-              style={{ borderBottom: "1px solid black" }}
+              style={{ borderBottom: "1px solid black", paddingLeft: "0px" }}
             />
           </Form.Item>
           <SubmitButton htmlType="submit" loading={loading}>
@@ -250,7 +273,8 @@ const SocialIcons = styled.div`
   gap: 15px;
 
   svg {
-    /* font-size: 17px; */
+    text-decoration: none;
+    color: black !important;
     cursor: pointer;
     padding: 7px;
     transition: color 0.3s;
@@ -264,7 +288,7 @@ const SocialIcons = styled.div`
     }
     border: 1px solid black;
     &:hover {
-      color: #1890ff;
+      color: #1890ff !important;
     }
   }
 `;

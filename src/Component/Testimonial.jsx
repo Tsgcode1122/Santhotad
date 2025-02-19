@@ -169,6 +169,15 @@ const Slider = styled.div`
     gap: 10px;
     padding: 10px 1rem;
   }
+  @media screen and (max-width: 320px) {
+    gap: 3px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    gap: 5px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    gap: 5px;
+  }
 `;
 
 const ImageContainer = styled.div`

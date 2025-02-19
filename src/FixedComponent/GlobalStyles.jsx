@@ -88,15 +88,15 @@ h1 {
    font-weight: 300 !important;
     @media screen and (max-width: 320px) {
      
-       font-size: 16px;
+       font-size: 14px;
      }
      @media (min-width: 321px) and (max-width: 399px) {
 
-       font-size: 18px;
+       font-size: 16px;
      }
      @media (min-width: 400px) and (max-width: 499px) {
   
-       font-size: 18px;
+       font-size: 16px;
      }
      @media (min-width: ${breakpoints.md}) {
        

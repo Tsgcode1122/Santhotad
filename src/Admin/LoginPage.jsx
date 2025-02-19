@@ -16,7 +16,7 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
 
   const handleRegisterClick = () => {
-    navigate("/registerLogin", { state: { activeTab: "register" } });
+    navigate("/adminlogin", { state: { activeTab: "register" } });
   };
 
   const onFinish = async (values) => {
