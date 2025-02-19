@@ -20,6 +20,7 @@ import { IoIosLink } from "react-icons/io";
 import { CiUser, CiIndent } from "react-icons/ci";
 import { useBlogContext } from "../context/BlogContext";
 import axios from "axios";
+
 const { TextArea } = Input;
 const authors = [
   "Select author",
@@ -28,6 +29,7 @@ const authors = [
   "Oludele M.T",
 ];
 import ImageUpload from "./ImageUpload";
+import { breakpoints } from "../FixedComponent/BreakPoints";
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [quillText, setQuillText] = useState(""); // Separate state for Quill

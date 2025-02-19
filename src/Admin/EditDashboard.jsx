@@ -22,6 +22,7 @@ import { useBlogContext } from "../context/BlogContext";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ImageUpload from "./ImageUpload";
+import { breakpoints } from "../FixedComponent/BreakPoints";
 const { TextArea } = Input;
 
 const authors = [
