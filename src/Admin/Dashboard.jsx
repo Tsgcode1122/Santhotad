@@ -249,10 +249,11 @@ const DashboardContainer = styled(Form)`
   padding: 20px;
   background: #f5f5f5;
   min-height: calc(100vh - 4rem);
-  display: flex;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
   gap: 20px;
   width: 100%;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 `;
 
@@ -266,7 +267,7 @@ const SecondPart = styled.div`
 
 const TypeCard = styled.div`
   min-width: 500px;
-  max-width: 500px;
+  /* max-width: 500px; */
   background: white;
   min-height: calc(100vh - 8rem);
   padding: 20px;
