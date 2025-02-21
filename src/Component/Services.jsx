@@ -38,14 +38,14 @@ const Services = () => {
               onMouseEnter={() => setActiveService(service)}
             >
               {" "}
-              <Link key={index} to={`/services/${service.id}`}>
-                {service.head}
-              </Link>
+              {/* <Link key={index} to={`/services/${service.id}`}> */}
+              {service.head}
+              {/* </Link> */}
               <Underline active={activeService.id === service.id} />
             </ServiceItem>
           ))}
         </ServiceListContainer>
-        <StyledLink to={`/services/${activeService.id}`}>
+        <StyledLink>
           <ImageContainer>
             <img src={activeService.img} alt={activeService.head} />
           </ImageContainer>
@@ -189,7 +189,7 @@ const Underline = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.div`
   display: block;
   text-decoration: none;
   color: black !important;

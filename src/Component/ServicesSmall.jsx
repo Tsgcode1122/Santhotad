@@ -63,7 +63,6 @@ const ServicesSmall = () => {
                   <img src={serve.img} />
                 </Image>
                 <p>{serve.description1}</p>
-                {/* <p>{serve.description2}</p> */}
               </Answer>
             </SectionItem>
           ))}
