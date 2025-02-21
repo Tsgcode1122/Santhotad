@@ -38,7 +38,7 @@ const Navbar = () => {
 
   return (
     <>
-      <StyledNavbar style={{ top: visible ? 0 : "-5rem" }}>
+      <StyledNavbar>
         <HeadSpace>
           <Link to="/" onClick={isSidebarOpen ? closeSidebar : undefined}>
             <img src={logo} />{" "}
@@ -216,6 +216,7 @@ const LinkBig = styled.div`
 
 const SidebarContent = styled.div`
   list-style: none;
+  top: 0 !important;
   a {
     text-decoration: none;
     font-size: 16px;
@@ -276,10 +277,11 @@ const StyledNavbar = styled.div`
 `;
 
 const HeadSpace = styled.div`
+  top: 0 !important;
   align-items: center;
   display: flex;
   margin: 0px 20px;
-
+  top: 0 !important;
   justify-content: space-between;
   img {
     height: 25px;
@@ -295,6 +297,10 @@ const MenuToggle = styled.div`
 
 const Sidebar = styled.div`
   position: fixed;
+  box-shadow:
+    0 2px 30px rgba(0, 0, 0, 0.1),
+    0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 20px 20px;
   top: 3rem;
   top: ${({ isOpen }) => (isOpen ? "3rem" : "-400px")};
   width: 100%;

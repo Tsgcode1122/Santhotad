@@ -11,6 +11,7 @@ import MeetTeamSmall from "../Component/MeetTeamSmall";
 import styled from "styled-components";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import ServicesSmall from "../Component/ServicesSmall";
+import WhyChooseUs from "../Component/WhyChooseUs";
 
 const HomePage = () => {
   useEffect(() => {
@@ -19,7 +20,8 @@ const HomePage = () => {
   return (
     <>
       <Hero />
-      <HeroMoving />
+      <WhyChooseUs />
+      {/* <HeroMoving /> */}
       <OurProjects />
       <AboutUs />
 
