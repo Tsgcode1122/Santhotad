@@ -12,10 +12,6 @@ import ServicepageBig from "./ServicepageBig";
 import ServicepageSmall from "./ServicepageSmall";
 
 const ServicePage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <IntroHero>

@@ -13,9 +13,6 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 import ServicesSmall from "../Component/ServicesSmall";
 
 const HomePage = () => {
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
   return (
     <>
       <Hero />

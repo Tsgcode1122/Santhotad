@@ -9,9 +9,6 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 import { Colors } from "../Colors/ColorComponent";
 import { ArrowDownOutlined } from "@ant-design/icons";
 const ProjectPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <>
       <IntroHero>

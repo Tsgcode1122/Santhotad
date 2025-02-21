@@ -25,6 +25,7 @@ import ProjectPage from "./Pages/ProjectPage";
 import GlobalStyles from "./FixedComponent/GlobalStyles";
 import PageUnderConstruction from "./Pages/PageUnderConstruction";
 import ReadBlog from "./Pages/ReadBlog";
+import ScrollToTop from "./FixedComponent/ScrollToTop";
 
 const StyledResult = styled(Result)`
   .ant-result-title {
@@ -64,7 +65,12 @@ const InvalidPath = () => {
 // Define your routes
 const routes = [
   {
-    element: <Layout />,
+    element: (
+      <>
+        <ScrollToTop />
+        <Layout />
+      </>
+    ),
     children: [
       { index: true, path: "/", element: <HomePage /> },
       { path: "/about", element: <AboutPage /> },

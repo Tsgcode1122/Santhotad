@@ -13,9 +13,6 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 import ServicepageBig from "./ServicepageBig";
 import ServicepageSmall from "./ServicepageSmall";
 const ServiceFromHome = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const { serviceId } = useParams();
   const services = Service.find((service) => service.id === serviceId);
 
