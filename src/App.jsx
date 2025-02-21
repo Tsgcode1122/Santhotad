@@ -77,7 +77,7 @@ const routes = [
       { path: "/projects/:imageId", element: <SingleProjectDetails /> },
       {
         path: "/services",
-        element: <ServiceFromHome />,
+        element: <ServicePage />,
         key: "service",
       },
       { path: "/project", element: <ProjectPage /> },
