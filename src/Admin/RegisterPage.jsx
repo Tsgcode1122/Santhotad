@@ -17,10 +17,10 @@ const RegisterPageContainer = styled.div`
     width: 240px;
   }
   @media (min-width: 321px) and (max-width: 399px) {
-    width: 270px;
+    width: 268px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-    width: 300px;
+    width: 268px;
   }
 `;
 const StyledModal = styled(Modal)`
