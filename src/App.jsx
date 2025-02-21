@@ -76,10 +76,14 @@ const routes = [
       { path: "/about", element: <AboutPage /> },
 
       { path: "/projects/:imageId", element: <SingleProjectDetails /> },
-      { path: "/services/:serviceId", element: <ServiceFromHome /> },
+      {
+        path: "/services/:serviceId",
+        element: <ServiceFromHome />,
+        key: "service",
+      },
       { path: "/project", element: <ProjectPage /> },
 
-      { path: "/service/architect", element: <ServicePage /> },
+      { path: "/service/architect", element: <ServicePage />, key: "service" },
       { path: "/contact", element: <ContactForm /> },
       { path: "/adminlogin", element: <RegisterLogin /> },
       { path: "/blog", element: <BlogPage /> },
