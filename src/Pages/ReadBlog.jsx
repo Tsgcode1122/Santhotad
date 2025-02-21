@@ -77,6 +77,7 @@ const ReadBlog = () => {
                           href="https://santhotad.com"
                           target="_blank"
                           rel="noopener noreferrer"
+                          style={{ color: "black" }}
                         >
                           https://santhotad.com
                         </a>
@@ -190,6 +191,11 @@ const Writeup = styled.p`
 
   line-height: 1.6;
   font-size: 16px;
+  p {
+    a {
+      color: blue !important;
+    }
+  }
 `;
 
 const Major = styled.div`
@@ -252,6 +258,15 @@ const MainFeature = styled.div`
   }
 
   padding: 20px;
+  @media screen and (max-width: 320px) {
+    padding: 1px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    padding: 1px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    padding: 1px;
+  }
 `;
 
 const Topic = styled.h4`
