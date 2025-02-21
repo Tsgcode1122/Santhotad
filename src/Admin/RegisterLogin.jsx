@@ -7,6 +7,10 @@ import { Colors } from "../Colors/ColorComponent";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 const StyledTabs = styled(Tabs)`
+  &:hover {
+    cursor: pointer;
+    color: ${Colors.blue} !important;
+  }
   .ant-tabs-nav {
     all: unset;
     display: flex !important;

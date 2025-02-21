@@ -24,6 +24,7 @@ import AnimatedCursor from "react-animated-cursor";
 import ProjectPage from "./Pages/ProjectPage";
 import GlobalStyles from "./FixedComponent/GlobalStyles";
 import PageUnderConstruction from "./Pages/PageUnderConstruction";
+import ReadBlog from "./Pages/ReadBlog";
 
 const StyledResult = styled(Result)`
   .ant-result-title {
@@ -76,6 +77,7 @@ const routes = [
       { path: "/contact", element: <ContactForm /> },
       { path: "/adminlogin", element: <RegisterLogin /> },
       { path: "/blog", element: <BlogPage /> },
+      { path: "/blog/:blogId", element: <ReadBlog /> },
       { path: "/reset-password", element: <ResetPasswordPage /> },
 
       { path: "*", element: <InvalidPath /> },
@@ -89,10 +91,10 @@ const router = createBrowserRouter(routes);
 
 const App = () => (
   <>
-    <PageUnderConstruction />
-    {/* <GlobalStyles />
+    {/* <PageUnderConstruction /> */}
+    <GlobalStyles />
 
-    <RouterProvider router={router} /> */}
+    <RouterProvider router={router} />
   </>
 );
 

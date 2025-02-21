@@ -47,10 +47,19 @@ const Blogpost = () => {
             </LoadingContainer>
           ) : posts.length > 0 ? (
             <>
-              <MainFeature>
+              <MainFeature to={`/blog/${posts[0]?.id}`}>
                 <ImageContainer>
                   <img src={posts[0]?.imagesUrl} alt={posts[0]?.imagesAlt} />
                 </ImageContainer>
+                <Content2>
+                  <span>
+                    <Topic>
+                      {posts[0]?.title}: {posts[0]?.metaDescription}
+                    </Topic>
+                    <Author>- {posts[0]?.author}</Author>
+                  </span>
+                  <Date>{posts[0]?.formattedDate}</Date>
+                </Content2>
                 <Content>
                   <Topic>
                     {posts[0]?.title}: {posts[0]?.metaDescription}
@@ -63,7 +72,7 @@ const Blogpost = () => {
                 </Content>
               </MainFeature>
 
-              <MainFeature2>
+              <MainFeature2 to={`/blog/${posts[1]?.id}`}>
                 <ImageContainer>
                   <img src={posts[1]?.imagesUrl} alt={posts[1]?.imagesAlt} />
                 </ImageContainer>
@@ -78,12 +87,13 @@ const Blogpost = () => {
                   </span>
                 </Content>
               </MainFeature2>
+
               <SideContent>
                 <Intro>More News Updates</Intro>
                 <Divider />
                 {posts.slice(2, 5).map((post, index) => (
                   <React.Fragment key={index}>
-                    <One>
+                    <One key={index} to={`/blog/${post.id}`}>
                       <SideImage>
                         <img src={post.imagesUrl} alt={post.imagesAlt} />
                       </SideImage>
@@ -97,6 +107,7 @@ const Blogpost = () => {
                         </TopicMini>
                       </OneSide>
                     </One>
+
                     {index < 2 && <Divider />}
                   </React.Fragment>
                 ))}
@@ -158,6 +169,14 @@ const Major = styled.div`
 const Container = styled.div`
   display: grid;
   gap: 20px;
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    }
+  }
   @media (min-width: ${breakpoints.xs}) {
   }
   @media (min-width: ${breakpoints.m}) {
@@ -218,17 +237,23 @@ const ImageContainer = styled.div`
   }
 `;
 
-const MainFeature = styled.div`
+const MainFeature = styled(Link)`
   border-radius: 10px;
   display: grid;
   gap: 10px;
-  /* height: 50%; */
+  @media (min-width: ${breakpoints.m}) {
+    /* height: 70%; */
+  }
   overflow: hidden;
 
   @media (min-width: ${breakpoints.xs}) {
     background: ${Colors.white};
     padding: 20px;
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 4fr 6fr;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    grid-template-columns: 3.5fr 6.5fr;
+    gap: 20px;
   }
   span {
     margin-top: -10px;
@@ -236,18 +261,22 @@ const MainFeature = styled.div`
     justify-content: space-between;
   }
 `;
-const MainFeature2 = styled.div`
+const MainFeature2 = styled(Link)`
+  text-decoration: none;
+  color: inherit;
   border-radius: 10px;
   display: grid;
   gap: 10px;
+  cursor: grabbing;
   /* height: 50%; */
   overflow: hidden;
 
   @media (min-width: ${breakpoints.xs}) {
     background: ${Colors.white};
     padding: 20px;
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 4fr 6fr;
   }
+
   span {
     margin-top: -10px;
     display: flex;
@@ -258,10 +287,24 @@ const MainFeature2 = styled.div`
   }
 `;
 
+const Content2 = styled.div`
+  display: none;
+  span {
+    display: grid;
+  }
+  @media (min-width: ${breakpoints.m}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+`;
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (min-width: ${breakpoints.m}) {
+    display: none;
+  }
 `;
 
 const Topic = styled.h3`
@@ -272,6 +315,9 @@ const Topic = styled.h3`
   margin: 0;
   @media (min-width: ${breakpoints.xs}) {
     font-size: 18px;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    font-size: 22px;
   }
 `;
 
@@ -323,7 +369,7 @@ const Divider = styled.div`
   background: ${Colors.ashBlack};
 `;
 
-const One = styled.div`
+const One = styled(Link)`
   display: grid;
   gap: 10px;
   overflow: hidden;

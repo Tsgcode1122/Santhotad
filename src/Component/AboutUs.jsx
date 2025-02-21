@@ -6,6 +6,8 @@ import { ArrowDownOutlined } from "@ant-design/icons";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import { Link } from "react-router-dom";
 import BlueAbout from "./BlueAbout";
+import SwipeComponent from "../Animation/SwipeComponent";
+
 const AboutUs = () => {
   return (
     <>
@@ -20,12 +22,14 @@ const AboutUs = () => {
         </Heading>
         <Content>
           <h2>We believe in excellence </h2>
-          <p>
-            We are dedicated to designing spaces that inspire, connect, and
-            stand the test of time. With a focus on innovation and excellence,
-            we create unique architectural solutions tailored to meet the needs
-            of homeowners, developers, and businesses.
-          </p>
+          <SwipeComponent direction="left-to-right">
+            <p>
+              We are dedicated to designing spaces that inspire, connect, and
+              stand the test of time. With a focus on innovation and excellence,
+              we create unique architectural solutions tailored to meet the
+              needs of homeowners, developers, and businesses.
+            </p>
+          </SwipeComponent>
         </Content>
       </SectionDiv>
       <BlueAbout />

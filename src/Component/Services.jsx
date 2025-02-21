@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import { Service } from "../Service";
 import SectionDiv from "../FixedComponent/SectionDiv";
+import SwipeComponent from "../Animation/SwipeComponent";
 
 const Services = () => {
   const [activeService, setActiveService] = useState(Service[0]);
@@ -22,10 +23,12 @@ const Services = () => {
       </Heading>
       <Content>
         <h1>Build to Inspire, Design to Last</h1>
-        <p>
-          At Santhotad Concepts, we deliver tailored services that blend
-          innovation, and client satisfaction to meet your unique needs.
-        </p>
+        <SwipeComponent direction="left-to-right">
+          <p>
+            At Santhotad Concepts, we deliver tailored services that blend
+            innovation, and client satisfaction to meet your unique needs.
+          </p>
+        </SwipeComponent>
       </Content>
       <ServiceChanging>
         <ServiceListContainer>

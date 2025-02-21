@@ -83,17 +83,18 @@ const Content = styled.div`
 
   gap: 1rem;
   @media (min-width: ${breakpoints.xs}) {
-    padding: 1.5rem 5rem;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   align-items: center;
-  @media (min-width: ${breakpoints.xs}) {
-    grid-template-columns: 1fr 1fr;
+  @media (min-width: ${breakpoints.m}) {
+    padding: 1.5rem 5rem;
   }
 `;
 
 const GroupOne = styled.div`
+  margin: 0;
   small {
     color: #f9f9f9;
     margin: 0;

@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 import { Service } from "../Service";
 import { Link } from "react-router-dom";
+import SwipeComponent from "../Animation/SwipeComponent";
 
 const ServicesSmall = () => {
   const [selectedService, setSelectedService] = useState(0);
@@ -29,10 +30,12 @@ const ServicesSmall = () => {
         </Heading>
         <Content>
           <h2>Build to Inspire, Design to Last</h2>
-          <p>
-            At Santhotad Concepts, we deliver tailored services that blend
-            innovation, and client satisfaction to meet your unique needs.
-          </p>
+          <SwipeComponent direction="left-to-right">
+            <p>
+              At Santhotad Concepts, we deliver tailored services that blend
+              innovation, and client satisfaction to meet your unique needs.
+            </p>
+          </SwipeComponent>
         </Content>
         <ContentMain>
           {Service.map((serve, index) => (

@@ -104,6 +104,10 @@ const Navbar = () => {
 const Contact = styled.div`
   border: 1.8px solid #0316cd;
   padding: 7px 12px;
+  border-radius: 5px;
+  position: relative;
+  transition: box-shadow 0.3s ease-in-out;
+
   a {
     display: flex;
     align-items: center;
@@ -112,9 +116,13 @@ const Contact = styled.div`
     gap: 4px;
     color: ${Colors.blue} !important;
   }
+
   color: ${Colors.blue} !important;
 
-  border-radius: 5px;
+  &:hover {
+    box-shadow: 0px 0px 10px 2px rgba(3, 22, 205, 0.7);
+    border-color: rgba(3, 22, 205, 0.9);
+  }
 `;
 
 const BigNav = styled.div`
@@ -182,6 +190,27 @@ const LinkBig = styled.div`
     text-decoration: none;
     color: ${Colors.ashBlack};
     font-size: 18px;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: ${Colors.blue};
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: ${Colors.blue};
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
 `;
 

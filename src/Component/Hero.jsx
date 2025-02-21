@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, Links } from "react-router-dom";
 
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import heroImg from "../Images/heroSent.png";
 import f2 from "../Images/HeroBackground.png";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+import SwipeComponent from "../Animation/SwipeComponent";
 
 const Hero = () => {
   return (
@@ -13,11 +14,12 @@ const Hero = () => {
       <Container>
         <TextPart>
           <Head>Transforming Visions into Exquisite Realities</Head>
-          <MiniText>
-            Welcome to our architect website, where innovation meets design
-            excellence
-          </MiniText>
-
+          <SwipeComponent direction="right-to-left">
+            <MiniText>
+              Welcome to our architect website, where innovation meets design
+              excellence
+            </MiniText>
+          </SwipeComponent>
           <CtaButton to="/project">View our projects</CtaButton>
         </TextPart>
         <HeroImage>
@@ -86,16 +88,6 @@ const Container = styled.div`
     align-items: center;
     margin: 0 auto;
   }
-  @media (min-width: ${breakpoints.md}) {
-  }
-  @media (min-width: ${breakpoints.m}) {
-  }
-
-  @media (min-width: ${breakpoints.xl}) {
-  }
-
-  @media (min-width: ${breakpoints.xxl}) {
-  }
 `;
 
 const HeroImage = styled.div`
@@ -147,12 +139,44 @@ const TextPart = styled.div`
 const CtaButton = styled(Link)`
   text-decoration: none;
 
-  background: ${Colors.blue};
   border-radius: 5px;
   padding: 10px;
   color: ${Colors.white};
   cursor: pointer;
   z-index: 99;
+  background: linear-gradient(
+    40deg,
+    #0316cd,
+    #1325c4,
+    #3f2fcb,
+    #071ac8,
+    #091edf
+  );
+  background-size: 200% 200%;
+
+  color: white;
+  font-weight: 500;
+
+  text-decoration: none;
+  animation: glow 3s infinite ease-in-out;
+  /* box-shadow: 0 0 15px rgba(9, 25, 119, 0.7); */
+
+  @keyframes glow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  &:hover {
+    /* transform: scale(1.1); */
+    box-shadow: 0px 10px 20px rgba(91, 91, 106, 0.3);
+    background: ${Colors.lightblue};
+  }
 `;
 const MiniText = styled.p`
   font-size: 22px;

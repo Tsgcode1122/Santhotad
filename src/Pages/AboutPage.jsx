@@ -11,6 +11,7 @@ import SectionDiv from "../FixedComponent/SectionDiv";
 import MeetTeamSmall from "../Component/MeetTeamSmall";
 import ServicesSmall from "../Component/ServicesSmall";
 import Services from "../Component/Services";
+import SwipeComponent from "../Animation/SwipeComponent";
 const AboutPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,21 +29,23 @@ const AboutPage = () => {
       <SectionDiv>
         <About>
           <h1>About US</h1>
-          <Writeup>
-            Santhotad Concept is a leading architectural and construction firm
-            based in Nigeria, with a growing footprint in the United States.
-            Established in December 2011 and rebranded as Santhotad Concept Plus
-            Nigeria Limited in 2019, we have been at the forefront of
-            innovation, delivering world-class architectural design, building
-            construction, and project management services. Our diverse portfolio
-            spans residential, commercial, and institutional projects, including
-            schools, hospitals, and religious facilities. By leveraging
-            cutting-edge technology, sustainable practices, and a deep
-            understanding of client needs, we create structures that harmonize
-            functionality, aesthetics, and innovation. At Santhotad Concept, we
-            pride ourselves on redefining architectural excellence and setting
-            new standards in the built environment.
-          </Writeup>
+          <SwipeComponent direction="left-to-right">
+            <Writeup>
+              Santhotad Concept is a leading architectural and construction firm
+              based in Nigeria, with a growing footprint in the United States.
+              Established in December 2011 and rebranded as Santhotad Concept
+              Plus Nigeria Limited in 2019, we have been at the forefront of
+              innovation, delivering world-class architectural design, building
+              construction, and project management services. Our diverse
+              portfolio spans residential, commercial, and institutional
+              projects, including schools, hospitals, and religious facilities.
+              By leveraging cutting-edge technology, sustainable practices, and
+              a deep understanding of client needs, we create structures that
+              harmonize functionality, aesthetics, and innovation. At Santhotad
+              Concept, we pride ourselves on redefining architectural excellence
+              and setting new standards in the built environment.
+            </Writeup>
+          </SwipeComponent>
         </About>
       </SectionDiv>
       <BlueAbout />

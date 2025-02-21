@@ -4,6 +4,7 @@ import { Colors } from "../Colors/ColorComponent";
 import SectionDiv from "../FixedComponent/SectionDiv";
 import { Spin } from "antd"; // Import Ant Design spinner
 import { breakpoints } from "../FixedComponent/BreakPoints";
+import { Link } from "react-router-dom";
 
 const BlogMainBig = () => {
   const [posts, setPosts] = useState([]);
@@ -52,7 +53,7 @@ const BlogMainBig = () => {
           <Container>
             <Main>
               {posts.slice(0, 6).map((post, index) => (
-                <MainFeature key={index}>
+                <MainFeature key={index} to={`/blog/${post.id}`}>
                   <ImageContainer>
                     <img src={post.imagesUrl} alt={post.imagesAlt} />
                   </ImageContainer>
@@ -73,7 +74,7 @@ const BlogMainBig = () => {
               <Divider />
               {posts.slice(6).map((post, index) => (
                 <React.Fragment key={index}>
-                  <One>
+                  <One key={index} to={`/blog/${post.id}`}>
                     <img src={post.imagesUrl} alt={post.imagesAlt} />
                     <OneSide>
                       <AuthorDate>
@@ -85,6 +86,7 @@ const BlogMainBig = () => {
                       </TopicMini>
                     </OneSide>
                   </One>
+
                   {<Divider />}
                 </React.Fragment>
               ))}
@@ -159,7 +161,14 @@ const Main = styled.div`
 const Container = styled.div`
   /* align-items: center; */
   justify-content: center;
-
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    }
+  }
   display: grid;
   gap: 20px;
   @media (min-width: ${breakpoints.xs}) {
@@ -180,7 +189,11 @@ const ImageContainer = styled.div`
     border-radius: 10px;
   }
 `;
-const MainFeature = styled.div`
+const MainFeature = styled(Link)`
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   background: white;
   border: 2px solid #f0f0f0;
   border-radius: 10px;
@@ -234,7 +247,11 @@ const Divider = styled.div`
   background: #aeaeae;
 `;
 
-const One = styled.div`
+const One = styled(Link)`
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   display: flex;
   width: 100%;
   gap: 10px;

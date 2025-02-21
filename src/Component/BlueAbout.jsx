@@ -11,11 +11,14 @@ import { Link } from "react-router-dom";
 import SectionDiv from "../FixedComponent/SectionDiv";
 import MeetTeam from "../Component/MeetTeam";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+import ZoomInComponent from "../Animation/ZoomInComponent";
+import BounceUpComponent from "../Animation/BounceUpComponent";
+
 const BlueAbout = () => {
   return (
     <>
       <BlueContent>
-        <GridLine>
+        <BounceUpComponent>
           <Mission>
             <img src={missionIcon} />
             <h5>MISSION</h5>
@@ -28,6 +31,7 @@ const BlueAbout = () => {
               test of time.
             </p>
           </Mission>
+
           <Vision>
             <img src={visionIcon} />
             <h5>VISION</h5>
@@ -39,7 +43,7 @@ const BlueAbout = () => {
               architecture worldwide.
             </p>
           </Vision>
-        </GridLine>
+        </BounceUpComponent>
       </BlueContent>
     </>
   );
@@ -51,36 +55,7 @@ const BlueContent = styled.div`
   background: ${Colors.blue};
   margin-bottom: 40px;
 `;
-const GridLine = styled.div`
-  background: url(${linePattern});
-  display: grid;
-
-  max-width: 800px;
-
-  gap: 20px;
-  margin: 0 auto;
-  padding: 80px 60px;
-  @media screen and (max-width: 320px) {
-    padding: 80px 0.8rem;
-  }
-  @media (min-width: 321px) and (max-width: 399px) {
-    padding: 80px 1rem;
-  }
-  @media (min-width: 400px) and (max-width: 499px) {
-    padding: 80px 1.2rem;
-  }
-
-  justify-content: center;
-  @media (min-width: ${breakpoints.sm}) {
-    padding: 80px 60px;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  }
-
-  @media (min-width: ${breakpoints.m}) {
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-  }
-`;
+const GridLine = styled.div``;
 const Mission = styled.div`
   border-radius: 10px;
   background: ${Colors.white};
@@ -117,7 +92,7 @@ const Vision = styled.div`
   @media (min-width: ${breakpoints.m}) {
     /* max-width: 350px; */
   }
-  padding: 40px 20px 20px 20px;
+  padding: 20px;
   img {
     max-width: 100%;
     width: 70px;

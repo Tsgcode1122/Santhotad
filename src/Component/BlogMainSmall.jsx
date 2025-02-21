@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
 import SectionDiv from "../FixedComponent/SectionDiv";
-import { Spin } from "antd"; // Import Ant Design spinner
+import { Spin } from "antd";
 import { breakpoints } from "../FixedComponent/BreakPoints";
+import { Link } from "react-router-dom";
 
 const BlogMainSmall = () => {
   const [posts, setPosts] = useState([]);
@@ -43,7 +44,7 @@ const BlogMainSmall = () => {
   return (
     <>
       <Major>
-        {loading ? ( // Show spinner while loading
+        {loading ? (
           <LoaderContainer>
             <Spin size="large" />
             <p>Loading blog posts...</p>
@@ -53,20 +54,22 @@ const BlogMainSmall = () => {
             <Main>
               {posts.slice(0, 2).map((post, index) => (
                 <React.Fragment key={index}>
-                  <MainFeature>
-                    <ImageContainer>
-                      <img src={post.imagesUrl} alt={post.imagesAlt} />
-                    </ImageContainer>
-                    <Content>
-                      <Topic>
-                        {post.title}: {post.metaDescription}
-                      </Topic>
-                      <span>
-                        <Author>-{post.author}</Author>
-                        <Date>{post.formattedDate}</Date>
-                      </span>
-                    </Content>
-                  </MainFeature>
+                  <Link key={index} to={`/blog/${post.id}`}>
+                    <MainFeature>
+                      <ImageContainer>
+                        <img src={post.imagesUrl} alt={post.imagesAlt} />
+                      </ImageContainer>
+                      <Content>
+                        <Topic>
+                          {post.title}: {post.metaDescription}
+                        </Topic>
+                        <span>
+                          <Author>-{post.author}</Author>
+                          <Date>{post.formattedDate}</Date>
+                        </span>
+                      </Content>
+                    </MainFeature>
+                  </Link>
                   <>{index < 1 && <Divider />}</>
                 </React.Fragment>
               ))}
@@ -78,17 +81,19 @@ const BlogMainSmall = () => {
 
               {posts.slice(2).map((post, index) => (
                 <React.Fragment key={index}>
-                  <One>
-                    <img src={post.imagesUrl} alt={post.imagesAlt} />
-                    <OneSide>
-                      <AuthorDate>
-                        {post.author} - <span>{post.formattedDate}</span>
-                      </AuthorDate>
-                      <TopicMini>
-                        {post.title}: {post.metaDescription}
-                      </TopicMini>
-                    </OneSide>
-                  </One>
+                  <Link key={index} to={`/blog/${post.id}`}>
+                    <One>
+                      <img src={post.imagesUrl} alt={post.imagesAlt} />
+                      <OneSide>
+                        <AuthorDate>
+                          {post.author} - <span>{post.formattedDate}</span>
+                        </AuthorDate>
+                        <TopicMini>
+                          {post.title}: {post.metaDescription}
+                        </TopicMini>
+                      </OneSide>
+                    </One>
+                  </Link>
                   <Divider2 />
                   {/* {index !== post.length - 1 && (
                     <p>
@@ -155,6 +160,14 @@ const Container = styled.div`
   justify-content: center;
   gap: 50px;
   display: grid;
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    }
+  }
 `;
 const ImageContainer = styled.div`
   overflow: hidden;

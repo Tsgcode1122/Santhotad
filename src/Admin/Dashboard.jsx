@@ -174,10 +174,18 @@ const Dashboard = () => {
               textAlign: "right",
               margin: "0",
               color: "#ccc",
-              paddingBottom: "10px",
             }}
           >
-            Replace Image
+            Replace Image <br />{" "}
+            <span
+              style={{
+                paddingBottom: "10px",
+                fontSize: "10px",
+                margin: "0",
+              }}
+            >
+              Not more than 1mb
+            </span>
           </p>
           <StyledFormItem
             name="imagesAlt"

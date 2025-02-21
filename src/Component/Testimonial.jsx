@@ -9,6 +9,8 @@ import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Colors } from "../Colors/ColorComponent";
 import { StarFilled } from "@ant-design/icons";
 import SectionDiv from "../FixedComponent/SectionDiv";
+import BounceUpComponent from "../Animation/BounceUpComponent";
+import SwipeYComponent from "../Animation/SwipeYComponent";
 
 const testimonials = [
   {
@@ -65,9 +67,12 @@ const Testimonial = () => {
     <SectionDiv>
       <Container>
         <Line />
+
         <Intro>
-          Hear what our clients have to say about their experience working with
-          us.
+          <SwipeYComponent direction="bottom-to-top">
+            Hear what our clients have to say about their experience working
+            with us.
+          </SwipeYComponent>
         </Intro>
 
         <Slider>
@@ -128,6 +133,7 @@ const Intro = styled.p`
   align-self: center;
   margin-top: 30px;
   @media (min-width: ${breakpoints.xs}) {
+    font-size: 18px;
     margin-top: 30px;
   }
   @media (min-width: ${breakpoints.lg}) {

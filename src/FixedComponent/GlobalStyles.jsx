@@ -121,7 +121,10 @@ h1 {
      
   }
   }
-
+a{
+  text-decoration: none;
+  color: inherit;
+}
   article {
     font-size: 1rem;
     line-height: 1.8;

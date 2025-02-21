@@ -55,7 +55,7 @@ const Container = styled.div`
 
 const TopOne = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
   gap: 20px;
 
   @media (min-width: ${breakpoints.xs}) {
@@ -69,6 +69,9 @@ const TopOne = styled.div`
 `;
 
 const Group = styled.div`
+  /* display: flex;
+  align-items: center;
+  gap: 20px; */
   p {
     margin: 7px 0;
     padding: 0;
