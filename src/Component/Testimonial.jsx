@@ -179,10 +179,10 @@ const Slider = styled.div`
     gap: 3px;
   }
   @media (min-width: 321px) and (max-width: 399px) {
-    gap: 5px;
+    gap: 1.5px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-    gap: 5px;
+    gap: 2px;
   }
 `;
 
@@ -192,10 +192,10 @@ const ImageContainer = styled.div`
     width: 220px;
   }
   @media (min-width: 321px) and (max-width: 399px) {
-    width: 260px;
+    width: 240px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-    width: 260px;
+    width: 240px;
   }
   @media (min-width: ${breakpoints.xs}) {
     width: 350px;
@@ -236,7 +236,7 @@ const Writeup = styled.div`
     width: 200px;
     border-radius: 5px;
     margin-left: 0;
-    margin-top: -180px;
+    margin-top: -120px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
     width: 230px;
