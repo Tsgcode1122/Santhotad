@@ -22,7 +22,6 @@ const ServicepageBig = () => {
 
   return (
     <>
-      <ScrollToTop />
       <SectionDiv>
         <ServiceChanging>
           <LeftSide>

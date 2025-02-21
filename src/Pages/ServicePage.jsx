@@ -13,9 +13,11 @@ import ServicepageSmall from "./ServicepageSmall";
 import ScrollToTop from "../FixedComponent/ScrollToTop";
 
 const ServicePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <>
-      <ScrollToTop />
       <IntroHero>
         <Content>
           <h3>

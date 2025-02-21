@@ -10,6 +10,9 @@ import { Service } from "../Service";
 import { Link } from "react-router-dom";
 
 const ServicepageSmall = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const [selectedService, setSelectedService] = useState(0);
 
   const toggleFaq = (index) => {
