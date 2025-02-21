@@ -37,6 +37,15 @@ const StyledModal = styled(Modal)`
     max-width: 300px !important;
     width: 100% !important;
     margin: 0 auto;
+    @media screen and (max-width: 320px) {
+      max-width: 220px !important;
+    }
+    @media (min-width: 321px) and (max-width: 399px) {
+      max-width: 280px !important;
+    }
+    @media (min-width: 400px) and (max-width: 499px) {
+      max-width: 290px !important;
+    }
   }
 `;
 const StyledInput = styled(Input)`

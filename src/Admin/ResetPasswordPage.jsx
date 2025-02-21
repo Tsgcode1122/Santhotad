@@ -59,6 +59,15 @@ const NewModal = styled(Modal)`
   height: 300px;
   background: rgba(0, 0, 0, 0.1) !important;
   max-width: 400px !important;
+  @media screen and (max-width: 320px) {
+    max-width: 220px !important;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    max-width: 280px !important;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    max-width: 300px !important;
+  }
   .ant-modal-mask {
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
