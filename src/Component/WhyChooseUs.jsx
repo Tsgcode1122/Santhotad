@@ -36,25 +36,25 @@ const WhyChooseUs = () => {
         <StatsGrid>
           <StatCard>
             <Number>
-              {isVisible && <CountUp start={0} end={500} duration={6} />}+
+              {isVisible && <CountUp start={0} end={500} duration={12} />}+
             </Number>
             <Label>Happy Partners</Label>
           </StatCard>
           <StatCard>
             <Number>
-              {isVisible && <CountUp start={0} end={100} duration={6} />}+
+              {isVisible && <CountUp start={0} end={100} duration={10} />}+
             </Number>
             <Label>Projects Done</Label>
           </StatCard>
           <StatCard>
             <Number>
-              {isVisible && <CountUp start={0} end={10} duration={6} />}+
+              {isVisible && <CountUp start={0} end={10} duration={10} />}+
             </Number>
             <Label>Years of Experience</Label>
           </StatCard>
           <StatCard>
             <Number>
-              {isVisible && <CountUp start={0} end={100} duration={6} />}%
+              {isVisible && <CountUp start={0} end={100} duration={10} />}%
             </Number>
             <Label>Satisfaction</Label>
           </StatCard>
