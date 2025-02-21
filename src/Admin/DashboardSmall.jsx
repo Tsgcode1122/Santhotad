@@ -47,7 +47,7 @@ const DashboardSmall = () => {
   const [form] = Form.useForm();
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   const onFinish = async (values) => {
     console.log("Form Values before modification:", values);
 

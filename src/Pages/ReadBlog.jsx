@@ -8,7 +8,7 @@ import { Spin } from "antd";
 const ReadBlog = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const { blogId } = useParams();

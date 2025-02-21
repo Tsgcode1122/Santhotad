@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const ContactForm = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
 

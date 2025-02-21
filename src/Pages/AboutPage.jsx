@@ -15,7 +15,7 @@ import SwipeComponent from "../Animation/SwipeComponent";
 const AboutPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   return (
     <Container>
       <IntroHero>

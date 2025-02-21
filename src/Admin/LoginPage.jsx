@@ -10,7 +10,7 @@ import { Colors } from "../Colors/ColorComponent";
 const LoginPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   const { loginUser } = useUserContext();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
