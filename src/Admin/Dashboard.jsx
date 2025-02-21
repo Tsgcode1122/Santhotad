@@ -51,8 +51,6 @@ const Dashboard = () => {
     window.scrollTo(0, 0);
   });
   const onFinish = async (values) => {
-    console.log("Form Values before modification:", values);
-
     setLoading(true);
 
     try {

@@ -53,7 +53,6 @@ const EditDashboard = () => {
           `https://santhotad.onrender.com/api/blogs/${id}`,
         );
         const data = response.data;
-        console.log(data);
 
         // Populate form fields with data
         form.setFieldsValue({
