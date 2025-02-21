@@ -177,12 +177,15 @@ const Slider = styled.div`
   }
   @media screen and (max-width: 320px) {
     gap: 3px;
+    padding: 10px 2px;
   }
   @media (min-width: 321px) and (max-width: 399px) {
     gap: 1.5px;
+    padding: 10px 2px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
     gap: 2px;
+    padding: 10px 2px;
   }
 `;
 
@@ -192,10 +195,10 @@ const ImageContainer = styled.div`
     width: 220px;
   }
   @media (min-width: 321px) and (max-width: 399px) {
-    width: 240px;
+    width: 246px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-    width: 240px;
+    width: 246px;
   }
   @media (min-width: ${breakpoints.xs}) {
     width: 350px;
