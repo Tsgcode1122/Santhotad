@@ -20,7 +20,7 @@ import RegisterLogin from "./Admin/RegisterLogin";
 import BlogPage from "./Pages/BlogPage";
 import ResetPasswordPage from "./Admin/ResetPasswordPage";
 import AllPost from "./Admin/AllPost";
-import AnimatedCursor from "react-animated-cursor";
+
 import ProjectPage from "./Pages/ProjectPage";
 import GlobalStyles from "./FixedComponent/GlobalStyles";
 import PageUnderConstruction from "./Pages/PageUnderConstruction";
