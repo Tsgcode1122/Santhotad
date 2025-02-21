@@ -10,10 +10,12 @@ import SectionDiv from "../FixedComponent/SectionDiv";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import ServicepageBig from "./ServicepageBig";
 import ServicepageSmall from "./ServicepageSmall";
+import ScrollToTop from "../FixedComponent/ScrollToTop";
 
 const ServicePage = () => {
   return (
     <>
+      <ScrollToTop />
       <IntroHero>
         <Content>
           <h3>

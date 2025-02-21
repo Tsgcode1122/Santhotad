@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import SectionDiv from "../FixedComponent/SectionDiv";

@@ -5,6 +5,7 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 import { Modal } from "antd"; // Import Ant Design's Modal component
 import { Service } from "../Service";
 import SectionDiv from "../FixedComponent/SectionDiv";
+import ScrollToTop from "../FixedComponent/ScrollToTop";
 const ServicepageBig = () => {
   const [activeService, setActiveService] = useState(Service[0]);
   const [isModalVisible, setIsModalVisible] = useState(false); // State to control modal visibility
@@ -21,6 +22,7 @@ const ServicepageBig = () => {
 
   return (
     <>
+      <ScrollToTop />
       <SectionDiv>
         <ServiceChanging>
           <LeftSide>

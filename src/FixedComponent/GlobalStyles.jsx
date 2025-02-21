@@ -159,7 +159,7 @@ a{
   html, body {
     margin: 0 !important;
     padding: 0 !important;
-   scroll-behavior: smooth; 
+   /* scroll-behavior: smooth;  */
 
 font-family: 'Inter', sans-serif; 
   font-optical-sizing: auto;

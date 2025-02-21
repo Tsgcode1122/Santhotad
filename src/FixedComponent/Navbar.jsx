@@ -58,7 +58,7 @@ const Navbar = () => {
           <LinkContainer>
             {[
               { to: "/project", label: "Projects" },
-              { to: "/service/architect", label: "Services" },
+              { to: "/service", label: "Services" },
               { to: "/about", label: "About Us" },
               { to: "/blog", label: "Blogs" },
               { to: "/contact", label: "Contact Us" },
@@ -85,7 +85,7 @@ const Navbar = () => {
           </Link>
           <LinkBig>
             <Link to="/project">Projects</Link>
-            <Link to="/service/architect">Services</Link>
+            <Link to="/service">Services</Link>
             <Link to="/about">About Us</Link>
             <Link to="/blog">Blogs</Link>
           </LinkBig>

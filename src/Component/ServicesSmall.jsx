@@ -23,7 +23,7 @@ const ServicesSmall = () => {
         <Heading>
           <h4>Services</h4>
           <Line />
-          <CtaButton to="/services/architect">
+          <CtaButton to="/services">
             See All
             <ArrowDownOutlined />
           </CtaButton>

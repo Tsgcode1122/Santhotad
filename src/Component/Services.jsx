@@ -16,7 +16,7 @@ const Services = () => {
       <Heading>
         <h4>Services</h4>
         <Line />
-        <CtaButton to="/services/architect">
+        <CtaButton to="/service">
           See All
           <ArrowDownOutlined />
         </CtaButton>

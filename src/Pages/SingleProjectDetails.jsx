@@ -6,6 +6,9 @@ import SectionDiv from "../FixedComponent/SectionDiv";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 
 const SingleProjectDetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const { imageId } = useParams();
   const image = Images.find((image) => image.id === imageId);
 

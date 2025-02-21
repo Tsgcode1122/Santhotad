@@ -67,7 +67,6 @@ const routes = [
   {
     element: (
       <>
-        <ScrollToTop />
         <Layout />
       </>
     ),
@@ -77,13 +76,13 @@ const routes = [
 
       { path: "/projects/:imageId", element: <SingleProjectDetails /> },
       {
-        path: "/services/:serviceId",
+        path: "/services",
         element: <ServiceFromHome />,
         key: "service",
       },
       { path: "/project", element: <ProjectPage /> },
 
-      { path: "/service/architect", element: <ServicePage />, key: "service" },
+      { path: "/service", element: <ServicePage />, key: "service" },
       { path: "/contact", element: <ContactForm /> },
       { path: "/adminlogin", element: <RegisterLogin /> },
       { path: "/blog", element: <BlogPage /> },
