@@ -272,7 +272,7 @@ const SecondPart = styled.div`
 
 const TypeCard = styled.div`
   background: white;
-  width: 80%;
+  width: 90%;
   padding: 20px;
   border-radius: 10px;
 
