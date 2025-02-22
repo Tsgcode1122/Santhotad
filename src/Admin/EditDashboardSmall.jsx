@@ -274,6 +274,15 @@ const DashboardContainer = styled(Form)`
   .ant-form-item {
     width: 100%;
   }
+  @media screen and (max-width: 320px) {
+    padding: 0.5rem;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    padding: 0.5rem;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    padding: 0.5rem;
+  }
 `;
 
 const SecondPart = styled.div`
@@ -282,6 +291,15 @@ const SecondPart = styled.div`
   display: flex;
   gap: 20px;
   width: 90%;
+  @media screen and (max-width: 320px) {
+    width: 100%;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    width: 100%;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    width: 100%;
+  }
 `;
 
 const TypeCard = styled.div`
@@ -291,6 +309,15 @@ const TypeCard = styled.div`
   border-radius: 10px;
 
   border: 1px solid #ccc;
+  @media screen and (max-width: 320px) {
+    width: 100%;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    width: 100%;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    width: 100%;
+  }
 `;
 
 const Butt = styled(Button)`

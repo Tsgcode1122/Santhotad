@@ -222,7 +222,7 @@ const HeadSpace = styled.div`
 
   justify-content: space-between;
   img {
-    height: 25px;
+    height: 15px;
     margin: 0;
     padding: 0;
   }
