@@ -177,4 +177,13 @@ const About = styled.div`
 const Writeup = styled.p`
   line-height: 1.5;
   text-align: justify;
+  @media screen and (max-width: 320px) {
+    text-align: left;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    text-align: left;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    text-align: left;
+  }
 `;
