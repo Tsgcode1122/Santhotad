@@ -4,11 +4,11 @@ import f12 from "./ProjectImg/v3.jpg";
 import f13 from "./ProjectImg/v4.jpg";
 import f14 from "./ProjectImg/v5.jpg";
 
-import f2 from "./ProjectImg/va1.jpg";
-import f21 from "./ProjectImg/va2.jpg";
-import f22 from "./ProjectImg/va3.jpg";
-import f23 from "./ProjectImg/va4.jpg";
-import f24 from "./ProjectImg/va5.jpg";
+import f2 from "./ProjectImg/z41.jpg";
+import f21 from "./ProjectImg/z42.jpg";
+import f22 from "./ProjectImg/z43.jpg";
+import f23 from "./ProjectImg/z44.jpg";
+import f24 from "./ProjectImg/z45.jpg";
 
 import f3 from "./ProjectImg/newhouse.jpg";
 import f31 from "./ProjectImg/vb2.jpg";
@@ -89,9 +89,9 @@ export const Images = [
     singleImg2: f22,
     singleImg3: f23,
     singleImg4: f24,
-    name: "IfeBuilding",
-    location: "Nigeria",
-    year: "2021",
+    name: "14 Flat apartment complex",
+    location: "Orita Obele, Nigeria",
+    year: "Akure, Ondo State",
   },
 
   {
