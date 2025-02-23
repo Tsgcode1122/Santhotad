@@ -11,34 +11,36 @@ import SwipeComponent from "../Animation/SwipeComponent";
 const AboutUs = () => {
   return (
     <>
-      <SectionDiv>
-        <Heading>
-          <h4>About Us</h4>
-          <Line />
-          <CtaButton to="/about">
-            Read More
-            <ArrowDownOutlined />
-          </CtaButton>
-        </Heading>
-        <Content>
-          <h2>We believe in excellence </h2>
-          <SwipeComponent direction="left-to-right">
-            <p>
-              We are dedicated to designing spaces that inspire, connect, and
-              stand the test of time. With a focus on innovation and excellence,
-              we create unique architectural solutions tailored to meet the
-              needs of homeowners, developers, and businesses.
-            </p>
-          </SwipeComponent>
-        </Content>
-      </SectionDiv>
-      <BlueAbout />
+      <Scroll id="about-us">
+        <SectionDiv>
+          <Heading>
+            <h4>About Us</h4>
+            <Line />
+            <CtaButton to="/about">
+              Read More
+              <ArrowDownOutlined />
+            </CtaButton>
+          </Heading>
+          <Content>
+            <h2>We believe in excellence </h2>
+            <SwipeComponent direction="left-to-right">
+              <p>
+                We are dedicated to designing spaces that inspire, connect, and
+                stand the test of time. With a focus on innovation and
+                excellence, we create unique architectural solutions tailored to
+                meet the needs of homeowners, developers, and businesses.
+              </p>
+            </SwipeComponent>
+          </Content>
+        </SectionDiv>
+        <BlueAbout />
+      </Scroll>
     </>
   );
 };
 
 export default AboutUs;
-
+const Scroll = styled.div``;
 const Heading = styled.div`
   display: flex;
   align-items: center;

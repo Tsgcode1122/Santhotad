@@ -12,7 +12,7 @@ const Services = () => {
   const [activeService, setActiveService] = useState(Service[0]);
 
   return (
-    <SectionDiv>
+    <SectionDiv id="service">
       <Heading>
         <h4>Services</h4>
         <Line />

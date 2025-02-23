@@ -9,6 +9,14 @@ import { breakpoints } from "../FixedComponent/BreakPoints";
 import SwipeComponent from "../Animation/SwipeComponent";
 
 const Hero = () => {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -60;
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
   return (
     <HeroSection>
       <Container>
@@ -20,7 +28,9 @@ const Hero = () => {
               excellence
             </MiniText>
           </SwipeComponent>
-          <CtaButton to="/project">View our projects</CtaButton>
+          <CtaButton onClick={() => scrollToSection("project")}>
+            View Our Project
+          </CtaButton>
         </TextPart>
         <HeroImage>
           <img src={heroImg} />
@@ -136,7 +146,7 @@ const TextPart = styled.div`
     max-width: 750px;
   }
 `;
-const CtaButton = styled(Link)`
+const CtaButton = styled.a`
   text-decoration: none;
 
   border-radius: 5px;

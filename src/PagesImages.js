@@ -10,13 +10,13 @@ import f22 from "./ProjectImg/va3.jpg";
 import f23 from "./ProjectImg/va4.jpg";
 import f24 from "./ProjectImg/va5.jpg";
 
-import f3 from "./ProjectImg/vb1.jpg";
+import f3 from "./ProjectImg/newhouse.jpg";
 import f31 from "./ProjectImg/vb2.jpg";
 import f32 from "./ProjectImg/vb3.jpg";
 import f33 from "./ProjectImg/vb4.jpg";
 import f34 from "./ProjectImg/vb5.jpg";
 
-import f4 from "./ProjectImg/vc1.jpg";
+import f4 from "./ProjectImg/newhouse1.jpg";
 import f41 from "./ProjectImg/vc2.jpg";
 import f42 from "./ProjectImg/vc3.jpg";
 import f43 from "./ProjectImg/vc4.jpg";
@@ -33,8 +33,21 @@ import f61 from "./ProjectImg/ve2.jpg";
 import f62 from "./ProjectImg/ve3.jpg";
 import f63 from "./ProjectImg/ve4.jpg";
 import f64 from "./ProjectImg/ve5.jpg";
+import f104 from "./ProjectImg/tsq.jpg";
 
 export const Images = [
+  {
+    id: "tenImage",
+    img: f104,
+    singleImg0: f3,
+    singleImg: f31,
+    singleImg2: f32,
+    singleImg3: f33,
+    singleImg4: f34,
+    name: "Oyo",
+    location: "Nigeria",
+    year: "2024",
+  },
   {
     id: "thirdImage",
     img: f3,
@@ -43,7 +56,9 @@ export const Images = [
     singleImg2: f32,
     singleImg3: f33,
     singleImg4: f34,
-    name: "Oyo",
+    name: "Completion of buildings",
+    name1: " the residential  ",
+    name2: " buildings ",
     location: "Nigeria",
     year: "2024",
   },
