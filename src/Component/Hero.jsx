@@ -43,16 +43,18 @@ const Hero = () => {
 export default Hero;
 const HeroSection = styled.div`
   overflow: hidden;
-  padding-top: 1.5rem;
+  padding-top: 3rem;
   padding-left: 1.5rem;
   @media screen and (max-width: 320px) {
     padding-left: 1rem;
   }
   @media (min-width: 321px) and (max-width: 399px) {
     padding-left: 1rem;
+    padding-top: 4rem;
   }
   @media (min-width: 400px) and (max-width: 499px) {
     padding-left: 1.2rem;
+    padding-top: 4rem;
   }
   @media (min-width: ${breakpoints.xs}) {
     padding-top: 2rem;

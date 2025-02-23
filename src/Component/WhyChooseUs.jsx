@@ -107,15 +107,15 @@ const Container = styled.div`
 
 const StatsGrid = styled.div`
   background: white;
-  margin-top: -5rem;
+  margin-top: -7rem;
   @media screen and (max-width: 320px) {
-    margin-top: -3rem;
+    margin-top: -5rem;
   }
   @media (min-width: 321px) and (max-width: 399px) {
-    margin-top: -4rem;
+    margin-top: -6rem;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-    margin-top: -4rem;
+    margin-top: -6rem;
   }
   border-radius: 20px;
   justify-content: center;

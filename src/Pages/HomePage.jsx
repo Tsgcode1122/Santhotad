@@ -52,7 +52,9 @@ const HomePage = () => {
         <MeetTeam />
       </HideSmall>
       <HideBig>
-        <ServicesSmall />
+        <Scroll>
+          <ServicesSmall />
+        </Scroll>
       </HideBig>
       <HideSmall>
         <Scroll id="service">
@@ -75,8 +77,7 @@ const HideBig = styled.div`
 `;
 const HideSmall = styled.div`
   display: none;
-  @media (min-width: ${breakpoints.xs}) {
-  }
+
   @media (min-width: ${breakpoints.m}) {
     display: block;
   }
