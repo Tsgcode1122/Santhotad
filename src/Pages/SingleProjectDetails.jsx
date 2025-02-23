@@ -21,7 +21,7 @@ const SingleProjectDetails = () => {
           <OverlayText>
             <h2>
               {image.name.split(" ").map((word, index) =>
-                index > 0 && index % 3 === 0 ? (
+                index > 0 && index % 4 === 0 ? (
                   <>
                     <br />
                     {word}{" "}
@@ -111,12 +111,17 @@ const IntroImage = styled.div`
 const OverlayText = styled.div`
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 10px;
   align-items: left;
   background: rgba(255, 255, 255, 0.4);
-  padding: 15px;
+  padding: 6px;
   border-radius: 8px;
   color: black;
+  @media (min-width: ${breakpoints.m}) {
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+  }
   @media screen and (max-width: 320px) {
     top: 10px;
     left: 10px;
@@ -134,29 +139,35 @@ const OverlayText = styled.div`
   }
   h2 {
     margin: 0;
-    font-size: 30px;
+    font-size: 16px;
+    @media (min-width: ${breakpoints.m}) {
+      font-size: 18px;
+    }
     @media screen and (max-width: 320px) {
-      font-size: 20px;
+      font-size: 14px;
     }
     @media (min-width: 321px) and (max-width: 399px) {
-      font-size: 20px;
+      font-size: 14px;
     }
     @media (min-width: 400px) and (max-width: 499px) {
-      font-size: 20px;
+      font-size: 14px;
     }
   }
 
   p {
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 5px;
+    @media (min-width: ${breakpoints.m}) {
+      font-size: 16px;
+    }
     @media screen and (max-width: 320px) {
-      font-size: 14px;
+      font-size: 12px;
     }
     @media (min-width: 321px) and (max-width: 399px) {
-      font-size: 14px;
+      font-size: 12px;
     }
     @media (min-width: 400px) and (max-width: 499px) {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 `;

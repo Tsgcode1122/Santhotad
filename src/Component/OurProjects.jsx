@@ -79,7 +79,7 @@ const OurProjects = () => {
               <OverlayText>
                 <h2>
                   {image.name.split(" ").map((word, index) =>
-                    index > 0 && index % 3 === 0 ? (
+                    index > 0 && index % 4 === 0 ? (
                       <>
                         <br />
                         {word}{" "}
@@ -120,17 +120,17 @@ const OverlayText = styled.div`
     padding: 10px;
   }
   @media screen and (max-width: 320px) {
-    top: 10px;
+    bottom: 10px;
     left: 10px;
     padding: 5px;
   }
   @media (min-width: 321px) and (max-width: 399px) {
-    top: 10px;
+    bottom: 10px;
     left: 10px;
     padding: 5px;
   }
   @media (min-width: 400px) and (max-width: 499px) {
-    top: 10px;
+    bottom: 10px;
     left: 10px;
     padding: 5px;
   }
