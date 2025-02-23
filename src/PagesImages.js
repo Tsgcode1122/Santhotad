@@ -35,6 +35,13 @@ import f63 from "./ProjectImg/ve4.jpg";
 import f64 from "./ProjectImg/ve5.jpg";
 import f104 from "./ProjectImg/tsq.jpg";
 
+import z1 from "./ProjectImg/z1.jpg";
+import z11 from "./ProjectImg/z2.jpg";
+import z12 from "./ProjectImg/z3.jpg";
+import z13 from "./ProjectImg/z4.jpg";
+import z14 from "./ProjectImg/z5.jpg";
+import z15 from "./ProjectImg/tsq.jpg";
+
 export const Images = [
   {
     id: "tenImage",
@@ -61,6 +68,18 @@ export const Images = [
     name2: " buildings ",
     location: "Nigeria",
     year: "2024",
+  },
+  {
+    id: "seventhImage",
+    img: z1,
+    singleImg0: z1,
+    singleImg: z12,
+    singleImg2: z13,
+    singleImg3: z14,
+    singleImg4: z11,
+    name: "Ogbagi Akoko Town Hall",
+    location: " Ondon StateNigeria",
+    year: "2021",
   },
   {
     id: "secondImage",
