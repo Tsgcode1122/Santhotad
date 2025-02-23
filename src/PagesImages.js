@@ -136,7 +136,7 @@ export const Images = [
     singleImg2: f52,
     singleImg3: f53,
     singleImg4: f54,
-    name: "Abeokuta",
+    name: "Residential Building Construction",
     location: "Nigeria",
     year: "2023",
   },
