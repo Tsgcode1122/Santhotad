@@ -205,6 +205,15 @@ const SplitGridOne = styled.div`
     max-width: 100%;
     object-fit: cover;
   }
+  @media screen and (max-width: 320px) {
+    gap: 5px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    gap: 5px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    gap: 5px;
+  }
 `;
 
 const SplitGridTwo = styled.div`
@@ -215,7 +224,15 @@ const SplitGridTwo = styled.div`
   height: auto;
   overflow: hidden;
   padding-bottom: 3rem;
-
+  @media screen and (max-width: 320px) {
+    gap: 5px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    gap: 5px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    gap: 5px;
+  }
   border-radius: 10px;
   img {
     width: 100%;
