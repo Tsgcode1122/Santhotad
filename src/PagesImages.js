@@ -55,17 +55,30 @@ import z14 from "./ProjectImg/z5.jpg";
 import z15 from "./ProjectImg/tsq.jpg";
 
 export const Images = [
+  // {
+  //   id: "tenImage",
+  //   img: f104,
+  //   singleImg0: f3,
+  //   singleImg: f31,
+  //   singleImg2: f32,
+  //   singleImg3: f33,
+  //   singleImg4: f34,
+  //   name: "Oyo",
+  //   location: "Nigeria",
+  //   year: "2024",
+  // },
+
   {
-    id: "tenImage",
-    img: f104,
-    singleImg0: f3,
-    singleImg: f31,
-    singleImg2: f32,
-    singleImg3: f33,
-    singleImg4: f34,
-    name: "Oyo",
-    location: "Nigeria",
-    year: "2024",
+    id: "fourthImage",
+    img: f4,
+    singleImg0: f4,
+    singleImg: f41,
+    singleImg2: f42,
+    singleImg3: f43,
+    singleImg4: f44,
+    name: "A residential Building",
+    location: " Ondo Town Nigeria",
+    year: "2022",
   },
   {
     id: "thirdImage",
@@ -106,18 +119,6 @@ export const Images = [
     year: "Akure, Ondo State",
   },
 
-  {
-    id: "fourthImage",
-    img: f4,
-    singleImg0: f4,
-    singleImg: f41,
-    singleImg2: f42,
-    singleImg3: f43,
-    singleImg4: f44,
-    name: "A residential Building",
-    location: " Ondo Town Nigeria",
-    year: "2022",
-  },
   {
     id: "firthImage",
     img: f5,
