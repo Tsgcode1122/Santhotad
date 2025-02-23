@@ -41,6 +41,12 @@ import f63 from "./ProjectImg/ve4.jpg";
 import f64 from "./ProjectImg/ve5.jpg";
 import f104 from "./ProjectImg/tsq.jpg";
 
+import f9 from "./ProjectImg/y1.jpg";
+import f91 from "./ProjectImg/y2.jpg";
+import f92 from "./ProjectImg/y3.jpg";
+import f93 from "./ProjectImg/y4.jpg";
+import f94 from "./ProjectImg/y5.jpg";
+
 import z1 from "./ProjectImg/z1.jpg";
 import z11 from "./ProjectImg/z2.jpg";
 import z12 from "./ProjectImg/z3.jpg";
@@ -144,7 +150,7 @@ export const Images = [
     singleImg2: f12,
     singleImg3: f13,
     singleImg4: f14,
-    name: "Sheraton",
+    name: "OC Event Center",
     location: "Nigeria",
     year: "2020",
   },
@@ -159,5 +165,17 @@ export const Images = [
     name: "Office Complex",
     location: "Oshogbo, Osun State",
     year: "Nigeria",
+  },
+  {
+    id: "nineImage",
+    img: f9,
+    singleImg0: f9,
+    singleImg: f91,
+    singleImg2: f92,
+    singleImg3: f93,
+    singleImg4: f94,
+    name: "Renovation of Akure ",
+    location: "South Local Government Secretariat,",
+    year: "Ondo State",
   },
 ];
