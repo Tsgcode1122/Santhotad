@@ -4,6 +4,12 @@ import f12 from "./ProjectImg/v3.jpg";
 import f13 from "./ProjectImg/v4.jpg";
 import f14 from "./ProjectImg/v5.jpg";
 
+import f8 from "./ProjectImg/z91.jpg";
+import f81 from "./ProjectImg/z92.jpg";
+import f82 from "./ProjectImg/z93.jpg";
+import f83 from "./ProjectImg/z94.jpg";
+import f84 from "./ProjectImg/z95.jpg";
+
 import f2 from "./ProjectImg/z41.jpg";
 import f21 from "./ProjectImg/z42.jpg";
 import f22 from "./ProjectImg/z43.jpg";
@@ -141,5 +147,17 @@ export const Images = [
     name: "Sheraton",
     location: "Nigeria",
     year: "2020",
+  },
+  {
+    id: "eighthImage",
+    img: f8,
+    singleImg0: f8,
+    singleImg: f81,
+    singleImg2: f82,
+    singleImg3: f83,
+    singleImg4: f84,
+    name: "Office Complex",
+    location: "Oshogbo, Osun State",
+    year: "Nigeria",
   },
 ];
