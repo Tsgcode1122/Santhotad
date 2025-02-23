@@ -16,11 +16,11 @@ import f22 from "./ProjectImg/z43.jpg";
 import f23 from "./ProjectImg/z44.jpg";
 import f24 from "./ProjectImg/z45.jpg";
 
-import f3 from "./ProjectImg/newhouse.jpg";
-import f31 from "./ProjectImg/vb2.jpg";
-import f32 from "./ProjectImg/vb3.jpg";
-import f33 from "./ProjectImg/vb4.jpg";
-import f34 from "./ProjectImg/vb5.jpg";
+import f3 from "./ProjectImg/o1.jpg";
+import f31 from "./ProjectImg/o2.jpg";
+import f32 from "./ProjectImg/o3.jpg";
+import f33 from "./ProjectImg/o4.jpg";
+import f34 from "./ProjectImg/o5.jpg";
 
 import f4 from "./ProjectImg/newhouse1.jpg";
 import f41 from "./ProjectImg/z22.jpg";
@@ -55,18 +55,18 @@ import z14 from "./ProjectImg/z5.jpg";
 import z15 from "./ProjectImg/tsq.jpg";
 
 export const Images = [
-  // {
-  //   id: "tenImage",
-  //   img: f104,
-  //   singleImg0: f3,
-  //   singleImg: f31,
-  //   singleImg2: f32,
-  //   singleImg3: f33,
-  //   singleImg4: f34,
-  //   name: "Oyo",
-  //   location: "Nigeria",
-  //   year: "2024",
-  // },
+  {
+    id: "tenImage",
+    img: f3,
+    singleImg0: f3,
+    singleImg: f31,
+    singleImg2: f32,
+    singleImg3: f33,
+    singleImg4: f34,
+    name: "Residential Buildings ",
+    location: "Ijapo Estate",
+    year: "Akure, Ondo State",
+  },
 
   {
     id: "fourthImage",
@@ -80,20 +80,20 @@ export const Images = [
     location: " Ondo Town Nigeria",
     year: "2022",
   },
-  {
-    id: "thirdImage",
-    img: f3,
-    singleImg0: f3,
-    singleImg: f31,
-    singleImg2: f32,
-    singleImg3: f33,
-    singleImg4: f34,
-    name: "Completion of buildings",
-    name1: " the residential  ",
-    name2: " buildings ",
-    location: "Nigeria",
-    year: "2024",
-  },
+  // {
+  //   id: "thirdImage",
+  //   img: f3,
+  //   singleImg0: f3,
+  //   singleImg: f31,
+  //   singleImg2: f32,
+  //   singleImg3: f33,
+  //   singleImg4: f34,
+  //   name: "Completion of buildings",
+  //   name1: " the residential  ",
+  //   name2: " buildings ",
+  //   location: "Nigeria",
+  //   year: "2024",
+  // },
   {
     id: "seventhImage",
     img: z1,
