@@ -22,6 +22,12 @@ import f32 from "./ProjectImg/o3.jpg";
 import f33 from "./ProjectImg/o4.jpg";
 import f34 from "./ProjectImg/o5.jpg";
 
+import f10 from "./ProjectImg/q1.jpg";
+import f101 from "./ProjectImg/q2.jpg";
+import f102 from "./ProjectImg/o3.jpg";
+import f103 from "./ProjectImg/o4.jpg";
+import f104 from "./ProjectImg/o5.jpg";
+
 import f4 from "./ProjectImg/newhouse1.jpg";
 import f41 from "./ProjectImg/z22.jpg";
 import f42 from "./ProjectImg/z23.jpg";
@@ -39,7 +45,6 @@ import f61 from "./ProjectImg/ve2.jpg";
 import f62 from "./ProjectImg/ve3.jpg";
 import f63 from "./ProjectImg/ve4.jpg";
 import f64 from "./ProjectImg/ve5.jpg";
-import f104 from "./ProjectImg/tsq.jpg";
 
 import f9 from "./ProjectImg/y1.jpg";
 import f91 from "./ProjectImg/y2.jpg";
@@ -80,20 +85,18 @@ export const Images = [
     location: " Ondo Town Nigeria",
     year: "2022",
   },
-  // {
-  //   id: "thirdImage",
-  //   img: f3,
-  //   singleImg0: f3,
-  //   singleImg: f31,
-  //   singleImg2: f32,
-  //   singleImg3: f33,
-  //   singleImg4: f34,
-  //   name: "Completion of buildings",
-  //   name1: " the residential  ",
-  //   name2: " buildings ",
-  //   location: "Nigeria",
-  //   year: "2024",
-  // },
+  {
+    id: "thirdImage",
+    img: f10,
+    singleImg0: f10,
+    singleImg: f101,
+    singleImg2: f102,
+    singleImg3: f103,
+    singleImg4: f104,
+    name: "Finger-Licking",
+    location: "Restuarant and Bar",
+    year: "2024",
+  },
   {
     id: "seventhImage",
     img: z1,
