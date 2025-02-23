@@ -14,7 +14,7 @@ const OurProjects = () => {
   // Handle scrolling left
   const scrollLeft = () => {
     if (sliderRef.current && currentIndex > 0) {
-      sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      sliderRef.current.scrollBy({ left: -400, behavior: "smooth" });
       setCurrentIndex((prev) => prev - 1);
     }
   };
@@ -22,7 +22,7 @@ const OurProjects = () => {
   // Handle scrolling right
   const scrollRight = () => {
     if (sliderRef.current && currentIndex < Images.length - 1) {
-      sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      sliderRef.current.scrollBy({ left: 400, behavior: "smooth" });
       setCurrentIndex((prev) => prev + 1);
     }
   };
