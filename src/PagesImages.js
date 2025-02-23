@@ -4,6 +4,12 @@ import f12 from "./ProjectImg/v3.jpg";
 import f13 from "./ProjectImg/v4.jpg";
 import f14 from "./ProjectImg/v5.jpg";
 
+import f111 from "./ProjectImg/v111.jpg";
+import f112 from "./ProjectImg/v112.jpg";
+import f113 from "./ProjectImg/v113.jpg";
+import f114 from "./ProjectImg/v114.jpg";
+import f115 from "./ProjectImg/v115.jpg";
+
 import f8 from "./ProjectImg/z91.jpg";
 import f81 from "./ProjectImg/z92.jpg";
 import f82 from "./ProjectImg/z93.jpg";
@@ -181,5 +187,17 @@ export const Images = [
     name: "Renovation of Akure ",
     location: "South Local Government Secretariat,",
     year: "Ondo State",
+  },
+  {
+    id: "elevenImage",
+    img: f111,
+    singleImg0: f111,
+    singleImg: f112,
+    singleImg2: f113,
+    singleImg3: f114,
+    singleImg4: f115,
+    name: "Factory Renovation ",
+    location: "Ondon state",
+    year: "2024",
   },
 ];
