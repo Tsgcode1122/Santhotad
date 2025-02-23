@@ -76,6 +76,26 @@ const OurProjects = () => {
               <Link key={index} to={`/projects/${image.id}`}>
                 <img src={image.img} alt={`Project ${index + 1}`} />
               </Link>
+              <OverlayText>
+                <h2>
+                  {image.name.split(" ").map((word, index) =>
+                    index > 0 && index % 3 === 0 ? (
+                      <>
+                        <br />
+                        {word}{" "}
+                      </>
+                    ) : (
+                      word + " "
+                    ),
+                  )}
+                </h2>
+                <DashAdd>
+                  <Line />
+                  <p>
+                    {image.location} - {image.year}
+                  </p>
+                </DashAdd>
+              </OverlayText>
             </ImageContain>
           ))}
         </ImageSlider>
@@ -85,7 +105,94 @@ const OurProjects = () => {
 };
 
 export default OurProjects;
+const OverlayText = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  align-items: left;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 6px;
+  border-radius: 8px;
+  color: black;
+  @media (min-width: ${breakpoints.m}) {
+    bottom: 20px;
+    left: 20px;
+    padding: 10px;
+  }
+  @media screen and (max-width: 320px) {
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+  }
+  h2 {
+    margin: 0;
+    font-size: 16px;
+    @media (min-width: ${breakpoints.m}) {
+      font-size: 18px;
+    }
+    @media screen and (max-width: 320px) {
+      font-size: 14px;
+    }
+    @media (min-width: 321px) and (max-width: 399px) {
+      font-size: 14px;
+    }
+    @media (min-width: 400px) and (max-width: 499px) {
+      font-size: 14px;
+    }
+  }
 
+  p {
+    font-size: 14px;
+    margin-top: 5px;
+    @media (min-width: ${breakpoints.m}) {
+      font-size: 16px;
+    }
+    @media screen and (max-width: 320px) {
+      font-size: 12px;
+    }
+    @media (min-width: 321px) and (max-width: 399px) {
+      font-size: 12px;
+    }
+    @media (min-width: 400px) and (max-width: 499px) {
+      font-size: 12px;
+    }
+  }
+`;
+
+const DashAdd = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  justify-content: center;
+`;
+
+const Line = styled.div`
+  width: 20px;
+  height: 1px;
+  margin-top: -12px;
+  background: #303030;
+
+  @media screen and (max-width: 320px) {
+    width: 10px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    width: 15px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    width: 15px;
+  }
+`;
 const ProjectDiv = styled.div`
   @media screen and (max-width: 320px) {
     padding: 0.5rem 0.8rem;
@@ -203,6 +310,7 @@ const ImageSlider = styled.div`
 `;
 
 const ImageContain = styled.div`
+  position: relative;
   flex: 0 0 auto;
   margin-right: 2px;
 
