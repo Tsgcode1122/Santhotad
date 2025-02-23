@@ -184,8 +184,8 @@ export const Images = [
     singleImg2: f92,
     singleImg3: f93,
     singleImg4: f94,
-    name: "Renovation of Akure ",
-    location: "South Local Government Secretariat,",
+    name: "Renovation of Akure South Local Government ",
+    location: "",
     year: "Ondo State",
   },
   {

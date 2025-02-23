@@ -19,7 +19,18 @@ const SingleProjectDetails = () => {
         <IntroImage>
           <img src={image.singleImg0} alt={image.name} />
           <OverlayText>
-            <h2>{image.name}</h2>
+            <h2>
+              {image.name.split(" ").map((word, index) =>
+                index > 0 && index % 3 === 0 ? (
+                  <>
+                    <br />
+                    {word}{" "}
+                  </>
+                ) : (
+                  word + " "
+                ),
+              )}
+            </h2>
             <DashAdd>
               <Line />
               <p>
@@ -101,19 +112,52 @@ const OverlayText = styled.div`
   position: absolute;
   top: 20px;
   left: 20px;
+  align-items: left;
   background: rgba(255, 255, 255, 0.4);
   padding: 15px;
   border-radius: 8px;
   color: black;
-
+  @media screen and (max-width: 320px) {
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+  }
   h2 {
     margin: 0;
     font-size: 30px;
+    @media screen and (max-width: 320px) {
+      font-size: 20px;
+    }
+    @media (min-width: 321px) and (max-width: 399px) {
+      font-size: 20px;
+    }
+    @media (min-width: 400px) and (max-width: 499px) {
+      font-size: 20px;
+    }
   }
 
   p {
     font-size: 16px;
     margin-top: 5px;
+    @media screen and (max-width: 320px) {
+      font-size: 14px;
+    }
+    @media (min-width: 321px) and (max-width: 399px) {
+      font-size: 14px;
+    }
+    @media (min-width: 400px) and (max-width: 499px) {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -130,6 +174,15 @@ const Line = styled.div`
   height: 1px;
   margin-top: -12px;
   background: #303030;
+  @media screen and (max-width: 320px) {
+    width: 10px;
+  }
+  @media (min-width: 321px) and (max-width: 399px) {
+    width: 20px;
+  }
+  @media (min-width: 400px) and (max-width: 499px) {
+    width: 20px;
+  }
 `;
 
 const SplitGridOne = styled.div`
