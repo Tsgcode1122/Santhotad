@@ -45,12 +45,12 @@ const HomePage = () => {
       <Scroll id="about">
         <AboutUs />
       </Scroll>
-      <HideBig>
+      <HideBigS>
         <MeetTeamSmall />
-      </HideBig>
-      <HideSmall>
+      </HideBigS>
+      <HideSmallS>
         <MeetTeam />
-      </HideSmall>
+      </HideSmallS>
       <HideBig>
         <Scroll>
           <ServicesSmall />
@@ -79,6 +79,18 @@ const HideSmall = styled.div`
   display: none;
 
   @media (min-width: ${breakpoints.m}) {
+    display: block;
+  }
+`;
+const HideBigS = styled.div`
+  @media (min-width: ${breakpoints.md}) {
+    display: none;
+  }
+`;
+const HideSmallS = styled.div`
+  display: none;
+
+  @media (min-width: ${breakpoints.md}) {
     display: block;
   }
 `;
