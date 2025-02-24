@@ -49,12 +49,12 @@ const AboutPage = () => {
         </About>
       </SectionDiv>
       <BlueAbout />
-      <HideBig>
+      <HideBigS>
         <MeetTeamSmall />
-      </HideBig>
-      <HideSmall>
+      </HideBigS>
+      <HideSmallS>
         <MeetTeam />
-      </HideSmall>
+      </HideSmallS>
       <HideBig>
         <ServicesSmall />
       </HideBig>
@@ -66,6 +66,18 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+const HideBigS = styled.div`
+  @media (min-width: ${breakpoints.md}) {
+    display: none;
+  }
+`;
+const HideSmallS = styled.div`
+  display: none;
+
+  @media (min-width: ${breakpoints.md}) {
+    display: block;
+  }
+`;
 const HideBig = styled.div`
   @media (min-width: ${breakpoints.m}) {
     display: none;
