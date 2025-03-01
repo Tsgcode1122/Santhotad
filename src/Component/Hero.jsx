@@ -69,7 +69,7 @@ const HeroSection = styled.div`
     padding-top: 5.5rem;
   }
   @media (min-width: ${breakpoints.md}) {
-    padding-top: 5.5rem;
+    padding-top: 6.5rem;
   }
 
   @media (min-width: ${breakpoints.lg}) {
@@ -144,8 +144,13 @@ const TextPart = styled.div`
   @media (min-width: ${breakpoints.m}) {
     max-width: 550px;
   }
+  @media (min-width: ${breakpoints.md}) {
+    max-width: 550px;
+    padding-top: 2rem;
+  }
   @media (min-width: ${breakpoints.lg}) {
     max-width: 750px;
+    padding-top: 3rem;
   }
 `;
 const CtaButton = styled.a`
