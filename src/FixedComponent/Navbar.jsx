@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Squash as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
 
-import logo from "../Images/sanlogo.png";
+import logo from "../Images/SanthothadLogo.svg";
 import arrowUp from "../Icons/arrow-up-right.png";
 import { Colors } from "../Colors/ColorComponent";
 import SectionDiv from "./SectionDiv";

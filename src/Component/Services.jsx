@@ -25,8 +25,9 @@ const Services = () => {
         <h1>Build to Inspire, Design to Last</h1>
         <SwipeComponent direction="left-to-right">
           <p>
-            At Santhotad Concepts, we deliver tailored services that blend
-            innovation, and client satisfaction to meet your unique needs.
+            At Santhotad Concept Plus Nigeria Limited, we deliver tailored
+            services that blend innovation, and client satisfaction to meet your
+            unique needs.
           </p>
         </SwipeComponent>
       </Content>

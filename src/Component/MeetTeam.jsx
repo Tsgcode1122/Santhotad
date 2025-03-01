@@ -9,7 +9,7 @@ import civilB from "../TeamImages/civilb.png";
 import civilC from "../TeamImages/civilCC.png";
 import managerC from "../TeamImages/managCC.png";
 import managerB from "../TeamImages/manb.png";
-import message from "../TeamImages/message.png";
+import message from "../TeamImages/ceobio.png";
 import message1 from "../TeamImages/message1.png";
 import message2 from "../TeamImages/message2.png";
 import message3 from "../TeamImages/message3.png";
@@ -86,7 +86,9 @@ const MeetTeam = () => {
                 <img
                   src={team.contents}
                   alt={team.id}
-                  height={index === 2 ? "300px" : "400px"}
+                  height={
+                    index === 2 ? "300px" : index === 0 ? "450px" : "400px"
+                  }
                 />
               </ContentInner>
             </Content>
@@ -142,8 +144,8 @@ const TeamItem = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  width: 170px;
-  height: 450px;
+  width: 200px;
+  height: 500px;
   border-radius: 20px;
   overflow: hidden;
   img {

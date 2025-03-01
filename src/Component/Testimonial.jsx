@@ -18,7 +18,7 @@ const testimonials = [
     img: f2,
     heading: "Exceptional Service from start to finish!",
     content:
-      "Santhotad Concepts turned our vision into reality with precision and creativity. Their attention to details and professionalism are unmatched.",
+      "Santhotad Concept Nigeria Limited turned our vision into reality with precision and creativity. Their attention to details and professionalism are unmatched.",
     name: "A. Johnson",
     who: "Homeowner",
     rating: "5.0",
@@ -28,7 +28,7 @@ const testimonials = [
     img: f3,
     heading: "A seamless experience!",
     content:
-      "I was impressed by their dedication and expertise. The team at Santhotad Concepts exceeded my expectations.",
+      "I was impressed by their dedication and expertise. The team at Santhotad Concept Nigeria Limited exceeded my expectations.",
     name: "Emily R.",
     who: "Interior Designer",
     rating: "4.5",

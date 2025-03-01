@@ -67,9 +67,6 @@ const ReadBlog = () => {
                       dangerouslySetInnerHTML={{ __html: blog.description }}
                     />
                     <div>
-                      <p> Company Name: Santhotad Concept </p>
-                      <p> Contact Name: Temitope Adeusi </p>
-                      <p> Country: Nigeria </p>
                       <p>
                         {" "}
                         Website:{" "}
