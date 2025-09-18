@@ -10,7 +10,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import robot from "../Images/kia.png";
+import robot from "../Images/kia1.png";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 
 const WorkforceSafety = () => {
