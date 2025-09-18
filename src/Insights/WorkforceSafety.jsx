@@ -87,7 +87,11 @@ const WorkforceSafety = () => {
                 </LegendItem>
                 <LegendItem color="#d6d6ff">Cautioned</LegendItem>
               </Legend>
-              <ResponsiveContainer width="100%" height={180}>
+              <ResponsiveContainer
+                width="100%"
+                height={180}
+                style={{ marginLeft: "-35px" }}
+              >
                 <BarChart data={data}>
                   <XAxis dataKey="name" />
                   <YAxis />

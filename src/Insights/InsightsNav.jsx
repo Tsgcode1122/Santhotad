@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs } from "antd";
 import styled from "styled-components";
 
-// import your components
 import ProjectIntelligence from "./ProjectIntelligence";
 import Sustainability from "./Sustainability";
 import UrbanPlanning from "./UrbanPlanning";
@@ -11,6 +10,9 @@ import SectionDiv from "../FixedComponent/SectionDiv";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 
 const InsightsNav = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const [activeKey, setActiveKey] = useState("1");
 
   const items = [
