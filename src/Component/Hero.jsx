@@ -3,7 +3,7 @@ import { Link, Links } from "react-router-dom";
 
 import styled, { keyframes } from "styled-components";
 import { Colors } from "../Colors/ColorComponent";
-import heroImg from "../Images/heroSent.png";
+import heroImg from "../Images/heroSent1.png";
 import f2 from "../Images/HeroBackground.png";
 import { breakpoints } from "../FixedComponent/BreakPoints";
 import SwipeComponent from "../Animation/SwipeComponent";
