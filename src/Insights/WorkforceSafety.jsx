@@ -65,9 +65,17 @@ const WorkforceSafety = () => {
                 <Label>PPE Usage</Label>
                 <StyledProgress percent={90} showInfo={false} />
                 <Label>Hazard Awareness</Label>
-                <StyledProgress percent={70} showInfo={false} />
+                <StyledProgress
+                  percent={70}
+                  showInfo={false}
+                  strokeColor="#acaedb"
+                />
                 <Label>Site Protocols</Label>
-                <StyledProgress percent={50} showInfo={false} />
+                <StyledProgress
+                  percent={50}
+                  showInfo={false}
+                  strokeColor="#d5d7ed"
+                />
               </ProgressSection>
             </div>
             {/* Chart */}
