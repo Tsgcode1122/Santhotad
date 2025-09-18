@@ -59,6 +59,7 @@ const Navbar = () => {
             {[
               { to: "/project", label: "Projects" },
               { to: "/service", label: "Services" },
+              { to: "/insights", label: "Insights" },
               { to: "/about", label: "About Us" },
               { to: "/blog", label: "Blogs" },
               { to: "/contact", label: "Contact Us" },
@@ -86,6 +87,7 @@ const Navbar = () => {
           <LinkBig>
             <Link to="/project">Projects</Link>
             <Link to="/service">Services</Link>
+            <Link to="/insights">Insights</Link>
             <Link to="/about">About Us</Link>
             <Link to="/blog">Blogs</Link>
           </LinkBig>
@@ -297,9 +299,7 @@ const MenuToggle = styled.div`
 
 const Sidebar = styled.div`
   position: fixed;
-  box-shadow:
-    0 2px 30px rgba(0, 0, 0, 0.1),
-    0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 20px 20px;
   top: 3rem;
   top: ${({ isOpen }) => (isOpen ? "3rem" : "-400px")};

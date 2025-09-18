@@ -26,6 +26,7 @@ import GlobalStyles from "./FixedComponent/GlobalStyles";
 import PageUnderConstruction from "./Pages/PageUnderConstruction";
 import ReadBlog from "./Pages/ReadBlog";
 import ScrollToTop from "./FixedComponent/ScrollToTop";
+import InsightsNav from "./Insights/InsightsNav";
 
 const StyledResult = styled(Result)`
   .ant-result-title {
@@ -81,6 +82,7 @@ const routes = [
         key: "service",
       },
       { path: "/project", element: <ProjectPage /> },
+      { path: "/insights", element: <InsightsNav /> },
 
       { path: "/service", element: <ServicePage />, key: "service" },
       { path: "/contact", element: <ContactForm /> },

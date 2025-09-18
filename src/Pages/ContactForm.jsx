@@ -22,7 +22,7 @@ const ContactForm = () => {
       // Send form data to backend
       await axios.post(
         "https://santhotad.onrender.com/api/email/formSubmission",
-        values,
+        values
       );
 
       // Show success notification
